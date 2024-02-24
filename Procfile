@@ -1,1 +1,1 @@
-web: gunicorn animania.wsgi
+web: gunicorn animaia.wsgi
