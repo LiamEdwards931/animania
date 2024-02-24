@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animania</title>
-    <link rel="stylesheet" href="static\index.css">
+    <link rel="stylesheet" href="static\css\index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <!-- Google Font-->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,30 +14,44 @@
 </head>
 <body>
     {% load static %}
-    
+    <!--Navbar Section-->
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid main-background">
-                <a class="navbar-brand" href="templates\index.html">
-                    <h1>Animania</h1>
-                </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  <a class="nav-link" href="#">Features</a>
-                  <a class="nav-link" href="#">Pricing</a>
-                  <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        <div class="container-fluid p-0">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+                        <div class="container-fluid main-background mt-none">
+                            <a class="navbar-brand" href="{% url 'index' %}">
+                                <h1>Animania</h1>
+                            </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                                <div class="navbar-nav">
+                                    <a class="nav-link" href="#">Home</a>
+                                    <a class="nav-link" href="#">Features</a>
+                                    <a class="nav-link" href="#">Pricing</a>
+                                    <a class="nav-link" href="#">link</a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
                 </div>
-              </div>
             </div>
-          </nav>
+        </div>
     </header>
+    
 
-    <main>
-        <!-- Main content goes here -->
+    <main style="padding-top: 56px;">
+        <div class ="container-fluid carousel">
+            <div class="row">
+                <div class ="col-12">
+
+                </div>
+            </div>
+
+        </div>
     </main>
 
     <footer>
