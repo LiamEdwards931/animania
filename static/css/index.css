@@ -52,6 +52,50 @@ h2,h3,h4,h5,h6{
     background-color: transparent;
 }
 
+.i-link{
+    padding: 0 8px 0 8px;
+}
+
+@media screen and (max-width:990px){
+    .main-background{
+        padding:0;
+    }
+
+    .navbar-toggler{
+        margin-right:330px;
+    }
+}
+
+@media screen and (max-width:810px){
+    .navbar-toggler{
+        margin-right:250px;
+    }
+}
+
+@media screen and (max-width:670px){
+    .navbar-toggler{
+        margin-right:200px;
+    }
+}
+
+@media screen and (max-width:580px){
+    .navbar-toggler{
+        margin-right:150px;
+    }
+}
+
+@media screen and (max-width:485px){
+    .navbar-toggler{
+        margin-right:70px;
+    }
+}
+
+@media screen and (max-width:485px){
+    .navbar-toggler{
+        margin-right:25px;
+    }
+}
+
 /* banner images css -------------------------------------------------------------*/
 main{
     padding-top:56px;
@@ -116,6 +160,7 @@ main{
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
+    box-shadow: 0 5px 10px 5px rgb(255,165,0);
 }
 
 .shop-btn:hover{
@@ -124,15 +169,11 @@ main{
 
 /* general category section css------------------------------------------------------- */
 .general-cat{
-    padding-top: 10px;
-    margin-top:5px;
-    height:150px;
+    height:200px;
+    text-align: center;
+    color: orange;
 }
 
-#merch-img{
-    width:100px;
-    height:100%;
-}
 
 /* media queries ------------------------------------------------------------------ */
 @media screen and (max-width: 600px) {
