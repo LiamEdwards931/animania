@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animania</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'images/wolf.ico'}" type="image/x-icon">
     <!-- Google Font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,13 +92,22 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-4 text-center general-cat" id="pop-vinyl">
-                    <h2>Pop Vinyl</h2>
+                    <div class ="opacity-film">
+                        <h2>Pop Vinyl</h2>
+                        <button type="button" class="product-btn">Shop All Pop-Vinyls</button>
+                    </div>
                 </div>
-                <div class="col-4 text-center general-cat" id="clothing-img">
-                    <h2>Clothing</h2>
+                <div class="col-4 text-center general-cat general-cat-border" id="clothing-img">
+                    <div class ="opacity-film">
+                        <h2>Clothing</h2>
+                        <button type="button" class="product-btn">Shop All Clothing</button>
+                    </div>
                 </div>
                 <div class="col-4 text-center general-cat" id="figure-img">
-                    <h2>Figures</h2>
+                    <div class ="opacity-film">
+                        <h2>Figures</h2>
+                        <button type="button" class="product-btn">Shop All Figures</button>
+                    </div>
                 </div>
             </div>
         </div>
