@@ -1,5 +1,5 @@
 ---
-name: User Story :#
+name: User Story
 about: 'Feature addition '
 title: "[User Story (..)]"
 labels: ''
