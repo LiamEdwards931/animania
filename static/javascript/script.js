@@ -7,6 +7,7 @@ function moveLinks(){
 var images = document.querySelectorAll('.img-banner');
 
 document.querySelector('.banner-container').addEventListener('click', function() {
+    // function that allows users to click the image to move to the next one in the list
     var visibleImage = document.querySelector('.img-banner.banner-visible');
     var visibleIndex = Array.from(images).indexOf(visibleImage);
     var nextIndex = (visibleIndex + 1) % images.length;
@@ -18,12 +19,12 @@ document.querySelector('.banner-container').addEventListener('click', function()
     nextImage.classList.add('banner-visible');
 });
 
-
+// circle indicators
 var images = document.querySelectorAll('.img-banner');
 var indicator = document.querySelector('.indicator');
 
-// circle indicators
 images.forEach(function(image, index) {
+    // Appends a new circle indicator for each new image that is added to the banner screen
     var circle = document.createElement('div');
     circle.classList.add('indicator-circle');
     if (index === 0) {
@@ -48,24 +49,21 @@ document.querySelector('.banner-container').addEventListener('click', function()
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-    
+    // Creates dynamic buttons for each of the images, changes text and urls based on the image displayed.
     var images = document.querySelectorAll('.img-banner');
     var shopButton = document.querySelector('.shop-btn');
-
-    
+  
     var buttonSettings = [
         { text: 'Shop Sword Art Online Merch', url: '/shop-now-page' }, 
         { text: 'Shop Demon Slayer Merch', url: '/shop-demon-slayer-page' }, 
         { text: 'Shop Tokyo Ghoul Merch', url: '/shop-tokyo-ghoul-page' } 
     ];
 
-    
     function updateButtonSettings(index) {
         shopButton.textContent = buttonSettings[index].text;
         shopButton.setAttribute('onclick', `window.location.href='${buttonSettings[index].url}'`);
     }
 
-    
     document.querySelector('.banner-container').addEventListener('click', function() {
         
         var visibleImage = document.querySelector('.img-banner.banner-visible');
