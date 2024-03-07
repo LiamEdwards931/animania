@@ -1,3 +1,8 @@
+function moveLinks(){
+    let container = document.getElementById('linksContainer');
+    container.classList.remove('ms-auto');
+}
+
 // banner image js-------------------------------------------------------------------
 var images = document.querySelectorAll('.img-banner');
 
