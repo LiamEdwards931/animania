@@ -39,10 +39,14 @@ h2,h3,h4,h5,h6{
     color:white;
 }
 
+.navbar-toggler{
+    background: white;
+}
+
 .navbar-toggler-icon {
-    background-color: white;
+    background-color: transparent;
+    color: orange;
     border-radius:50%;
-    color:white;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link:hover,
@@ -92,7 +96,8 @@ h2,h3,h4,h5,h6{
 
 @media screen and (max-width:485px){
     .navbar-toggler{
-        margin-right:25px;
+        margin-right:15px;
+        margin-left:10px;
     }
 }
 
@@ -124,7 +129,6 @@ main{
 .banner-hidden{
     display:none;
 }
-
 
 .indicator{
     position: absolute;
