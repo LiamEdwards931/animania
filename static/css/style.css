@@ -1,7 +1,15 @@
 /* --------------------------------general styling ------------------*/
+html{
+    height:100%;
+}
+
 body{
     margin:0;
     padding:0;
+    padding-top:65px;
+    min-height:100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 h2,h3,h4,h5,h6{
@@ -109,10 +117,6 @@ h2,h3,h4,h5,h6{
 }
 
 /* ------------------------------------------banner images css -----------------------*/
-main{
-    padding-top:56px;
-}
-
 .banner-container{
     height:690px;
     padding:0;
@@ -280,9 +284,10 @@ main{
 }
 
 /* -------------------------------Footer ----------------------------- */
-.footer{
+footer{
     background: black;
     color: white;
+    margin-top: auto;
 }
 
 .footer > .col-12{
@@ -317,3 +322,6 @@ main{
 .readmore.active {
     display:block;
 }
+
+/* -------------------------------login.html------------------------ */
+
