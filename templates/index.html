@@ -1,60 +1,7 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animania</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <!-- Favicon -->
-    <link rel="icon" href="{% static 'images/wolf.ico' %}" type="image/x-icon">
-    <!-- Google Font-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&family=Luckiest+Guy&display=swap" rel="stylesheet">
-    <!--Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!--CSS-->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
-</head>
-<body>
-    <!--Navbar Section-->
-    <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
-            <div class="container-fluid main-background mt-none">
-                <a class="navbar-brand order-lg-1 order-2" href="{% url 'index' %}">
-                    <h1>Animania</h1>
-                </a>
-                <button class="navbar-toggler order-1 order-lg-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" onClick="moveLinks()">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse order-2" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link" href="#">Shop All Products</a>
-                        <div class="dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Shop By Series
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Sword Art Online</a></li>
-                                <li><a class="dropdown-item" href="#">Demon Slayer</a></li>
-                                <li><a class="dropdown-item" href="#">Tokyo Ghoul</a></li>
-                            </ul>
-                        </div>
-                        <a class="nav-link" href="#">Pop-Vinyls</a>
-                        <a class="nav-link" href='#'>Clothing</a>
-                        <a class="nav-link" href='#'>Figures</a>
-                        <a class="nav-link" href='#'>Video Games</a>
-                    </div>
-                </div>
-                <div class="navbar-nav ms-auto d-flex flex-row order-3" id="linksContainer">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass i-link"></i></a>
-                        <a class="nav-link" href="#"><i class="fa-regular fa-user i-link"></i></a>
-                        <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping i-link"></i></a>
-                </div>
-            </div>
-        </nav>
-    </header> 
+
+{% block content %}
     <main>
         <div class ="container-fluid">
             <div class="row">
@@ -131,56 +78,5 @@
             </div>
         </div>
     </section>
+{% endblock %}
 
-    <footer>
-        <div class="container-fluid">
-            <div class="row footer">
-                <div class="col-12 col-sm-4">
-                    <h3>About Animania</h3>
-                    <p>
-                        Animania is a fictional anime merchandise ecommerce store
-                        <br>
-                        Items that are shown in this store are NOT available for purchase
-                        <br>
-                        <p class="readmore-toggle" onclick="toggle_read()">Read more..</p>
-                        <div class="readmore">
-                            This website has been created for project purposes and no purchases should be made from within
-                            this website.
-                            <br>
-                            Animania is designed for anime fans by an anime fan, to share the joy that anime brings to people.
-                        </div>
-                    </p>
-                </div>
-                <div class="col-12 col-sm-4">
-                    <h3>Useful Links</h3>
-                    <ul class="useful-links">
-                        <li><a href="#">All products</a></li>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">Profile</a></li>
-                    </ul>
-                </div>
-                <div class="col-12 col-sm-4">
-                    <h3>Anime Series</h3>
-                    <ul class="useful-links">
-                        <li><a href="#">Demon Slayer</a></li>
-                        <li><a href="#">Sword Art</a></li>
-                        <li><a href="#">Tokyo Ghoul</a></li>
-                    </ul>
-                </div>
-                <div class="col-12 text-center">
-                    <h4><i class="fa-regular fa-copyright"></i> Animania</h4>
-                </div>
-            </div>
-        </div>
-        
-    </footer>
-    <!-- Javascript and Jquery-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> 
-    <script src="{% static 'javascript/script.js' %}"></script>
-    <!-- Font awesome -->
-    <script src="https://kit.fontawesome.com/2fed14f4e7.js" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-</html>
