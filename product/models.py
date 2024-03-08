@@ -5,6 +5,12 @@ from django.core.validators import MinValueValidator
 # Create your models here.
 
 class Product(models.Model):
+    SIZE_CHOICES = [
+    ('S', 'Small'),
+    ('M', 'Medium'),
+    ('L', 'Large'),
+    ]
+    
     image = CloudinaryField('image',blank=True)
     alternative_images = CloudinaryField('image',blank=True)
     name = models.TextField(max_length=40)
@@ -21,6 +27,7 @@ class Product(models.Model):
     discounted = models.BooleanField(default=False)
     created_on = models.DateField(auto_now_add=True)
     updated_on = models.DateField(auto_now=True)
+    size = models.CharField(max_length=1, choices=SIZE_CHOICES, null=True)
     
     def __str__(self):
         return self.name
