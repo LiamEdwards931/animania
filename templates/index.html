@@ -55,7 +55,6 @@
             </div>
         </nav>
     </header> 
-    
     <main>
         <div class ="container-fluid">
             <div class="row">
@@ -71,34 +70,104 @@
             </div>            
         </div>
     </main>
-    
     <section>
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-4 text-center general-cat" id="pop-vinyl" style="background: url('{% static 'images/kiritopopvinyl.jpg' %}') no-repeat 50% 50%; background-size:contain;">
+            <div class="row text-center gen-cat-row" style="background: url('{% static 'images/animeskybackground.jpg' %}') no-repeat 40% 60%; background-size:cover;">
+                <h2 class="main-section-header">Categories</h2>
+                <div class="col-4 text-center gen-cat-header">
+                    <h2>Pop vinyl</h2>
+                </div>
+                <div class="col-4 text-center gen-cat-header">
+                    <h2>Clothing</h2>
+                </div>
+                <div class="col-4 text-center gen-cat-header">
+                    <h2>Figures</h2>
+                </div>
+                <div class="col-4 text-center general-cat" id="pop-vinyl" style="background: url('{% static 'images/kiritopopvinyl.png' %}') no-repeat 50% 50%; background-size:contain;">
                     <div class ="opacity-film">
-                        <h2>Pop Vinyl</h2>
                         <button type="button" class="product-btn">Shop All Pop-Vinyls</button>
                     </div>
                 </div>
-                <div class="col-4 text-center general-cat general-cat-border" id="clothing-img"style="background: url('{% static 'images/nezukohoodie.jpg' %}') no-repeat 50% 50%; background-size:contain;">
+                <div class="col-4 text-center general-cat general-cat-border" id="clothing-img"style="background: url('{% static 'images/nezukohoodie.png' %}') no-repeat 50% 50%; background-size:contain;">
                     <div class ="opacity-film">
-                        <h2>Clothing</h2>
                         <button type="button" class="product-btn">Shop All Clothing</button>
                     </div>
                 </div>
-                <div class="col-4 text-center general-cat" id="figure-img" style="background: url('{% static 'images/kanekifigure.jpg' %}') no-repeat 50% 50%; background-size:contain;">
+                <div class="col-4 text-center general-cat" id="figure-img" style="background: url('{% static 'images/kanekifigure.png' %}') no-repeat 50% 50%; background-size:contain;">
                     <div class ="opacity-film">
-                        <h2>Figures</h2>
                         <button type="button" class="product-btn">Shop All Figures</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <section>
+        <div class="container-fluid">
+            <div class="row text-center">
+                <!-- this will change when the models are implemented -->
+                <div class="col-12 text-center new-item-container" style="background: url('{% static 'images/animebackground.jpg' %}') no-repeat 40% 60%; background-size:cover;">
+                    <h2 class="main-section-header">New Items</h2>
+                    <div class="new-image-container">
+                        <h3 class="new-tag">New!</h3>
+                        <img src="{% static 'images/kanekifigure.png' %}" class="img-thumbnail" alt="Kaneki Figure">
+                        <h5>Tokyo Ghoul</h5>
+                        <h5>Kaneki figure</h5>
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 facebookpagebanner text-center">
+                    <h2>Follow our Facebook Page!</h2>
+                    <a href="https://www.facebook.com/profile.php?id=61557309745166" target="_blank" aria-label="opens facebook page in new tab">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <!-- Footer content goes here -->
+        <div class="container-fluid">
+            <div class="row footer">
+                <div class="col-12 col-sm-4">
+                    <h3>About Animania</h3>
+                    <p>
+                        Animania is a fictional anime merchandise ecommerce store
+                        <br>
+                        Items that are shown in this store are NOT available for purchase
+                        <br>
+                        This website has been created for project purposes and no purchases should be made from within
+                        this website.
+                        <br>
+                        Animania is designed for anime fans by an anime fan, to share the joy that anime brings to people.
+                    </p>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <h3>Useful Links</h3>
+                    <ul class="useful-links">
+                        <li><a href="#">All products</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Profile</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <h3>Anime Series</h3>
+                    <ul class="useful-links">
+                        <li><a href="#">Demon Slayer</a></li>
+                        <li><a href="#">Sword Art</a></li>
+                        <li><a href="#">Tokyo Ghoul</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 text-center">
+                    <h4><i class="fa-regular fa-copyright"></i> Animania</h4>
+                </div>
+            </div>
+        </div>
+        
     </footer>
     <!-- Javascript and Jquery-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -1,11 +1,11 @@
-/* general styling ------------------------------------------- */
+/* --------------------------------general styling ------------------*/
 body{
     margin:0;
     padding:0;
 }
 
 h2,h3,h4,h5,h6{
-    font-family: "Fuzzy Bubbles", sans-serif;
+    font-family: "Luckiest Guy", cursive;
 }
 
 .col-12,
@@ -13,7 +13,13 @@ h2,h3,h4,h5,h6{
     margin:0;
     padding:0;
 }
-/* Navbar CSS -------------------------------------------------*/
+
+.main-section-header{
+    color:orange;
+    text-shadow: 2px 0 0 black;
+    font-size:50px;
+}
+/* -------------------------------------------Navbar CSS ----------*/
 .navbar {
     padding: 0;
 }
@@ -60,6 +66,7 @@ h2,h3,h4,h5,h6{
     padding: 0 8px 0 8px;
 }
 
+/* Media queries for Navbar */
 @media screen and (max-width:990px){
     .main-background{
         padding:0;
@@ -101,7 +108,7 @@ h2,h3,h4,h5,h6{
     }
 }
 
-/* banner images css -------------------------------------------------------------*/
+/* ------------------------------------------banner images css -----------------------*/
 main{
     padding-top:56px;
 }
@@ -171,52 +178,7 @@ main{
     background: rgba(265, 155, 0, 0.5);
 }
 
-/* general category section css------------------------------------------------------- */
-.general-cat{
-    height:300px;
-    text-align: center;
-    color: orange;
-}
-
-.general-cat h2{
-    text-shadow: 2px 0 0 black;
-}
-
-.general-cat-border{
-    border-right: 1px solid orange;
-    border-left: 1px solid orange;
-    box-shadow: 0 0 2px 2px rgba(255, 165, 0, 0.5);
-    
-}
-
-.opacity-film {
-    height:100%;
-    width:100%;
-    background: rgba(0, 0, 0, 0.2);
-}
-
-.product-btn{
-    position: relative;
-    top: 150px;
-    height:50px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    box-shadow: 0 5px 10px 5px rgb(255,165,0);
-}
-
-.product-btn:hover{
-    background-color: orange;
-}
-
-@media screen and (max-width:500px){
-    .product-btn{
-        display:none;
-    }
-}
-
-
-/* media queries ------------------------------------------------------------------ */
+/* Media queries for hero images */
 @media screen and (max-width: 600px) {
     .banner-container {
         height:300px;
@@ -227,7 +189,108 @@ main{
     }
 }
 
+/* ------------------------------general category section css-------------------*/
+.general-cat{
+    height:300px;
+    text-align: center;
+}
 
+.gen-cat-header{
+    color: orange;
+    text-shadow: 2px 0 0 black;
+}
 
+.opacity-film {
+    height: 100%;
+    width:100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
 
+.opacity-film:hover{
+    opacity:1;
+}
 
+.product-btn{
+    position: relative;
+    top: 150px;
+    height:50px;
+    background-color: rgba(0, 0, 0);
+    color: white;
+    border: none;
+    box-shadow: 0 5px 10px 5px rgb(255,165,0);
+}
+
+.product-btn:hover{
+    background-color: orange;
+}
+
+/* media queries for general cat section */
+@media screen and (max-width:500px){
+    .product-btn{
+        display:none;
+    }
+}
+
+/* ------------------------------New Category section--------------------------------- */
+.new-item-container{
+    text-align:center;
+    height:600px;
+}
+
+.new-image-container{
+    height:350px;
+    width:350px;
+    margin: 20px auto;
+    color:white;
+}
+
+.new-tag{
+    height:45px;
+    width:100%;
+    background:orange;
+    color:white;
+    padding-top:8px;
+    
+}
+
+/* -------------------------------Facebook Page banner ----------------------------- */
+.facebookpagebanner{
+    height:100px;
+    background: #0866ff;
+    color: white;
+    padding-top:10px;
+}
+
+.facebookpagebanner a{
+    color:white;
+    text-decoration:none;
+    font-size:30px;
+}
+
+.facebookpagebanner a:hover{
+    color:orange;
+}
+
+/* -------------------------------Footer ----------------------------- */
+.footer{
+    background: black;
+    color: white;
+}
+
+.footer > .col-12{
+    padding-left:15px;
+}
+
+.useful-links{
+    list-style-type: none;
+}
+
+.useful-links > li > a{
+    text-decoration:none;
+    color:white;
+}
+
+.useful-links > li > a:hover{
+    color:orange;
+}
