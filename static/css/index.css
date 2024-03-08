@@ -171,7 +171,7 @@ main{
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    box-shadow: 0 5px 10px 5px rgb(255,165,0);
+    box-shadow: 0px 0px 10px 10px rgb(255, 165, 0);
 }
 
 .shop-btn:hover{
@@ -213,12 +213,12 @@ main{
 
 .product-btn{
     position: relative;
-    top: 150px;
+    top: 100px;
     height:50px;
     background-color: rgba(0, 0, 0);
     color: white;
     border: none;
-    box-shadow: 0 5px 10px 5px rgb(255,165,0);
+    box-shadow: 0px 0px 10px 10px rgb(255, 165, 0);
 }
 
 .product-btn:hover{
@@ -235,11 +235,11 @@ main{
 /* ------------------------------New Category section--------------------------------- */
 .new-item-container{
     text-align:center;
-    height:600px;
+    height:650px;
 }
 
 .new-image-container{
-    height:350px;
+    height:450px;
     width:350px;
     margin: 20px auto;
     color:white;
@@ -252,6 +252,13 @@ main{
     color:white;
     padding-top:8px;
     
+}
+
+@media screen and (max-width:400px){
+    .new-image-container{
+        height: 400px;
+        width:300px;
+    }
 }
 
 /* -------------------------------Facebook Page banner ----------------------------- */
@@ -293,4 +300,20 @@ main{
 
 .useful-links > li > a:hover{
     color:orange;
+}
+
+.readmore-toggle{
+    cursor:pointer;
+}
+
+.readmore-toggle:hover{
+    color:orange;
+}
+
+.readmore {
+    display:none;
+}
+
+.readmore.active {
+    display:block;
 }

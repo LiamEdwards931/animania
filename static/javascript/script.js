@@ -75,3 +75,17 @@ document.addEventListener("DOMContentLoaded", function() {
         updateButtonSettings(visibleIndex);
     });
 });
+
+function toggle_read() {
+    let readmore = document.querySelector('.readmore');
+    let toggle = document.querySelector('.readmore-toggle');
+
+    if (readmore.classList.contains('active')) {
+        readmore.classList.remove('active');
+        toggle.textContent = 'Read more..';
+    } else {
+        readmore.classList.add('active');
+        toggle.textContent = 'Show less..';
+    }
+}
+
