@@ -59,8 +59,23 @@
             </div>
         </nav>
     </header>
+        {% for message in messages %}
+            {% if message %}
+                <div class="container-fluid" id="remove-message">
+                    <div class="row message-container">
+                        <div class="col-12 text-center">
+                            <div>
+                                {{ message }}
+                            </div>   
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+
     {% block content %}
     {% endblock %}
+    
     <footer>
         <div class="container-fluid">
             <div class="row footer">

@@ -1,13 +1,24 @@
+// --------------------------Base.html script----------------------------------------------------------------
+
+// Moves the links to the bottom left of the dropdown bar when the navbar dropdown button is clicked
 function moveLinks(){
     let container = document.getElementById('linksContainer');
     container.classList.remove('ms-auto');
 }
 
-// banner image js-------------------------------------------------------------------
+// Timesout the message container after 5 seconds of appearing
+const messageContainer = document.getElementById('remove-message');
+
+    setTimeout(() => {
+        if (messageContainer) {
+            messageContainer.remove();
+        }
+    }, 5000);
+
+// banner image js function that allows users to click the image to move to the next one in the list
 var images = document.querySelectorAll('.img-banner');
 
 document.querySelector('.banner-container').addEventListener('click', function() {
-    // function that allows users to click the image to move to the next one in the list
     var visibleImage = document.querySelector('.img-banner.banner-visible');
     var visibleIndex = Array.from(images).indexOf(visibleImage);
     var nextIndex = (visibleIndex + 1) % images.length;
@@ -19,12 +30,12 @@ document.querySelector('.banner-container').addEventListener('click', function()
     nextImage.classList.add('banner-visible');
 });
 
-// circle indicators
+// circle indicators for the image banners
 var images = document.querySelectorAll('.img-banner');
 var indicator = document.querySelector('.indicator');
 
+// Appends a new circle indicator for each new image that is added to the banner screen
 images.forEach(function(image, index) {
-    // Appends a new circle indicator for each new image that is added to the banner screen
     var circle = document.createElement('div');
     circle.classList.add('indicator-circle');
     if (index === 0) {
@@ -48,8 +59,8 @@ document.querySelector('.banner-container').addEventListener('click', function()
     });
 });
 
+// Creates dynamic buttons for each of the images, changes text and urls based on the image displayed.
 document.addEventListener("DOMContentLoaded", function() {
-    // Creates dynamic buttons for each of the images, changes text and urls based on the image displayed.
     var images = document.querySelectorAll('.img-banner');
     var shopButton = document.querySelector('.shop-btn');
   
