@@ -122,9 +122,11 @@ h2,h3,h4,h5,h6{
     height:50px;
     background-color: orange;
     color: white;
+    text-shadow: 2px 0 0 black;
     font-size: 15px;
     display: flex;
     align-items: center;
+    font-weight: bold;
 }
 
 /* ------------------------------------------banner images css -----------------------*/
