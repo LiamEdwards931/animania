@@ -6,11 +6,12 @@ html{
 body{
     margin:0;
     padding:0;
-    padding-top:65px;
+    padding-top:50px;
     min-height:100vh;
     display: flex;
     flex-direction: column;
 }
+
 
 h2,h3,h4,h5,h6{
     font-family: "Luckiest Guy", cursive;
@@ -27,16 +28,23 @@ h2,h3,h4,h5,h6{
     text-shadow: 2px 0 0 black;
     font-size:50px;
 }
+
+
 /* -------------------------------------------Navbar CSS ----------*/
 .navbar {
     padding: 0;
+    position: fixed;
+    top: 0;
+    left:0;
 }
 
 .main-background,
 .dropdown-menu.show{
     color:white;
-    background:black;
+    background: black;
 }
+
+.dropdown-menu.show
 
 .dropdown-item{
     color:white;
@@ -45,7 +53,7 @@ h2,h3,h4,h5,h6{
 .main-background h1 {
     font-family: "Luckiest Guy", cursive;
     font-style: normal;
-    color:orange; 
+    color:orange;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link,
@@ -198,11 +206,7 @@ h2,h3,h4,h5,h6{
 /* Media queries for hero images */
 @media screen and (max-width: 600px) {
     .banner-container {
-        height:300px;
-    }
-
-    main{
-        padding-top:50px;
+        height:45vh;
     }
 }
 
