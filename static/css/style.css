@@ -45,6 +45,9 @@ h2,h3,h4,h5,h6{
     color:orange;
 }
 
+a:hover{
+    color:orange;
+}
 
 /* -------------------------------------------Navbar CSS ----------*/
 .navbar {
@@ -359,3 +362,12 @@ footer{
 }
 
 /* -------------------------------login.html------------------------ */
+
+#signup-link > a{
+    color:black;
+    text-decoration:none;
+}
+
+#signup-link > a:hover{
+    color:orange;
+}
