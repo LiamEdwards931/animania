@@ -4,6 +4,9 @@ from django.dispatch import receiver
 from django.shortcuts import render,redirect
 from .forms import CustomUserCreationForm
 from django.contrib.auth import login
+from django.core.mail import send_mail
+from django.conf import settings
+from django.urls import reverse
 # Create your views here.
 
 @receiver(user_logged_in)
@@ -33,7 +36,6 @@ def register(request):
             user = form.save()
             login(request, user)
             messages.success(request, f'Your account has been created {user.username}')
-            return redirect("login")
     else:
         form = CustomUserCreationForm()
     return render(request, "registration/signup.html", {"form": form})
