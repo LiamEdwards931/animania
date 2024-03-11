@@ -104,7 +104,11 @@
                     <ul class="useful-links">
                         <li><a href="#">All products</a></li>
                         <li><a href="#">News</a></li>
-                        <li><a href="#">Account</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'profile' %}">Account</a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}">Login</a></li>
+                        {% endif %}
                     </ul>
                 </div>
                 <div class="col-12 col-sm-4">
