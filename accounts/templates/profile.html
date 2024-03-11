@@ -19,7 +19,7 @@
                 <form action="{% url 'logout' %}" method="post">
                     {% csrf_token %}
                     <br>
-                    <button type="submit">Log Out</button>
+                    <button class="address-btn" type="submit">Log Out</button>
                 </form>
             </div>
         </div>
@@ -43,11 +43,11 @@
                 {% for address in addresses %}
                 <li>{{ address.door_number }} {{ address.street }}, {{ address.city }}, {{ address.state }}, {{ address.country }} - {{ address.postal_code }}</li>
                 <form action="{% url 'update_address' address.id %}" method="get">
-                    <button type="submit">Update Address</button>
+                    <button class="address-btn" type="submit">Update Address</button>
                 </form>
                 <form method="post" action="{% url 'delete_address' address.id %}">
                     {% csrf_token %}
-                    <button style="margin-top:5px;" type="submit">Delete</button>
+                    <button class="address-btn" style="margin-top:5px;" type="submit">Delete</button>
                 </form>
                 {% endfor %}
                 <br>

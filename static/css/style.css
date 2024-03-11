@@ -382,9 +382,15 @@ footer{
 
 #changepassword {
     background-color: rgba(0, 0, 0, 0.5);
-    color: white;
     border: none;
-    box-shadow: 0px 0px 5px 5px rgb(255, 165, 0);
+}
+
+#changepassword > a{
+    color:white;
+}
+
+#changepassword > a:hover{
+    color:orange;
 }
 
 .account-form{
@@ -398,4 +404,13 @@ footer{
 .profile-details{
     padding-left:15px;
     margin-top:25px;
+}
+
+.address-btn{
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.address-btn:hover{
+    color:orange;
 }
