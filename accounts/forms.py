@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 
 
@@ -10,7 +10,7 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("username","first_name","last_name","email", "password1", "password2")
+        fields = ("username","first_name","last_name","email", "password1", "password2",)
     
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -30,3 +30,11 @@ class CustomUserCreationForm(UserCreationForm):
         self.fields['email'].widget.attrs['placeholder'] = 'Enter email'
         self.fields['password1'].widget.attrs['placeholder'] = 'Enter password'
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm password'
+        
+class CustomPasswordChange(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+        self.fields['old_password'].help_text = ''
+        self.fields['new_password1'].help_text = ''
+        self.fields['new_password2'].help_text = ''

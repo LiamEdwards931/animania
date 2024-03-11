@@ -16,10 +16,10 @@
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="review-form col-12 text-center">
+        <div class="col-12 text-center">
             <h2>Sign up to Animania</h2>
             <p>Please Fill in the form</p>
-            <form method="post" style="display: flex; flex-direction: column; align-items: center;">
+            <form method="post" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 {% csrf_token %}
                 {% if form.errors %}
                 <div class="error-message">
@@ -33,22 +33,22 @@
                 <div>
                     {{ form.username }}
                 </div>
-                <div style="margin-top:15px;">
+                <div class="account-form"">
                     {{ form.first_name }}
                 </div>
-                <div style="margin-top:15px;">
+                <div class="account-form"">
                     {{ form.last_name }}
                 </div>
-                <div style="margin-top:15px;">
+                <div class="account-form"">
                     {{ form.email }}
                 </div>
-                <div style="margin-top:15px;">
+                <div class="account-form"">
                     {{ form.password1 }}
                 </div>
-                <div style="margin-top:15px;">
+                <div class="account-form"">
                     {{ form.password2 }}
                 </div>
-                <button class="login-submit" type="submit" style="margin-top:25px;">Sign Up</button>
+                <button class="login-submit account-submit" type="submit" style="margin-top:25px;">Sign Up</button>
                 <p style="margin-top:15px;" id="signup-link">Already have an account? <a href="{% url 'login' %}">Login here</a></p>
             </form>
         </div>

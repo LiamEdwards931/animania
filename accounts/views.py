@@ -2,11 +2,12 @@ from django.contrib import messages
 from django.contrib.auth.signals import user_logged_in, user_logged_out
 from django.dispatch import receiver
 from django.shortcuts import render,redirect
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, CustomPasswordChange
 from django.contrib.auth import login
-from django.core.mail import send_mail
 from django.conf import settings
 from django.urls import reverse
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 # Create your views here.
 
 @receiver(user_logged_in)
@@ -39,3 +40,21 @@ def register(request):
     else:
         form = CustomUserCreationForm()
     return render(request, "registration/signup.html", {"form": form})
+
+def changePassword(request):
+    user = request.user
+    if request.method == 'POST':
+        form = CustomPasswordChange(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            messages.success(request,'Password Successfully Updated')
+            update_session_auth_hash(request, user)
+            return redirect('profile')
+    else:
+        form = PasswordChangeForm(request.user)
+    
+    context = {
+        'user': user,
+        'form': form,
+    }
+    return render(request, 'changepassword.html', context)

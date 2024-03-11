@@ -76,6 +76,23 @@
                 </div>
             {% endif %}
         {% endfor %}
+        {% if form.errors %}
+        <div class="error-message text-center">
+            {% for field, error_list in form.errors.items %}
+                {% for error in error_list %}
+                <div class="container-fluid" id="remove-message">
+                    <div class="row message-container">
+                        <div class="col-12 text-center">
+                            <div>
+                                <h3>{{ error }}</h3>
+                            </div>   
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endif %}
 
     {% block content %}
     {% endblock %}
