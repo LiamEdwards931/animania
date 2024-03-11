@@ -8,6 +8,7 @@ from django.conf import settings
 from django.urls import reverse
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
+from .models import Address
 # Create your views here.
 
 @receiver(user_logged_in)
@@ -22,10 +23,13 @@ def show_logout_message(sender, user, request, **kwargs):
         messages.info(request, f"Goodbye {user.username}, We hope you enjoyed your visit!")
 
 def profile(request):
-    # View for the user profile page
+    # Fetch the addresses associated with the current user
     user = request.user
+    addresses = Address.objects.filter(user=user)
+    
     context = {
         'user': user,
+        'addresses': addresses,
     }
     return render(request, 'profile.html', context)
 

@@ -26,7 +26,7 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 profile-details">
+            <div class="col-6 profile-details text-center">
                 <h2> Your Details</h2>
                 <h6>Username</h6> 
                 <p>{{ user.username}}</p>
@@ -37,6 +37,13 @@
                 <h6>email address:</h6>
                 <p>{{ user.email }}</p>
                 <p class ="btn btn-primary" id="changepassword"><a href="{% url 'changepassword' %}">Change Password</a></p>
+            </div>
+            <div class="col-6 profile-details text-center">
+                <h2>Address details</h2>
+                {% for address in addresses %}
+                    <li>{{ address.street }}, {{ address.city }}, {{ address.state }}, {{ address.country }} - {{ address.postal_code }}</li>
+                {% endfor %}
+                <a href="#">Add new adress +</a>
             </div>
         </div>
     </div>
