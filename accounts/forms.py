@@ -42,7 +42,6 @@ class CustomPasswordChange(PasswordChangeForm):
 
 class AddressForm(forms.ModelForm):
     class Meta:
-        door_number = forms.IntegerField(required=True)
         model = Address
         fields = ['door_number','street', 'city', 'state', 'country', 'postal_code']
 

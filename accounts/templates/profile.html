@@ -26,7 +26,7 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-6 profile-details text-center">
+            <div class="col-lg-6 col-12 profile-details text-center">
                 <h2> Your Details</h2>
                 <h6>Username</h6> 
                 <p>{{ user.username}}</p>
@@ -38,12 +38,20 @@
                 <p>{{ user.email }}</p>
                 <p class ="btn btn-primary" id="changepassword"><a href="{% url 'changepassword' %}">Change Password</a></p>
             </div>
-            <div class="col-6 profile-details text-center">
+            <div class="col-lg-6 col-12 profile-details text-center">
                 <h2>Address details</h2>
                 {% for address in addresses %}
-                    <li>{{ address.street }}, {{ address.city }}, {{ address.state }}, {{ address.country }} - {{ address.postal_code }}</li>
+                <li>{{ address.door_number }} {{ address.street }}, {{ address.city }}, {{ address.state }}, {{ address.country }} - {{ address.postal_code }}</li>
+                <form action="{% url 'update_address' address.id %}" method="get">
+                    <button type="submit">Update Address</button>
+                </form>
+                <form method="post" action="{% url 'delete_address' address.id %}">
+                    {% csrf_token %}
+                    <button style="margin-top:5px;" type="submit">Delete</button>
+                </form>
                 {% endfor %}
-                <a href="#">Add new adress +</a>
+                <br>
+                <a href="{% url 'addaddress' %}">Add new address +</a>
             </div>
         </div>
     </div>
