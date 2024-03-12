@@ -15,7 +15,7 @@ class Product(models.Model):
     
     image = CloudinaryField('image',blank=True)
     alternative_images = CloudinaryField('image',blank=True)
-    name = models.TextField(max_length=40)
+    name = models.TextField(max_length=40, unique=True)
     description = models.TextField()
     series = models.TextField(max_length=30)
     price = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])
