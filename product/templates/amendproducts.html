@@ -45,13 +45,13 @@
                         {% for product in products %}
                         <tr class="product-data">
                             <td>{{ product.name }}</td>
-                            <td><img src="{{ product.image.url }}" alt="{{ product.name }}"></td>
+                            <td><img id="thumbnail-img"src="{{ product.image.url }}" alt="{{ product.name }}"></td>
                             <td>{{ product.description }}</td>
                             <td>{{ product.series }}</td>
                             <td>{{ product.price }}</td>
                             <td>{{ product.category }}</td>
                             <td>{{ product.quantity_available }}</td>
-                            <td>{{ product.is_new }}</td>
+                            <td>{% if product.is_new %}X (True){% else %} (False){% endif %}</td>
                             <td>{{ product.is_discounted }}</td>
                             <td>{{ product.size }}</td>
                         </tr>

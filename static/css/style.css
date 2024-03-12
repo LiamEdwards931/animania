@@ -427,9 +427,15 @@ table{
     margin-top:15px;
 }
 
-.product-data > th{
+.product-data > th, td{
     padding:15px;
     border: 1px solid black;
+    width:120px;
+}
+
+#thumbnail-img {
+    width:200px;
+    height:200px;
 }
 
 /*------------------ add products style-----------------------------------------------*/
