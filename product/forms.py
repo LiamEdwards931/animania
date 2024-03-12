@@ -37,14 +37,11 @@ class ProductForm(forms.ModelForm):
         }
 
     def clean(self):
-        # automatically fills out the slug url depending on the name of the product
-        # Ensures that the size option cannot be left blank for clothing but can be left blank for other fields.
         cleaned_data = super().clean()
-        name = cleaned_data.get('name')
         category = cleaned_data.get('category')
         size = cleaned_data.get('size')
-        if name:
-            cleaned_data['slug'] = slugify(name)
+
         if category == 'clothing' and not size:
             raise forms.ValidationError("Size is required for clothing items.")
+
         return cleaned_data
