@@ -57,7 +57,7 @@ class ProductForm(forms.ModelForm):
     category = forms.ChoiceField(choices=CATEGORY_CHOICES, widget=forms.Select(attrs={'class': 'form-control'}))
     sub_category = forms.ChoiceField(choices=SUB_CATEGORY_CHOICE, widget=forms.Select(attrs={'class': 'form-control'}))
     related_products = forms.ModelMultipleChoiceField(queryset=Product.objects.all(), required=False, widget=forms.SelectMultiple(attrs={'class': 'form-control'}))
-
+    
     class Meta:
         model = Product
         fields = '__all__'

@@ -22,7 +22,7 @@ def amendProducts(request):
 def newProduct(request):
     if request.method == 'POST':
         # If the form has been submitted, process the data
-        newProductForm = forms.ProductForm(request.POST)
+        newProductForm = forms.ProductForm(request.POST, request.FILES)
         if newProductForm.is_valid():
             newProductForm.save()
             messages.success(request, "Your Product has been added successfully")
