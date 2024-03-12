@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from django.db.models import Q
+from .models import Product
+from . import forms
 
 # Create your views here.
 
@@ -11,4 +11,23 @@ def index(request):
     return render(request, 'index.html',{'messages': messages_to_render})
 
 def amendProducts(request):
-    return render(request, 'amendproducts.html')
+    products = Product.objects.all()
+
+    context = {
+        'products': products,
+    }
+        
+    return render(request, 'amendproducts.html', context )
+
+def newProduct(request):
+    if request.method == 'POST':
+        # If the form has been submitted, process the data
+        newProductForm = forms.ProductForm(request.POST)
+        if newProductForm.is_valid():
+            newProductForm.save()
+            messages.success(request, "Your Product has been added successfully")
+            return redirect('amendProducts') 
+    else:
+        newProductForm = forms.ProductForm()
+    
+    return render(request, 'new_product.html', {'form': newProductForm})

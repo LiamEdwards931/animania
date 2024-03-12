@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} New Product {% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'profile' %}">Profile</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'amendProducts' %}">Amend Products</a></li>
+                        <li class="breadcrumb-item"><a id="breadcrumb-active"href="#">New Products</a></li>
+                    </ol>
+                </nav>    
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>Add new Product</h2>
+                <form method="post" style="display: flex; flex-direction: column; align-items: center;">
+                    {% csrf_token %}
+                    <div class="form-group text-center">
+                        <label for="id_name"><h5>Product Name</h5></label>
+                        <br>
+                        {{ form.name }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_image"><h5>Product Image</h5></label>
+                        <br>
+                        {{ form.image }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_alternative_images"><h5>Alternative Image</h5></label>
+                        <br>
+                        {{ form.alternative_images }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_description"><h5>Product Description</h5></label>
+                        <br>
+                        {{ form.description }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_series"><h5>Product Series</h5></label>
+                        <br>
+                        {{ form.series }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_price"><h5>Price</h5></label>
+                        <br>
+                        {{ form.price }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_category"><h5>Category</h5></label>
+                        <br>
+                        {{ form.category }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_quantity_available"><h5>Quantity in stock</h5></label>
+                        <br>
+                        {{ form.quantity_available }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_new"><h5>New Product?</h5></label>
+                        <br>
+                        {{ form.new }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_discounted"><h5>Discounted?</h5></label>
+                        <br>
+                        {{ form.discounted}}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_size"><h5>Size</h5></label>
+                        <br>
+                        {{ form.size}}
+                    </div>
+                    <button style="margin-bottom:15px;" type ="submit">Add Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

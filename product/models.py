@@ -28,7 +28,7 @@ class Product(models.Model):
     discounted = models.BooleanField(default=False)
     created_on = models.DateField(auto_now_add=True)
     updated_on = models.DateField(auto_now=True)
-    size = models.CharField(max_length=1, choices=SIZE_CHOICES, null=True)
+    size = models.CharField(max_length=1, choices=SIZE_CHOICES, null=True, blank=True)
     
     def __str__(self):
         return self.name

@@ -431,3 +431,23 @@ table{
     padding:15px;
     border: 1px solid black;
 }
+
+/*------------------ add products style-----------------------------------------------*/
+
+.form-group{
+    margin-bottom:15px;
+}
+
+.form-control{
+    width:250px;
+}
+
+.form-control-file{
+    width:250px;
+    margin-bottom: 10px;
+}
+
+.form-control-textarea{
+    width:250px;
+    height:100px;
+}

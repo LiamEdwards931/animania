@@ -19,14 +19,14 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h2>Amend Products</h2>
-                <a href="#">Add New Product +</a>
+                <a href="{% url 'newProduct' %}">Add New Product +</a>
             </div>
         </div>
     </div>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-lg-12 text-center">
-                <table>
+                <table style="display: flex; flex-direction: column; align-items: center;">
                     <thead>
                         <tr class="product-data">
                             <th>Name</th>
@@ -39,10 +39,26 @@
                             <th>New</th>
                             <th>Discounted</th>
                             <th>Size</th>
-                      </tr>
+                        </tr>
                     </thead>
+                    <tbody>
+                        {% for product in products %}
+                        <tr class="product-data">
+                            <td>{{ product.name }}</td>
+                            <td><img src="{{ product.image.url }}" alt="{{ product.name }}"></td>
+                            <td>{{ product.description }}</td>
+                            <td>{{ product.series }}</td>
+                            <td>{{ product.price }}</td>
+                            <td>{{ product.category }}</td>
+                            <td>{{ product.quantity_available }}</td>
+                            <td>{{ product.is_new }}</td>
+                            <td>{{ product.is_discounted }}</td>
+                            <td>{{ product.size }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
             </div>
         </div>
-    </div>
+    </div>    
 {% endblock %}
