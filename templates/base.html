@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block meta %}
     {% endblock %}
-    {% block title %}
-    <title>Animania</title>
-    {% endblock %}
+    <title>{% block title %} Animania {% endblock %}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <!-- Favicon -->
     <link rel="icon" href="{% static 'images/wolf.ico' %}" type="image/x-icon">

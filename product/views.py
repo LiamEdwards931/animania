@@ -9,3 +9,6 @@ from django.db.models import Q
 def index(request):
     messages_to_render = messages.get_messages(request)
     return render(request, 'index.html',{'messages': messages_to_render})
+
+def amendProducts(request):
+    return render(request, 'amendproducts.html')

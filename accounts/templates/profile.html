@@ -2,7 +2,7 @@
 {% block content %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
+            <div class="col-6">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
@@ -38,6 +38,15 @@
                 <p>{{ user.email }}</p>
                 <p class ="btn btn-primary" id="changepassword"><a href="{% url 'changepassword' %}">Change Password</a></p>
             </div>
+            {% if user.is_authenticated and user.is_superuser %}
+            <div class="col-lg-6 col-12 profile-details text-center amendproduct-link">
+               <h2>Amend Products</h2>
+               <form method="post" action="{% url 'amendProducts' %}">
+                {% csrf_token %}
+                <button class="address-btn" style="margin-top:5px;" type="submit">Amend Products</button>
+            </form>
+            </div>
+            {% else %} 
             <div class="col-lg-6 col-12 profile-details text-center">
                 <h2>Address details</h2>
                 {% for address in addresses %}
@@ -53,6 +62,7 @@
                 <br>
                 <a href="{% url 'addaddress' %}">Add new address +</a>
             </div>
+            {% endif %}
         </div>
     </div>
     {% endblock %}
