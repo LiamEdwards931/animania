@@ -424,18 +424,18 @@ footer{
 /* ---------------- amend products style ----------------------------------- */
 
 table{
-    margin-top:15px;
+    margin: 30px;
 }
 
 .product-data > th, td{
     padding:15px;
     border: 1px solid black;
     width:120px;
+    height:100px;
 }
 
-#thumbnail-img {
-    width:200px;
-    height:200px;
+.product-data > th{
+    border: 2px solid black;
 }
 
 /*------------------ add products style-----------------------------------------------*/
