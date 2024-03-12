@@ -76,6 +76,7 @@ class ProductForm(forms.ModelForm):
         cleaned_data = super().clean()
         category = cleaned_data.get('category')
         size = cleaned_data.get('size')
+        
 
         if category == 'clothing' and not size:
             raise forms.ValidationError("Size is required for clothing items.")
@@ -83,11 +84,12 @@ class ProductForm(forms.ModelForm):
         return cleaned_data
     
     def clean(self):
-        # Appends category, series, sub_category into the search tag field in the model.
+        # Appends name, category, series, sub_category into the search tag field in the model.
         cleaned_data = super().clean()
         category = cleaned_data.get('category')
         series = cleaned_data.get('series')
         sub_category = cleaned_data.get('sub_category')
+        name = cleaned_data.get('name')
 
         search_tags = []
 
@@ -97,6 +99,9 @@ class ProductForm(forms.ModelForm):
             search_tags.append(series)
         if sub_category:
             search_tags.append(sub_category)
+        if name:
+            search_tags.append(name)
+        
 
         # Join the search tags list into a single string and assign it to the search_tags field
         cleaned_data['search_tags'] = ', '.join(search_tags)
