@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from cloudinary.models import CloudinaryField
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.text import slugify
 
 # Create your models here.
@@ -27,6 +27,7 @@ class Product(models.Model):
     quantity_available = models.PositiveIntegerField(validators=[MinValueValidator(0)])
     new = models.BooleanField(default=None, null=True)
     discounted = models.BooleanField(default=None, null=True)
+    discount_amount = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(100)], null=True, blank=True)
     created_on = models.DateField(auto_now_add=True)
     updated_on = models.DateField(auto_now=True)
     size = models.CharField(max_length=10, choices=SIZE_CHOICES, null=True, blank=True)
