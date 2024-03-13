@@ -80,9 +80,15 @@
                                 <td>
                                     <button class="product-button" id="all-product-details">All details</button>
                                     <br>
-                                    <button class="product-button">Edit Product</button>
+                                    <form action="{% url 'update_product' product.id %}" method="get">
+                                        {% csrf_token %}
+                                        <button type="submit" class="product-button">Edit Product</button>
+                                    </form>
                                     <br>
-                                    <button class="product-button">Delete Product</button>
+                                    <form action="{% url 'delete_product' product.id %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" action="delete" class="product-button">Delete Product</button>
+                                    </form>    
                                 </td>
                                 <td>{{ product.name }}</td>
                                 <td><img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-thumbnail"></td>
