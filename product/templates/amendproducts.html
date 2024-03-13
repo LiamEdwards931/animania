@@ -104,7 +104,11 @@
                                         {% endif %}
                                      {% endif %}
                                 </td>
-                                <td>{{ product.size }}</td>
+                                <td>
+                                    {% if product.size %}
+                                        {{ product.size }}
+                                    {% endif %}
+                                </td>
                             </tr>
                             {% endfor %}
                         </tbody>
