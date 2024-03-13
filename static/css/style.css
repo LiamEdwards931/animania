@@ -451,6 +451,34 @@ table{
     color:orange;
 }
 
+#all-details-container{
+    background: black;
+    color:white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 9999;
+    max-width: 80%;
+}
+
+#all-details-container > ul{
+    list-style-type:none;
+}
+
+#close-product-details{
+    font-size:30px;
+    cursor:pointer;
+    margin-left:15px;
+}
+
+#close-product-details:hover{
+    color:orange;
+}
+
 
 /*------------------ add products style-----------------------------------------------*/
 

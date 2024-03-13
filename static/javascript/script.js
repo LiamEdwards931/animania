@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function toggle_read() {
+    // Opens the dropdown on the footer to allow users to read more about the site.
     let readmore = document.querySelector('.readmore');
     let toggle = document.querySelector('.readmore-toggle');
 
@@ -99,4 +100,15 @@ function toggle_read() {
         toggle.textContent = 'Show less..';
     }
 }
+
+
+document.getElementById("show-details-btn").addEventListener("click", function() {
+    // opens the div that displays all of the product details on the amend products page
+    var detailsDiv = document.getElementById("product-details");
+    if (detailsDiv.style.display === "none") {
+        detailsDiv.style.display = "block";
+    } else {
+        detailsDiv.style.display = "none";
+    }
+});
 
