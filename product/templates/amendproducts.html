@@ -41,7 +41,8 @@
                         <strong>Quantity Available:</strong> {{ product.quantity_available }}<br>
                         <strong>New:</strong> {{ product.new }}<br>
                         <strong>Discounted:</strong> {{ product.discounted }}<br>
-                        <strong>Discount amount:</strong> {{ form.instance.discount_amount }} <br>
+                        <strong>Discount amount:</strong> {{ product.discount_amount }}%<br>
+                        <strong>Discount amount:</strong> £{{ product.discounted_price }}<br>
                         <strong>Created On:</strong> {{ product.created_on }}<br>
                         <strong>Updated On:</strong> {{ product.updated_on }}<br>
                         <strong>Size:</strong> {{ product.size }}<br>
@@ -93,7 +94,16 @@
                                 <td>{{ product.category }}</td>
                                 <td>{{ product.quantity_available }}</td>
                                 <td>{% if product.new %} X {% endif %}</td>
-                                <td>{% if product.discounted %} {{ product.discount_amount}} off {% endif %}</td>
+                                <td>{% if product.discounted %} 
+                                        {% if product.discount_amount %}
+                                            <h6>Discount amount:</h6> 
+                                            {{ product.discount_amount}}%
+                                            <hr>
+                                            <h6>Discount price:</h6> 
+                                            £{{ product.discounted_price }}
+                                        {% endif %}
+                                     {% endif %}
+                                </td>
                                 <td>{{ product.size }}</td>
                             </tr>
                             {% endfor %}

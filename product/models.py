@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from cloudinary.models import CloudinaryField
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.text import slugify
+from decimal import Decimal, ROUND_DOWN
 
 # Create your models here.
 
@@ -36,11 +37,24 @@ class Product(models.Model):
         return self.name
     
     def save(self, *args, **kwargs):
+        # Autofills the Slug url based on the name of the product
         if not self.slug:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
+
+    @property
+    def discounted_price(self):
+        # Calculates a new discounted price: {{ product.discounted_price }}
+        if self.discounted and self.discount_amount is not None:
+            decimal_discount = Decimal(self.discount_amount)
+            discount = self.price * (decimal_discount / 100)
+            discounted_price = self.price - discount
+            return discounted_price.quantize(Decimal('0.01'), rounding=ROUND_DOWN)
+        else:
+            return None
     
     def clean(self):
+        # Validation for price and quantity
         super().clean()
         if self.price <= 0:
             raise ValidationError({'price': 'Price must be greater than zero.'})
