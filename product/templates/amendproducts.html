@@ -97,8 +97,8 @@
                                 <td>{{ product.price }}</td>
                                 <td>{{ product.category }}</td>
                                 <td>{{ product.quantity_available }}</td>
-                                <td>{{ product.is_new }}</td>
-                                <td>{{ product.is_discounted }}</td>
+                                <td>{% if product.new %} X {% endif %}</td>
+                                <td>{% if product.discounted %} X {% endif %}</td>
                                 <td>{{ product.size }}</td>
                             </tr>
                             {% endfor %}
