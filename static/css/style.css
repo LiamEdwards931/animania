@@ -451,7 +451,7 @@ table{
     color:orange;
 }
 
-#all-details-container{
+.full-detail-container{
     background: black;
     color:white;
     position: fixed;
@@ -465,17 +465,17 @@ table{
     max-width: 80%;
 }
 
-#all-details-container > ul{
+.full-detail-container > ul{
     list-style-type:none;
 }
 
-#close-product-details{
+.close-product-details{
     font-size:30px;
     cursor:pointer;
     margin-left:15px;
 }
 
-#close-product-details:hover{
+.close-product-details:hover{
     color:orange;
 }
 

@@ -101,14 +101,3 @@ function toggle_read() {
     }
 }
 
-
-document.getElementById("show-details-btn").addEventListener("click", function() {
-    // opens the div that displays all of the product details on the amend products page
-    var detailsDiv = document.getElementById("product-details");
-    if (detailsDiv.style.display === "none") {
-        detailsDiv.style.display = "block";
-    } else {
-        detailsDiv.style.display = "none";
-    }
-});
-

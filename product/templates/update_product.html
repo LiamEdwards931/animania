@@ -16,16 +16,6 @@
             </div>
         </div>
     </div>
-    {% if form.errors %}
-                <div class="alert alert-danger">
-                    <strong>Error:</strong> Please correct the following errors:
-                    <ul>
-                        {% for field, error in form.errors.items %}
-                        <li>{{ field|title }}: {{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% endif %}
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 text-center">
@@ -86,6 +76,11 @@
                         <label for="id_discounted"><h5>Discounted?</h5></label>
                         <br>
                         {{ form.discounted}}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_discount_amount"><h5>Discount Amount (0-100)</h5></label>
+                        <br>
+                        {{ form.discount_amount}}
                     </div>
                     <div class="form-group">
                         <label for="id_size"><h5>Size</h5></label>
