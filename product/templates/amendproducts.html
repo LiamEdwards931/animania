@@ -33,7 +33,10 @@
                         <strong>Name:</strong> {{ product.name }}<br>
                         <strong>Description:</strong> {{ product.description }}<br>
                         <strong>Series:</strong> {{ product.series }}<br>
-                        <strong>Price:</strong> {{ product.price }}<br>
+                        <strong>Price:</strong> £{{ product.price }}<br>
+                        <strong>Cost Price:</strong> £{{ product.cost_price }}<br>
+                        <strong>Profit Margin:</strong> {{ product.profit_margin }}%<br>
+                        <strong>Profit Amount:</strong> £{{ product.profit_amount }}<br>
                         <strong>Slug:</strong> {{ product.slug }}<br>
                         <strong>Category:</strong> {{ product.category }}<br>
                         <strong>Sub Category:</strong> {{ product.sub_category }}<br>
@@ -64,7 +67,7 @@
                                 <th><h5>Image</h5></th>
                                 <th><h5>Description</h5></th>
                                 <th><h5>Series</h5></th>
-                                <th><h5>Price</h5></th>
+                                <th><h5>Finances</h5></th>
                                 <th><h5>Category</h5></th>
                                 <th><h5>Quantity Available</h5></th>
                                 <th><h5>New</h5></th>
@@ -92,7 +95,16 @@
                                 <td><img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-thumbnail"></td>
                                 <td>{{ product.description }}</td>
                                 <td>{{ product.series }}</td>
-                                <td>{{ product.price }}</td>
+                                <td>
+                                    <h6>Price</h6>
+                                    £{{ product.price }}
+                                    <hr>
+                                    <h6>Profit Margin</h6>
+                                    {{ product.profit_margin}}%
+                                    <hr>
+                                    <h6>Profit amount</h6>
+                                    £{{ product.profit_amount}}
+                                </td>
                                 <td>{{ product.category }}</td>
                                 <td>{{ product.quantity_available }}</td>
                                 <td>{% if product.new %} X {% endif %}</td>

@@ -83,6 +83,7 @@ class ProductForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control-textarea'}),
             'price': forms.NumberInput(attrs={'class': 'form-control'}),
+            'cost_price': forms.NumberInput(attrs={'class': 'form-control'}),
             'quantity_available': forms.NumberInput(attrs={'class': 'form-control'}),
             'new': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
             'discounted': forms.CheckboxInput(attrs={'class': 'form-check-input'}),

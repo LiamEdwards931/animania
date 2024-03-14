@@ -10,7 +10,7 @@
                         <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
                         <li class="breadcrumb-item"><a href="{% url 'profile' %}">Profile</a></li>
                         <li class="breadcrumb-item"><a href="{% url 'amendProducts' %}">Amend Products</a></li>
-                        <li class="breadcrumb-item"><a id="breadcrumb-active"href="#">New Products</a></li>
+                        <li class="breadcrumb-item"><a id="breadcrumb-active"href="#">Update Products</a></li>
                     </ol>
                 </nav>    
             </div>
@@ -48,9 +48,14 @@
                         {{ form.series }}
                     </div>
                     <div class="form-group">
-                        <label for="id_price"><h5>Price</h5></label>
+                        <label for="id_price"><h5> Sale Price</h5></label>
                         <br>
                         {{ form.price }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_cost_price"><h5>Cost Price</h5></label>
+                        <br>
+                        {{ form.cost_price }}
                     </div>
                     <div class="form-group">
                         <label for="id_category"><h5>Category</h5></label>

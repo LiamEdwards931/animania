@@ -53,6 +53,34 @@ class Product(models.Model):
             return discounted_price.quantize(Decimal('0.01'), rounding=ROUND_DOWN)
         else:
             return None
+        
+    @property
+    def profit_margin(self):
+        # Calculates the profit margin of a product: {{ product.profit_margin }}
+        if self.discounted:
+            margin = self.discounted_price - self.cost_price
+            profit_margin_percent = (margin / self.cost_price) * 100
+            return profit_margin_percent.quantize(Decimal('0.01'), rounding=ROUND_DOWN)
+        
+        elif self.price and self.cost_price is not None:
+            margin = self.price - self.cost_price
+            profit_margin_percent = (margin / self.cost_price) * 100
+            return profit_margin_percent.quantize(Decimal('0.01'), rounding=ROUND_DOWN)
+        else:
+            return None
+        
+    @property
+    def profit_amount(self):
+        # Calculates the amount of profit generated per product {{ product.profit_amount }}
+        if self.discounted:
+            margin = (self.discounted_price - self.cost_price) / self.cost_price
+            return round(margin * self.cost_price,2)
+        
+        elif self.price and self.cost_price:
+            margin = (self.price - self.cost_price) / self.cost_price
+            return round(margin * self.cost_price, 2)
+        else:
+            return None
     
     def clean(self):
         # Validation for price and quantity
