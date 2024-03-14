@@ -9,10 +9,26 @@ from .forms import ProductForm
 # Create your views here.
 
 def index(request):
+    """
+     Creates a view to render index.html, 
+     renders all product and message instances
+    """
     messages_to_render = messages.get_messages(request)
-    return render(request, 'index.html',{'messages': messages_to_render})
+    products = Product.objects.all()
+
+    context = {
+        'products': products,
+        'messages': messages_to_render,
+    }
+    
+    return render(request, 'index.html', context)
+
 
 def amendProducts(request):
+    """
+    Renders the amend Products.html page, 
+    Gets all product instances.
+    """
     products = Product.objects.all()
 
     context = {
@@ -22,6 +38,10 @@ def amendProducts(request):
     return render(request, 'amendproducts.html', context )
 
 def newProduct(request):
+    """
+    Renders the product form for adding a new product,
+    renders new_product.html
+    """
     if request.method == 'POST':
         # If the form has been submitted, process the data
         newProductForm = forms.ProductForm(request.POST, request.FILES)
@@ -36,6 +56,9 @@ def newProduct(request):
 
 @user_passes_test(lambda u: u.is_superuser)
 def delete_product(request, product_id):
+    """
+    View to delete a product instance on request by a superuser.
+    """
     product = get_object_or_404(Product, id=product_id)
     
     if request.method == 'POST':
@@ -50,6 +73,9 @@ def delete_product(request, product_id):
     
 @user_passes_test(lambda u: u.is_superuser)
 def update_product(request, product_id):
+    """
+    View to Edit a product instance on request by a superuser.
+    """
     # Get the existing product instance
     product = get_object_or_404(Product, id=product_id)
     
