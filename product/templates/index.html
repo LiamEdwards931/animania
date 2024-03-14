@@ -56,19 +56,28 @@
                 <!-- this will change when the models are implemented -->
                 <div class="col-12 text-center new-item-container" style="background: url('{% static 'images/animebackground.jpg' %}') no-repeat 40% 60%; background-size:cover;">
                     <h2 class="main-section-header">New Items</h2>
-                    {% for product in products %}
-                        {% if product.new %}
-                            <div class="new-image-container">
-                                <h3 class="new-tag">New!</h3>
-                                <img src="{{ product.image.url }}" alt="{{ product.name }}" class=" new-image img-thumbnail">
-                                <h5>{{ product.series }}</h5>
-                                <h5>{{ product.name }}</h5>
-                                <h5>£{{ product.price }}</h5>
-                                <button>Add to basket</button>
-                            </div>
-                        {% endif %}
-                    {% endfor %}  
-                </div>
+                    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            {% for product in products %}
+                                {% if product.new %}
+                                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <img src="{{ product.image.url }}" class="d-block img-thumbnail new-image" alt="{{ product.name }}">
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>                          
+                </div>  
             </div>
         </div>
     </section>
