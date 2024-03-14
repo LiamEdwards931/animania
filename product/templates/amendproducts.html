@@ -41,8 +41,10 @@
                         <strong>Quantity Available:</strong> {{ product.quantity_available }}<br>
                         <strong>New:</strong> {{ product.new }}<br>
                         <strong>Discounted:</strong> {{ product.discounted }}<br>
-                        <strong>Discount amount:</strong> {{ product.discount_amount }}%<br>
-                        <strong>Discount amount:</strong> £{{ product.discounted_price }}<br>
+                        {% if product.discounted %} 
+                            <strong>Discount amount:</strong> {{ product.discount_amount }}%<br>
+                            <strong>Discount price:</strong> £{{ product.discounted_price }}<br>
+                        {% endif %}
                         <strong>Created On:</strong> {{ product.created_on }}<br>
                         <strong>Updated On:</strong> {{ product.updated_on }}<br>
                         <strong>Size:</strong> {{ product.size }}<br>

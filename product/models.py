@@ -23,6 +23,7 @@ class Product(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     category = models.CharField(max_length=50)
     sub_category = models.CharField(max_length=50, blank=True)
+    cost_price = models.DecimalField(max_digits=10,null=True, decimal_places=2, validators=[MinValueValidator(0)])
     search_tags = models.CharField(max_length=100, blank=True)
     related_products = models.ManyToManyField('self', blank=True)
     quantity_available = models.PositiveIntegerField(validators=[MinValueValidator(0)])
