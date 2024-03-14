@@ -57,7 +57,7 @@ def newProduct(request):
 @user_passes_test(lambda u: u.is_superuser)
 def delete_product(request, product_id):
     """
-    View to delete a product instance on request by a superuser.
+    View to delete all of a product instance on request by a superuser.
     """
     product = get_object_or_404(Product, id=product_id)
     
@@ -74,7 +74,7 @@ def delete_product(request, product_id):
 @user_passes_test(lambda u: u.is_superuser)
 def update_product(request, product_id):
     """
-    View to Edit a product instance on request by a superuser.
+    View to Edit all of a product instance on request by a superuser.
     """
     # Get the existing product instance
     product = get_object_or_404(Product, id=product_id)
