@@ -56,14 +56,18 @@
                 <!-- this will change when the models are implemented -->
                 <div class="col-12 text-center new-item-container" style="background: url('{% static 'images/animebackground.jpg' %}') no-repeat 40% 60%; background-size:cover;">
                     <h2 class="main-section-header">New Items</h2>
-                    <div class="new-image-container">
-                        <h3 class="new-tag">New!</h3>
-                        <img src="{% static 'images/kanekifigure.png' %}" class="img-thumbnail" alt="Kaneki Figure">
-                        <h5>Tokyo Ghoul</h5>
-                        <h5>Kaneki figure</h5>
-                        <h5>Price</h5>
-                        <h5>Add to basket</h5>
-                    </div>   
+                    {% for product in products %}
+                        {% if product.new %}
+                            <div class="new-image-container">
+                                <h3 class="new-tag">New!</h3>
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-thumbnail">
+                                <h5>{{ product.series }}</h5>
+                                <h5>{{ product.name }}</h5>
+                                <h5>£{{ product.price }}</h5>
+                                <button>Add to basket</button>
+                            </div>
+                        {% endif %}
+                    {% endfor %}  
                 </div>
             </div>
         </div>

@@ -282,7 +282,8 @@ a:hover{
 /* ------------------------------New Category section--------------------------------- */
 .new-item-container{
     text-align:center;
-    height:650px;
+    padding-top:50px;
+    height:750px;
 }
 
 .new-image-container{
@@ -290,6 +291,15 @@ a:hover{
     width:350px;
     margin: 20px auto;
     color:white;
+}
+
+.currency-symbol {
+    font-size: 20px;
+}
+
+.img-thumbnail{
+    height:400px;
+    width:100%;
 }
 
 .new-tag{
