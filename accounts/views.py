@@ -45,6 +45,7 @@ def register(request):
             user = form.save()
             login(request, user)
             messages.success(request, f'Your account has been created {user.username}')
+            return redirect('profile')
     else:
         form = CustomUserCreationForm()
     return render(request, "registration/signup.html", {"form": form})

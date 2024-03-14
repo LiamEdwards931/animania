@@ -105,7 +105,14 @@
                                     <h6>Profit amount</h6>
                                     £{{ product.profit_amount}}
                                 </td>
-                                <td>{{ product.category }}</td>
+                                <td>
+                                    {{ product.category }}
+                                    {% if product.sub_category %}
+                                        <hr>
+                                        <h6>Sub Category</h6>
+                                        {{ product.sub_category}}
+                                    {% endif %}
+                                </td>
                                 <td>{{ product.quantity_available }}</td>
                                 <td>{% if product.new %} X {% endif %}</td>
                                 <td>{% if product.discounted %} 
