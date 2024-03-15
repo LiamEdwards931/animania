@@ -8,6 +8,7 @@ from .forms import ProductForm
 
 # Create your views here.
 
+# -------------------Homepage view-------------------------
 def index(request):
     """
      Creates a view to render index.html, 
@@ -23,7 +24,7 @@ def index(request):
     
     return render(request, 'index.html', context)
 
-
+# ---Create/update/delete products views (SuperUser only from the profile page)---------
 def amendProducts(request):
     """
     Renders the amend Products.html page, 
@@ -95,3 +96,15 @@ def update_product(request, product_id):
         'product_id': product_id,
     }
     return render(request, 'update_product.html', context)
+
+# ------------ All products view --------------------------------------
+
+def all_products(request):
+    products = Product.objects.all()
+    product_count = products.count()
+
+    context = {
+        'products': products,
+        'product_count': product_count,
+    }
+    return render(request,'all_products.html', context)
