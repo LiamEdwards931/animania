@@ -283,37 +283,39 @@ a:hover{
 .new-item-container{
     text-align:center;
     padding-top:30px;
+    padding-bottom:30px;
 }
 
 .new-image{
-    height:250px;
-    width:200px;
+    height:300px;
+    width:250px;
     margin-bottom:20px;
     margin: 0 auto;
 }
 
-.new-tag{
-    height:45px;
-    width:80%;
-    background:orange;
+.new-product-card{
+    max-width:250px;
+    margin: 0 auto;
+    background: black;
     color:white;
-    padding-top:8px;
-    margin: 10px auto;
 }
 
-.carousel-control-prev:hover,
-.carousel-control-next:hover{
-    background-color: rgba(255, 165, 0, 0.5);
+.new-btn{
+    background-color: rgba(0, 0, 0);
+    color: white;
+    border: none;
+    box-shadow: 0px 0px 5px 5px rgb(255, 165, 0);
+}
+
+.new-btn:hover{
+    background-color:orange;
+    box-shadow: 0px 0px 7px 7px rgb(255, 165, 0);
+
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     background-color: orange;
-}
-
-
-.carousel-control-next-icon{
-    color:orange;
 }
 
 /* -------------------------------Facebook Page banner ----------------------------- */
