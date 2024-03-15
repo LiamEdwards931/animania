@@ -53,7 +53,9 @@
                         {% endif %}
                         <strong>Created On:</strong> {{ product.created_on }}<br>
                         <strong>Updated On:</strong> {{ product.updated_on }}<br>
-                        <strong>Size:</strong> {{ product.size }}<br>
+                        {% if product.size %}
+                            <strong>Size:</strong> {{ product.size }}<br>
+                        {% endif %}
                     </li>
                 </ul>
             </div>

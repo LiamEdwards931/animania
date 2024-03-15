@@ -22,12 +22,12 @@
         <div class="container-fluid">
             <div class="row">
                 {% for products in products %}
-                <div class="col-4 text-center" style="background-color:orange; border: 1px solid black; margin-top: 15px;">
-                    <ul class="text-center" style="list-style-type: none;">
-                        <li>{{ products.name }}</li>
-                        <li>{{ products.series }}</li>
-                    </ul>
-                </div>
+                    <div class="col-3 text-center" style="margin: 0 10px; border:1px solid black;">
+                        <ul class="text-center" style="list-style-type: none;">
+                            <li>{{ products.name }}</li>
+                            <li>{{ products.series }}</li>
+                        </ul>
+                    </div>
                 {% endfor %}
             </div>
         </div>     
