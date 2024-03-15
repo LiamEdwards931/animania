@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Product Detail {% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row g-0">
+            <div class="col-6 text-right d-none d-sm-block">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'allproducts' %}">All Products</a></li>
+                        <li class="breadcrumb-item"><a id="breadcrumb-active"href="#">{{ product.name }}</a></li>
+                    </ol>
+                </nav>    
+            </div> 
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+                <div class="col-12">
+                    <div class="card mb-3" style="max-width: 100%; min-height:200px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ product.image.url }}" class="img-fluid rounded-start main-img" alt="{{ products.name }}" style="height:90%">   
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h2 class="card-title">{{ product.series }}</h2>
+                                    <p class="card-text">{{ product.name }}</p>
+                                    <p class="card-text">
+                                        {% if product.discounted %}
+                                            <strong><strike>£{{ product.price }}</strike> £{{ product.discounted_price }}</strong>
+                                            <h6 style ="width:25%;"class="percent-off">{{ product.discount_amount }}% off</h6>
+                                        {% elif product.new %}
+                                            <strong>£{{ product.price}}</strong>
+                                        {% else %}
+                                            <strong>£{{ product.price}}</strong>
+                                        {% endif %}
+                                    </p>
+                                    <p class ="card-text">{{ product.description }}</p>
+                                    <form>
+                                        {% if product.category == 'Clothing' %}
+                                            <label for="size">Choose your size:</label>
+                                            <br>
+                                            <select style="width: 120px;" id="size">
+                                                <option value="small">Small</option>
+                                                <option value="medium">Medium</option>
+                                                <option value="large">Large</option>
+                                            </select>
+                                        <br>
+                                        {% endif %}
+                                        <button class="quantity-btn minus">-</button>
+                                        <input  style="width:50px; margin-top:10px;" type="number" class="quantity" value="1">
+                                        <button class="quantity-btn plus">+</button>
+                                        <br>
+                                        <button style="margin-top:10px;"class="add-to-basket">Add to Basket</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>          
+{% endblock %}

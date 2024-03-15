@@ -100,6 +100,10 @@ def update_product(request, product_id):
 # ------------ All products view --------------------------------------
 
 def all_products(request):
+    """
+    View returning all the product objects to display
+    on the all product page
+    """
     products = Product.objects.all()
     product_count = products.count()
 
@@ -108,3 +112,16 @@ def all_products(request):
         'product_count': product_count,
     }
     return render(request,'all_products.html', context)
+
+# ------------ Product detail view ---------------------------------------
+
+def product_detail(request, product_id):
+    """
+    View that uses the product id to highlight details of a project
+    """
+    product = get_object_or_404(Product, pk=product_id)
+    
+    context = {
+        'product': product
+    }
+    return render(request,'product_detail.html', context)
