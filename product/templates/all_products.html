@@ -22,48 +22,38 @@
     <div class="container-fluid">
         <div class="row">
             {% for products in products %}
-                <div class="col-12 col-md-4 text-center d-flex flex-column justify-content-center align-items-center">
-                    <div class="card mb-3" style="max-width: 450px; min-height:200px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                {% if products.alternative_images %}
-                                <a href="{% url 'product_details' product_id=products.id %}" class="image-container">
-                                    <img src="{{ products.image.url }}" class="img-fluid rounded-start main-img" alt="{{ products.name }}" style="height:100%;">
-                                    <img src="{{ products.alternative_images.url }}" class="img-fluid rounded-start alt-img" alt="{{ products.name }}" style="height:100%;">
-                                </a>
-                                {% else %}
-                                <a href="{% url 'product_details' product_id=products.id %}">
-                                    <img src="{{ products.image.url }}" class="img-fluid rounded-start main-img" alt="{{ products.name }}" style="height:100%;">
-                                </a>
-                                {% endif %}   
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    {% if products.discounted %}
-                                        <h6 class="percent-off">{{ products.discount_amount }}% off</h6>
-                                    {% elif products.new %}
-                                        <h6 class ="new-item">NEW!</h6>
-                                    {% endif %}
-                                    <h5 class="card-title">{{ products.series }}</h5>
-                                    <p class="card-text">{{ products.name }}</p>
-                                    <p class="card-text">
-                                        {% if products.discounted %}
-                                           <strong><strike>£{{ products.price }}</strike> £{{ products.discounted_price }}</strong> 
-                                        {% else %}
-                                            <strong>£{{ products.price}}</strong>
-                                        {% endif %}
-                                    </p>
-                                    <p class="card-text">Reviews:</p>
-                                    <p class="card-text"><small class="text-body-secondary">{{ products.category}}</small></p>
-                                    <a href="{% url 'product_details' product_id=products.id %}" class="image-container">
-                                        <p class="card-text">View product details</p>
-                                    </a>
-                                </div>
-                            </div>
+                <div class="col-6 col-lg-3 col-md-4">
+                    <div class="card product-card" style="margin-bottom:10px;">
+                        <a href="{% url 'product_details' product_id=products.id %}">
+                            <img src="{{ products.image.url }}" class="card-img-top" alt="{{ products.name }}">
+                        </a>
+                        <div class="card-body">
+                            {% if products.discounted %}
+                                <h6 class="percent-off card-title">{{ products.discount_amount }}% off</h6>
+                            {% elif products.new %}
+                                <h6 class ="new-item card-title">NEW!</h6>
+                            {% else %}
+                                <h6 class ="card-title"style="opacity: 0">Blank</h6>
+                            {% endif %}
+                            <h5 class="card-title">{{ products.series }}</h5>
+                            <p class="card-text">{{ products.name }}</p>
+                            <p class="card-text">
+                            {% if products.discounted %}
+                                <strong><strike>£{{ products.price }}</strike> £{{ products.discounted_price }}</strong> 
+                            {% else %}
+                                <strong>£{{ products.price}}</strong>
+                            {% endif %}
+                            </p>
+                            <p class="card-text">Reviews:</p>
+                            <p class="card-text"><small class="text-body-secondary">{{ products.category}}</small></p>
+                            <a href="{% url 'product_details' product_id=products.id %}" class="image-container">
+                                <p class="card-text">View product details</p>
+                            </a>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
-            </div>
-        </div>     
+            {% endfor %}   
+        </div>
+    </div>
+             
 {% endblock %}

@@ -525,17 +525,21 @@ table{
     color:white;
 }
 
-/* Shows the alt image on the product cards but only if an alt image exists */
-.image-container .alt-img {
-    display: none;
+.card-img-top{
+    height:400px;
 }
-    
-.image-container:hover .main-img {
-    display: none; 
+
+.product-card{
+    margin-right: 5px;
 }
-    
-.image-container:hover .alt-img {
-    display: block;
+
+@media screen and (max-width:480px){
+    .card-img-top{
+        height:300px;
+    }
+    .product-card{
+        height:610px;
+    }
 }
 
 
