@@ -503,12 +503,22 @@ table{
 }
 
 .form-control-textarea{
-    width:250px;
-    height:100px;
+    width:500px;
+    height:200px;
 }
 
 /* ----------------- All products.html style -------------------------------------------- */
 
 #results-found{
     float: right;
+}
+
+.percent-off{
+    background-color: red;
+    color:white;
+}
+
+.new-item{
+    background-color: orange;
+    color:white;
 }

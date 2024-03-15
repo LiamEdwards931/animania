@@ -16,15 +16,6 @@
             </div>
         </div>
     </div>
-    {% if form.errors %}
-                <div class="alert alert-danger">
-                    <ul>
-                        {% for field, error in form.errors.items %}
-                        <li>{{ field|title }}: {{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                {% endif %}
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 text-center">

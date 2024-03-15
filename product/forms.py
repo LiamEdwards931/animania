@@ -104,6 +104,8 @@ class ProductForm(forms.ModelForm):
         series = cleaned_data.get('series')
         sub_category = cleaned_data.get('sub_category')
         name = cleaned_data.get('name')
+        description = cleaned_data.get('description')
+        price = cleaned_data.get('price')
 
         if discounted and not discount_amount:
             raise forms.ValidationError('You must select a discount amount.')
@@ -121,5 +123,9 @@ class ProductForm(forms.ModelForm):
 
         search_tags = [tag for tag in [category, series, sub_category, name] if tag]
         cleaned_data['search_tags'] = ', '.join(search_tags)
+
+        if not name or not description or not price:
+            raise forms.ValidationError("All required fields must be filled in.")
+        # Return the cleaned data
 
         return cleaned_data

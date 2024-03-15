@@ -19,15 +19,35 @@
             </div>
         </div>
     </div>
-        <div class="container-fluid">
-            <div class="row">
-                {% for products in products %}
-                    <div class="col-3 text-center" style="margin: 0 10px; border:1px solid black;">
-                        <ul class="text-center" style="list-style-type: none;">
-                            <li>{{ products.name }}</li>
-                            <li>{{ products.series }}</li>
-                        </ul>
+    <div class="container-fluid">
+        <div class="row">
+            {% for products in products %}
+                <div class="col-12 col-md-4 text-center d-flex flex-column justify-content-center align-items-center">
+                    <div class="card mb-3" style="max-width: 400px; min-height:200px">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ products.image.url }}" class="img-fluid rounded-start" alt="{{ products.name }}" style="height:100%;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ products.name }}</h5>
+                                    <p class="card-text">
+                                        {% if products.discounted %}
+                                            <h6 class="percent-off">{{ products.discount_amount }}% off</h6>
+                                            <strike>£{{ products.price }}</strike> £{{ products.discounted_price }}
+                                        {% elif products.new %}
+                                            <h6 class ="new-item">NEW!</h6>
+                                            £{{ products.price}}
+                                        {% else %}
+                                            £{{ products.price}}
+                                        {% endif %}
+                                    </p>
+                                    <p class="card-text">Hello<small class="text-body-secondary">Hello</small></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
                 {% endfor %}
             </div>
         </div>     
