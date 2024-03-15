@@ -67,7 +67,9 @@ a:hover{
     min-height:65px;
 }
 
-.dropdown-menu.show
+.dropdown-menu > a:hover{
+    color:orange;
+}
 
 .dropdown-item{
     color:white;

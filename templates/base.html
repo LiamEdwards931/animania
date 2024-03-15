@@ -38,15 +38,24 @@
                                 Shop By Series
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Sword Art Online</a></li>
-                                <li><a class="dropdown-item" href="#">Demon Slayer</a></li>
-                                <li><a class="dropdown-item" href="#">Tokyo Ghoul</a></li>
+                                {% for product in products %}
+                                    <li><a class="dropdown-item" href="#">{{ product.series }}</a></li>
+                                {% endfor %}
                             </ul>
                         </div>
-                        <a class="nav-link" href="#">Pop-Vinyls</a>
-                        <a class="nav-link" href='#'>Clothing</a>
-                        <a class="nav-link" href='#'>Figures</a>
-                        <a class="nav-link" href='#'>Video Games</a>
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Shop By Category
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Pop-vinyls</a></li>
+                                <li><a class="dropdown-item" href="#">Clothing</a></li>
+                                <li><a class="dropdown-item" href="#">Figures</a></li>
+                                <li><a class="dropdown-item" href="#">Video Games</a></li>
+                                <li><a class="dropdown-item" href="#">New products</a></li>
+                                <li><a class="dropdown-item" href="#">Sale products</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="navbar-nav ms-auto d-flex flex-row order-3" id="linksContainer">

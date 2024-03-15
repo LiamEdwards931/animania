@@ -5,15 +5,28 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 class ProductForm(forms.ModelForm):
     SERIES_CHOICES = [
+        ('Naruto', 'Naruto'),
+        ('Dragon Ball', 'Dragon Ball'),
+        ('One Piece', 'One Piece'),
+        ('Bleach', 'Bleach'),
+        ('My Hero Academia', 'My Hero Academia'),
+        ('Death Note', 'Death Note'),
+        ('Fullmetal Alchemist', 'Fullmetal Alchemist'),
+        ('Attack on Titan', 'Attack on Titan'),
+        ('Hunter x Hunter', 'Hunter x Hunter'),
+        ('One Punch Man', 'One Punch Man'),
+        ('Fairy Tail', 'Fairy Tail'),
+        ('Black Clover', 'Black Clover'),
         ('Demon Slayer', 'Demon Slayer'),
         ('Sword Art Online', 'Sword Art Online'),
         ('Tokyo Ghoul', 'Tokyo Ghoul'),
-        ('Attack On Titan','Attack On Titan'),
-        ('Shangri la frontier','Shangri la frontier'),
-        ('Solo Leveling','Solo Leveling'),
-        ('Reincarnated as a slime','Reincarnated as a slime'),
-        ('Akame ga kill','Akame ga kill'),
-        ('Seven Deadly Sins','Seven Deadly Sins'),
+        ('Attack On Titan', 'Attack On Titan'),
+        ('Shangri la frontier', 'Shangri la frontier'),
+        ('Solo Leveling', 'Solo Leveling'),
+        ('That Time I Got Reincarnated as a Slime', 'That Time I Got Reincarnated as a Slime'),
+        ('The Rising of the Shield Hero', 'The Rising of the Shield Hero'),
+        ('Akame ga Kill', 'Akame ga Kill'),
+        ('Seven Deadly Sins', 'Seven Deadly Sins'),
         
     ]
 
