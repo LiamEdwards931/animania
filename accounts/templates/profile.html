@@ -36,7 +36,10 @@
                 <p>{{ user.last_name}}</p>
                 <h6>email address:</h6>
                 <p>{{ user.email }}</p>
-                <p class ="btn btn-primary" id="changepassword"><a href="{% url 'changepassword' %}">Change Password</a></p>
+                <form action="{% url 'changepassword' %}" method="get">
+                    <button type="submit" class="address-btn" id="changepassword">Change Password</button>
+                </form>
+                <br>                
             </div>
             {% if user.is_authenticated and user.is_superuser %}
             <div class="col-lg-6 col-12 profile-details text-center amendproduct-link">
@@ -51,16 +54,20 @@
                 <h2>Address details</h2>
                 {% for address in addresses %}
                 <li>{{ address.door_number }} {{ address.street }}, {{ address.city }}, {{ address.state }}, {{ address.country }} - {{ address.postal_code }}</li>
+                <br>
                 <form action="{% url 'update_address' address.id %}" method="get">
                     <button class="address-btn" type="submit">Update Address</button>
                 </form>
+                <br>
                 <form method="post" action="{% url 'delete_address' address.id %}">
                     {% csrf_token %}
                     <button class="address-btn" style="margin-top:5px;" type="submit">Delete</button>
                 </form>
                 {% endfor %}
                 <br>
-                <a href="{% url 'addaddress' %}">Add new address +</a>
+                <form action="{% url 'addaddress' %}">
+                    <button class="address-btn" type="submit">Add new address +</button>
+                </form>
             </div>
             {% endif %}
         </div>
