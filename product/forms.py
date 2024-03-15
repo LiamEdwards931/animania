@@ -126,6 +126,5 @@ class ProductForm(forms.ModelForm):
 
         if not name or not description or not price:
             raise forms.ValidationError("All required fields must be filled in.")
-        # Return the cleaned data
 
         return cleaned_data

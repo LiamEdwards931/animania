@@ -522,3 +522,19 @@ table{
     background-color: orange;
     color:white;
 }
+
+/* Shows the alt image on the product cards but only if an alt image exists */
+.image-container .alt-img {
+    display: none;
+}
+    
+.image-container:hover .main-img {
+    display: none; 
+}
+    
+.image-container:hover .alt-img {
+    display: block;
+}
+
+
+
