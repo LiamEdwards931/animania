@@ -6,8 +6,7 @@ function moveLinks(){
     container.classList.remove('ms-auto');
 }
 
-// Displays the search bar on click
-
+// Toggles the search bar visibility on click from the nav bar
 function search_bar_toggle(){
     let search_bar = document.getElementById('search-container');
     
