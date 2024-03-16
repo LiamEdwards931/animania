@@ -70,34 +70,6 @@ document.querySelector('.banner-container').addEventListener('click', function()
     });
 });
 
-// Creates dynamic buttons for each of the images, changes text and urls based on the image displayed.
-document.addEventListener("DOMContentLoaded", function() {
-    var images = document.querySelectorAll('.img-banner');
-    var shopButton = document.querySelector('.shop-btn');
-  
-    var buttonSettings = [
-        { text: 'Shop Sword Art Online Merch', url: '/shop-now-page' }, 
-        { text: 'Shop Demon Slayer Merch', url: '/shop-demon-slayer-page' }, 
-        { text: 'Shop Tokyo Ghoul Merch', url: '/shop-tokyo-ghoul-page' } 
-    ];
-
-    function updateButtonSettings(index) {
-        shopButton.textContent = buttonSettings[index].text;
-        shopButton.setAttribute('onclick', `window.location.href='${buttonSettings[index].url}'`);
-    }
-
-    document.querySelector('.banner-container').addEventListener('click', function() {
-        
-        var visibleImage = document.querySelector('.img-banner.banner-visible');
-        
-        
-        var visibleIndex = Array.from(images).indexOf(visibleImage);
-        
-        
-        updateButtonSettings(visibleIndex);
-    });
-});
-
 function toggle_read() {
     // Opens the dropdown on the footer to allow users to read more about the site.
     let readmore = document.querySelector('.readmore');

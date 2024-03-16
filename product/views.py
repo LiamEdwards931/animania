@@ -1,11 +1,11 @@
-from django.shortcuts import render,redirect,reverse,get_object_or_404
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q
 from django.contrib import messages
-from django.contrib.auth.models import User
 from .models import Product
 from . import forms
 from .forms import ProductForm
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -109,12 +109,13 @@ def all_products(request):
     product_count = products.count()
     query = None
 
+    #  the Q Snippet of code is taken from the boutique ado walkthrough project
     if request.GET:
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
-                return redirect(reverse('allproducts'))
+                messages.error(request, "Search field is empty!")
+                return redirect('allproducts')
             
             queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(search_tags__icontains=query)
             products = products.filter(queries)

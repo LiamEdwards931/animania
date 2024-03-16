@@ -38,8 +38,8 @@
                                 Shop By Series
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {% for product in products|dictsort:'series' %}
-                                    <li><a class="dropdown-item" href="#">{{ product.series }}</a></li>
+                                {% for series in series %}
+                                    <li><a class="dropdown-item" href="#">{{ series }}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -48,10 +48,9 @@
                                 Shop By Category
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Pop-vinyls</a></li>
-                                <li><a class="dropdown-item" href="#">Clothing</a></li>
-                                <li><a class="dropdown-item" href="#">Figures</a></li>
-                                <li><a class="dropdown-item" href="#">Video Games</a></li>
+                                {% for category in categories %}
+                                    <li><a class="dropdown-item" href="#">{{ category }}</a></li>
+                                {% endfor %}
                                 <li><a class="dropdown-item" href="#">New products</a></li>
                                 <li><a class="dropdown-item" href="#">Sale products</a></li>
                             </ul>
