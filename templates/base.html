@@ -59,31 +59,43 @@
                     </div>
                 </div>
                 <div class="navbar-nav ms-auto d-flex flex-row order-3" id="linksContainer">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass i-link"></i></a>
-                        {% if user.is_authenticated %}
-                            <a class="nav-link" href="{% url 'profile' %}"><i class="fa-regular fa-user i-link"></i></a>
-                        {% else %}
-                            <a class="nav-link" href="{% url 'login' %}"><i class="fa-regular fa-user i-link"></i></a>
-                        {% endif %}
+                    <a class="nav-link" onclick="search_bar_toggle()"><i class="fa-solid fa-magnifying-glass i-link"></i></a>  
+                    {% if user.is_authenticated %}
+                        <a class="nav-link" href="{% url 'profile' %}"><i class="fa-regular fa-user i-link"></i></a>
+                    {% else %}
+                        <a class="nav-link" href="{% url 'login' %}"><i class="fa-regular fa-user i-link"></i></a>
+                    {% endif %}
                         <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping i-link"></i></a>
                 </div>
             </div>
         </nav>
     </header>
-        {% for message in messages %}
-            {% if message %}
-                <div class="container-fluid" id="remove-message">
-                    <div class="row message-container">
-                        <div class="col-12 text-center">
-                            <div>
-                                <h3>{{ message }}</h3>
-                            </div>   
-                        </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <form metod="GET" action="" class="search-form">
+                    <div id="search-container">
+                        <input class="search-bar" type="text" name="q" placeholder="Search our site">
+                        <button id="search-submit" type="submit"><i class="fa-solid fa-magnifying-glass i-link"></i></button> 
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% for message in messages %}
+        {% if message %}
+            <div class="container-fluid" id="remove-message">
+                <div class="row message-container">
+                    <div class="col-12 text-center">
+                        <div>
+                            <h3>{{ message }}</h3>
+                        </div>   
                     </div>
                 </div>
-            {% endif %}
-        {% endfor %}
-        {% if form.errors %}
+            </div>
+        {% endif %}
+    {% endfor %}
+    {% if form.errors %}
         <div class="error-message text-center">
             {% for field, error_list in form.errors.items %}
                 {% for error in error_list %}

@@ -60,6 +60,29 @@ a:hover{
     min-height:65px;
 }
 
+.search-form{
+    width:100%;
+}
+
+
+#search-container{
+    display:none;
+}
+
+.search-bar{
+    width:96%;
+    max-width:95%;
+    height:50px;
+    border:none;
+}
+
+#search-submit{
+    width:3%;
+    height:50px;
+    border: none;
+    background-color:white;
+}
+
 .main-background,
 .dropdown-menu.show{
     color:white;
@@ -111,6 +134,14 @@ a:hover{
 @media screen and (max-width:990px){
     .main-background{
         padding:0;
+    }
+
+    .search-bar{
+        width:90%;
+    }
+
+    #search-submit{
+        width:8%;
     }
 
     .navbar-toggler{

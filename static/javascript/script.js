@@ -6,6 +6,18 @@ function moveLinks(){
     container.classList.remove('ms-auto');
 }
 
+// Displays the search bar on click
+
+function search_bar_toggle(){
+    let search_bar = document.getElementById('search-container');
+    
+    if (search_bar.style.display === 'block') {
+        search_bar.style.display = 'none';
+    } else {
+        search_bar.style.display = 'block';
+    }
+};
+
 // // Timesout the message container after 5 seconds of appearing
 const messageContainer = document.getElementById('remove-message');
 
