@@ -107,11 +107,27 @@ def all_products(request):
     products = Product.objects.all()
     product_count = products.count()
 
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error('No products found.')
+                return redirect(reverse(''))
+    
+    
     context = {
         'products': products,
         'product_count': product_count,
     }
     return render(request,'all_products.html', context)
+
+# returns the all products page but with filters.
+def product_filter(request):
+    """
+    View creating all the product objects and passing filters through them. 
+    """
+    products = Product.objects.all()
+    category = products.filter('series')
 
 # ------------ Product detail view ---------------------------------------
 
