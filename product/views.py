@@ -56,6 +56,7 @@ def newProduct(request):
     
     return render(request, 'new_product.html', {'form': newProductForm})
 
+
 @user_passes_test(lambda u: u.is_superuser)
 def delete_product(request, product_id):
     """

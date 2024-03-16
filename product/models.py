@@ -16,7 +16,7 @@ class Product(models.Model):
     
     image = CloudinaryField('image',blank=True)
     alternative_images = CloudinaryField('image',blank=True)
-    name = models.TextField(max_length=40, unique=True)
+    name = models.TextField(max_length=40)
     description = models.TextField()
     series = models.TextField(max_length=30)
     price = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])
@@ -90,4 +90,7 @@ class Product(models.Model):
         if self.quantity_available < 0:
             raise ValidationError({'quantity_available': 'Quantity must be non-negative.'})
 
-    
+
+class product_banner(models.Model):
+    image = CloudinaryField('image')
+    series = models.ForeignKey("Product", on_delete=models.CASCADE, null=True, blank=True)
