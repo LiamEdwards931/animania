@@ -20,7 +20,7 @@ class Product(models.Model):
     description = models.TextField()
     series = models.TextField(max_length=30)
     price = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])
-    slug = models.SlugField(unique=True, blank=True)
+    
     category = models.CharField(max_length=50)
     sub_category = models.CharField(max_length=50, blank=True)
     cost_price = models.DecimalField(max_digits=10,null=True, decimal_places=2, validators=[MinValueValidator(0)])
