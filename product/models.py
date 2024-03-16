@@ -2,7 +2,6 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from cloudinary.models import CloudinaryField
 from django.core.validators import MinValueValidator, MaxValueValidator
-from django.utils.text import slugify
 from decimal import Decimal, ROUND_DOWN
 
 # Create your models here.
@@ -20,7 +19,6 @@ class Product(models.Model):
     description = models.TextField()
     series = models.TextField(max_length=30)
     price = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])
-    
     category = models.CharField(max_length=50)
     sub_category = models.CharField(max_length=50, blank=True)
     cost_price = models.DecimalField(max_digits=10,null=True, decimal_places=2, validators=[MinValueValidator(0)])
@@ -37,12 +35,7 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
-    def save(self, *args, **kwargs):
-        # Autofills the Slug url based on the name of the product
-        if not self.slug:
-            self.slug = slugify(self.name)
-        super().save(*args, **kwargs)
-
+    
     @property
     def discounted_price(self):
         # Calculates a new discounted price: {{ product.discounted_price }}

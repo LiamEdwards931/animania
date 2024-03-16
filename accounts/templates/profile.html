@@ -43,10 +43,10 @@
             </div>
             {% if user.is_authenticated and user.is_superuser %}
             <div class="col-lg-6 col-12 profile-details text-center amendproduct-link">
-               <h2>Amend Products</h2>
+               <h2>Product Overview</h2>
                <form method="post" action="{% url 'amendProducts' %}">
                 {% csrf_token %}
-                <button class="address-btn" style="margin-top:5px;" type="submit">Amend Products</button>
+                <button class="address-btn" style="margin-top:5px;" type="submit">Product Overview</button>
             </form>
             </div>
             {% else %} 
