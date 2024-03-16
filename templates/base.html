@@ -38,7 +38,7 @@
                                 Shop By Series
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {% for product in products %}
+                                {% for product in products|dictsort:'series' %}
                                     <li><a class="dropdown-item" href="#">{{ product.series }}</a></li>
                                 {% endfor %}
                             </ul>

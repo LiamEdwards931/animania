@@ -538,7 +538,7 @@ table{
         height:300px;
     }
     .product-card{
-        height:610px;
+        height:auto;
     }
 }
 

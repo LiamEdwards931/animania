@@ -27,7 +27,7 @@
                         <a href="{% url 'product_details' product_id=products.id %}">
                             <img src="{{ products.image.url }}" class="card-img-top" alt="{{ products.name }}">
                         </a>
-                        <div class="card-body text-center">
+                        <div class="card-body product-card-body text-center">
                             {% if products.discounted %}
                                 <h6 class="percent-off card-title">{{ products.discount_amount }}% off</h6>
                             {% elif products.new %}
