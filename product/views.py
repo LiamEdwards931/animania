@@ -1,5 +1,6 @@
-from django.shortcuts import render,redirect,get_object_or_404
+from django.shortcuts import render,redirect,reverse,get_object_or_404
 from django.contrib.auth.decorators import user_passes_test
+from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Product
@@ -106,15 +107,23 @@ def all_products(request):
     """
     products = Product.objects.all()
     product_count = products.count()
+    query = None
 
     if request.GET:
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error('No products found.')
-                return redirect(reverse(''))
-    
-    
+                messages.error(request, "You didn't enter any search criteria!")
+                return redirect(reverse('allproducts'))
+            
+            queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(search_tags__icontains=query)
+            products = products.filter(queries)
+            product_count = products.count()
+
+    context = {
+        'products': products,
+        'search_term': query,
+    }
     context = {
         'products': products,
         'product_count': product_count,

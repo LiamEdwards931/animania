@@ -9,7 +9,11 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
-                        <li class="breadcrumb-item"><a id="breadcrumb-active"href="#">All products</a></li>
+                        {% if request.GET.q %}
+                            <li class="breadcrumb-item"><a id="breadcrumb-active" href="{% url 'allproducts' %}">Clear search</a></li>
+                        {% else %}
+                            <li class="breadcrumb-item"><a id="breadcrumb-active" href="#">All products</a></li>
+                        {% endif %}
                     </ol>
                 </nav>    
             </div>

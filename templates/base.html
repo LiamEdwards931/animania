@@ -73,7 +73,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <form metod="GET" action="" class="search-form">
+                <form metod="GET" action="{% url 'allproducts' %}" class="search-form">
                     <div id="search-container">
                         <input class="search-bar" type="text" name="q" placeholder="Search For Products..">
                         <button id="search-submit" type="submit"><i class="fa-solid fa-magnifying-glass i-link"></i></button> 
@@ -82,6 +82,7 @@
             </div>
         </div>
     </div>
+    <!-- Displays messages for the entire site -->
     {% for message in messages %}
         {% if message %}
             <div class="container-fluid" id="remove-message">
@@ -95,6 +96,7 @@
             </div>
         {% endif %}
     {% endfor %}
+    <!-- Displays form validation messages for the entire site -->
     {% if form.errors %}
         <div class="error-message text-center">
             {% for field, error_list in form.errors.items %}
