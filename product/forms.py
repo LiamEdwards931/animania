@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product
+from .models import Product,product_banner
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 
@@ -141,3 +141,4 @@ class ProductForm(forms.ModelForm):
             raise forms.ValidationError("All required fields must be filled in.")
 
         return cleaned_data
+    

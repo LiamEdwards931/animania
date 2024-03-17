@@ -23,6 +23,10 @@
                     {% csrf_token %}
                     <button class="address-btn" type="submit">Add New Product +</button>
                 </form>
+                <form action ="{% url 'newBanner' %}">
+                    {% csrf_token %}
+                    <button class="address-btn" type="submit">Add New Product Banner +</button>
+                </form>
             </div>
         </div>
     </div>

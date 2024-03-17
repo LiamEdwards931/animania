@@ -86,4 +86,4 @@ class Product(models.Model):
 
 class product_banner(models.Model):
     image = CloudinaryField('image')
-    series = models.ForeignKey("Product", on_delete=models.CASCADE, null=True, blank=True)
+    series = models.TextField(max_length=30, null=True)

@@ -2,9 +2,9 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q
 from django.contrib import messages
-from .models import Product
+from .models import Product, product_banner
 from . import forms
-from .forms import ProductForm
+from .forms import ProductForm, ProductBannerForm
 from django.http import HttpResponseRedirect
 
 # Create your views here.
@@ -97,6 +97,13 @@ def update_product(request, product_id):
         'product_id': product_id,
     }
     return render(request, 'update_product.html', context)
+
+
+def new_banner(request):
+    """Form view to upload a new banner associated with a product series."""
+
+    return render(request, 'new_banner.html')
+
 
 # ------------ All products view --------------------------------------
 
