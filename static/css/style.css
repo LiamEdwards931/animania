@@ -212,10 +212,12 @@ a:hover{
 
 .banner-visible{
     display:block;
+    z-index: -1;
 }
 
 .banner-hidden{
     display:none;
+    z-index: -1;
 }
 
 .indicator{
@@ -230,8 +232,8 @@ a:hover{
 
 .indicator-circle {
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
     border: 1px solid orange;
     border-radius: 50%;
     margin-right: 5px; 
@@ -248,7 +250,7 @@ a:hover{
     bottom:70px;
     left:20px;
     width:200px;
-    height:50px;
+    height:100px;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
