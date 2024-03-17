@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.contrib import messages
 from .models import Product, product_banner
 from . import forms
-from .forms import ProductForm, ProductBannerForm
+from .forms import ProductForm, BannerForm
 from django.http import HttpResponseRedirect
 
 # Create your views here.
@@ -17,10 +17,14 @@ def index(request):
     """
     messages_to_render = messages.get_messages(request)
     products = Product.objects.all()
+    banner = product_banner.objects.all()
+    new_products = products.filter(new=True)[:4]
 
     context = {
         'products': products,
+        'newProducts': new_products,
         'messages': messages_to_render,
+        'banner': banner,
     }
     
     return render(request, 'index.html', context)
@@ -100,10 +104,27 @@ def update_product(request, product_id):
 
 
 def new_banner(request):
-    """Form view to upload a new banner associated with a product series."""
+    """Form view to upload a new banner."""
+    if request.method == 'POST':
+        form = BannerForm(request.POST, request.FILES)
+        if form.is_valid():
+            series_name = form.cleaned_data.get('series')
+            if Product.objects.filter(series=series_name).exists():
+                form.save()
+                messages.success(request, 'Banner uploaded successfully')
+                return redirect('amendProducts')
+            else:
+                messages.error(request, 'No products for this series available, please add them if you want a banner.')
+        else:
+            messages.error(request, 'Form data is not valid. Please check the input.')
+    else: 
+        form = BannerForm()
 
-    return render(request, 'new_banner.html')
-
+    context = {
+        'form': form
+    }
+    
+    return render(request, 'new_banner.html', context)
 
 # ------------ All products view --------------------------------------
 

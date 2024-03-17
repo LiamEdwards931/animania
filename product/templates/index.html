@@ -11,9 +11,13 @@
                     <div class="banner-container">
                         <div class="indicator"></div>
                         <button type="button" class="shop-btn">Shop Sword Art Online Merch</button>
-                        <img class="img-banner banner-visible" src="{% static 'images/saobanner.jpg' %}" alt="sword art online image">
-                        <img class="img-banner banner-hidden" src="{% static 'images/demonslayerbanner.jpg' %}" alt="demon slayer image">
-                        <img class="img-banner banner-hidden" src="{% static 'images/tokyoghoulbanner.jpg' %}" alt="tokyo ghoul image">
+                        {% for banner in banner %}
+                            {% if forloop.first %}
+                                <img class="img-banner banner-visible" src="{{ banner.image.url }}" alt="{{ banner.series}} banner">
+                            {% else %}
+                                <img class="img-banner banner-hidden" src="{{ banner.image.url }}" alt="{{ banner.series}} banner">
+                            {% endif %}
+                        {% endfor %}
                     </div>   
                 </div>
             </div>            
@@ -53,14 +57,12 @@
     <section>
         <div class="container-fluid">
             <div class="row text-center">
-                <!-- this will change when the models are implemented -->
                 <div class="col-12 text-center new-item-container" style="background: url('{% static 'images/animebackground.jpg' %}') no-repeat 40% 60%; background-size:cover;">
                     <h2 class="main-section-header">New Items</h2>
-                    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            {% for product in products %}
-                                {% if product.new %}
-                                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="row">
+                        {% for product in newProducts %}
+                            {% if product.new %}
+                                    <div class="col-12 col-md-3">
                                         <div class="card text-center new-product-card">
                                             <div class="card-body d-flex flex-column justify-content-center align-items-center">
                                                 <img src="{{ product.image.url }}" class="card-img-top img-thumbnail new-image" alt="{{ product.name }}">
@@ -68,23 +70,15 @@
                                                 <p class="card-text">{{ product.series }}</p>
                                                 <p class="card-text">£{{ product.price}}</p>
                                                 <button class="btn btn-primary new-btn">Add to Cart</button>
-                                            </div>
-                                        </div>                                                                                
+                                            </div>                                                                                
+                                        </div>
                                     </div>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>                          
-                </div>  
-            </div>
+                                
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>                          
+            </div>  
         </div>
     </section>
     <section>

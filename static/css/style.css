@@ -220,8 +220,8 @@ a:hover{
 
 .indicator{
     position: absolute;
-    bottom: 10px;
-    right: 10px; 
+    bottom: 20px;
+    right: 5px; 
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
@@ -556,7 +556,7 @@ table{
     color:white;
 }
 
-.card-img-top{
+.all-products-card-image-top{
     height:400px;
 }
 
@@ -565,7 +565,7 @@ table{
 }
 
 @media screen and (max-width:480px){
-    .card-img-top{
+    .all-products-card-image-top{
         height:300px;
     }
     .product-card{
