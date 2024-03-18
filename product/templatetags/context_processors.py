@@ -11,5 +11,5 @@ def products_context(request):
         'categories': category_list,
     }
     
-    return context 
+    return context
 

@@ -136,36 +136,35 @@ def all_products(request):
     products = Product.objects.all()
     product_count = products.count()
     query = None
+    filtered_series = None
 
-    #  the Q Snippet of code is taken from the boutique ado walkthrough project
+    # Filtering by series
     if request.GET:
-        if 'q' in request.GET:
-            query = request.GET['q']
-            if not query:
-                messages.error(request, "Search field is empty!")
-                return redirect('allproducts')
-            
-            queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(search_tags__icontains=query)
-            products = products.filter(queries)
+        if 'series' in request.GET:
+            filtered_series = request.GET['series']
+            products = products.filter(series=filtered_series)
             product_count = products.count()
 
-    context = {
-        'products': products,
-        'search_term': query,
-    }
+    # Filtering by search query
+    if 'q' in request.GET:
+        query = request.GET['q']
+        if not query:
+            messages.error(request, "Search field is empty!")
+            return redirect('allproducts')
+
+        queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(search_tags__icontains=query)
+        products = products.filter(queries)
+        product_count = products.count()
+
     context = {
         'products': products,
         'product_count': product_count,
+        'search_term': query,
+        'filtered_series': filtered_series,  # Changed variable name here
     }
-    return render(request,'all_products.html', context)
 
-# returns the all products page but with filters.
-def product_filter(request):
-    """
-    View creating all the product objects and passing filters through them. 
-    """
-    products = Product.objects.all()
-    category = products.filter('series')
+    return render(request, 'all_products.html', context)
+
 
 # ------------ Product detail view ---------------------------------------
 

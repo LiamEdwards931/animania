@@ -39,7 +39,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 {% for series in series %}
-                                    <li><a class="dropdown-item" href="#">{{ series }}</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'allproducts' %}?series={{ series }}">{{ series }}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>

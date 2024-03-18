@@ -13,12 +13,12 @@
                         {% for banner in banner %}
                             {% if forloop.first %}
                                 <img class="img-banner banner-visible" src="{{ banner.image.url }}" alt="{{ banner.series}} banner">   
-                                <form class="banner-form-button form-visible" action="{% url 'allproducts' %}">
+                                <form method="get" class="banner-form-button form-visible" action="{% url 'allproducts' %}?series={{ banner.series}}">
                                     <button type="submit" class="shop-btn">{{ banner.series }}</button>
                                 </form>
                             {% else %}
                                 <img class="img-banner banner-hidden" src="{{ banner.image.url }}" alt="{{ banner.series}} banner">
-                                <form class="banner-form-button form-hidden" action="{% url 'allproducts' %}">
+                                <form method="get" class="banner-form-button form-hidden" action="{% url 'allproducts' %}?series={{ banner.series}}">
                                     <button type="submit" class="shop-btn">{{ banner.series }}</button>
                                 </form>
                             {% endif %}
