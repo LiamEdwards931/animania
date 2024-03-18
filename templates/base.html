@@ -51,8 +51,8 @@
                                 {% for category in categories %}
                                     <li><a class="dropdown-item" href="{% url 'allproducts' %}?category={{ category }}">{{ category }}</a></li>
                                 {% endfor %}
-                                    <li><a class="dropdown-item" href="{% url 'allproducts' %}?new">New products</a></li>
-                                <li><a class="dropdown-item" href="#">Sale products</a></li>
+                                <li><a class="dropdown-item" href="{% url 'allproducts' %}?new">New products</a></li>
+                                <li><a class="dropdown-item" href="{% url 'allproducts' %}?discounted">Sale products</a></li>
                             </ul>
                         </div>
                     </div>

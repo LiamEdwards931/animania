@@ -139,28 +139,28 @@ def all_products(request):
     filtered_series = None
     filtered_categories = None
     new_products = None
+    discounted_products = None
     
+    # Product filtering logic
     if request.GET:
-        if 'new' in request.GET:
-            new_products = Product.objects.filter(new=True)
-            products = new_products
-            product_count = new_products.count()
-
-    # Filtering by series - used the logic from boutique ado with my own extensions. 
-    if request.GET:
-        if 'series' in request.GET:
+        if 'discounted' in request.GET:
+            discounted_products = Product.objects.filter(discounted=True)
+            products = discounted_products
+            product_count = discounted_products.count()
+        elif 'new' in request.GET:
+                new_products = Product.objects.filter(new=True)
+                products = new_products
+                product_count = new_products.count()
+        elif 'series' in request.GET:
             filtered_series = request.GET['series']
             products = products.filter(series=filtered_series)
             product_count = products.count()
-
-    # Filtering by category
-    if request.GET:
-        if 'category' in request.GET:
+        elif 'category' in request.GET:
             filtered_categories = request.GET['category']
             products = products.filter(category=filtered_categories)
             product_count = products.count()
-    
-    # Filtering by search query - taken from boutqiue ado walkthrough
+
+   # Filtering by search query - taken from boutqiue ado walkthrough
     if 'q' in request.GET:
         query = request.GET['q']
         if not query:
@@ -178,6 +178,7 @@ def all_products(request):
         'filtered_series': filtered_series,
         'filtered_categories': filtered_categories,
         'newProducts': new_products,
+        'discountedProducts': discounted_products,
     }
 
     return render(request, 'all_products.html', context)
