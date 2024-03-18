@@ -252,7 +252,9 @@ a:hover{
     left:20px;
     width:200px;
     height:100px;
+    padding-top:25px;
     background-color: rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 0 0 rgb(0, 0, 0);
     color: white;
     border: none;
     box-shadow: 0px 0px 10px 10px rgb(255, 165, 0);
@@ -260,6 +262,7 @@ a:hover{
 
 .shop-btn:hover{
     background: rgba(265, 155, 0, 0.5);
+    color:white;
 }
 
 /* Media queries for hero images */

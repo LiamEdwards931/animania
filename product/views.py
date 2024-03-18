@@ -134,6 +134,7 @@ def all_products(request):
     on the all product page
     """
     products = Product.objects.all()
+    banners = product_banner.objects.all()
     product_count = products.count()
     query = None
     filtered_series = None
@@ -159,7 +160,7 @@ def all_products(request):
             filtered_categories = request.GET['category']
             products = products.filter(category=filtered_categories)
             product_count = products.count()
-
+                
    # Filtering by search query - taken from boutqiue ado walkthrough
     if 'q' in request.GET:
         query = request.GET['q']
@@ -173,6 +174,7 @@ def all_products(request):
 
     context = {
         'products': products,
+        'banners': banners,
         'product_count': product_count,
         'search_term': query,
         'filtered_series': filtered_series,
