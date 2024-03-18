@@ -210,12 +210,14 @@ a:hover{
     padding:0;
 }
 
-.banner-visible{
+.banner-visible, 
+.form-visible{
     display:block;
     z-index: -1;
 }
 
-.banner-hidden{
+.banner-hidden,
+.form-hidden{
     display:none;
     z-index: -1;
 }
@@ -245,7 +247,6 @@ a:hover{
 }
 
 .shop-btn{
-    z-index: 1;
     position:absolute;
     bottom:70px;
     left:20px;

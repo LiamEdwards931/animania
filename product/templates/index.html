@@ -10,14 +10,17 @@
                 <div class="col-12">
                     <div class="banner-container">
                         <div class="indicator"></div>
-                        <form action="{% url 'allproducts' %}">
-                            <button type="button" class="shop-btn">Shop All Anime Merch</button>
-                        </form>
                         {% for banner in banner %}
                             {% if forloop.first %}
                                 <img class="img-banner banner-visible" src="{{ banner.image.url }}" alt="{{ banner.series}} banner">   
+                                <form class="banner-form-button form-visible" action="{% url 'allproducts' %}">
+                                    <button type="submit" class="shop-btn">{{ banner.series }}</button>
+                                </form>
                             {% else %}
                                 <img class="img-banner banner-hidden" src="{{ banner.image.url }}" alt="{{ banner.series}} banner">
+                                <form class="banner-form-button form-hidden" action="{% url 'allproducts' %}">
+                                    <button type="submit" class="shop-btn">{{ banner.series }}</button>
+                                </form>
                             {% endif %}
                         {% endfor %}
                     </div>   
