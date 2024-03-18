@@ -49,9 +49,9 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 {% for category in categories %}
-                                    <li><a class="dropdown-item" href="#">{{ category }}</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'allproducts' %}?category={{ category }}">{{ category }}</a></li>
                                 {% endfor %}
-                                <li><a class="dropdown-item" href="#">New products</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'allproducts' %}?new">New products</a></li>
                                 <li><a class="dropdown-item" href="#">Sale products</a></li>
                             </ul>
                         </div>
