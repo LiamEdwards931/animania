@@ -63,10 +63,29 @@
                                         <br>
                                         <button style="margin-top:10px;"class="add-to-basket">Add to Basket</button>
                                     </form>
+                                    <a href ="{% url 'productreview' product_id=product.id %}">Leave a review</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2> Reviews for this Product</h2>
+                    <ul>
+                        {% for review in reviews %}
+                            {% if review %}
+                                <li>{{ review.rating }}, {{ review.content}}</li>
+                            {% else %}
+                                No reviews exist for this product
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    
+                        
                 </div>
             </div>
         </div>          

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product, product_banner
+from .models import Product, product_banner,ProductReview
 
 from django import forms
 from .models import Product,product_banner
@@ -180,3 +180,8 @@ class BannerForm(forms.ModelForm):
         model = product_banner
         fields = ("image","series")
 
+class ProductReview(forms.ModelForm):
+
+    class Meta:
+        model = ProductReview
+        fields = ("rating", "content")

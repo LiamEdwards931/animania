@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q
 from django.contrib import messages
-from .models import Product, product_banner
+from .models import Product, product_banner, ProductReview
 from . import forms
 from .forms import ProductForm, BannerForm
 from django.http import HttpResponseRedirect
@@ -209,8 +209,38 @@ def product_detail(request, product_id):
     View that uses the product id to highlight details of a project
     """
     product = get_object_or_404(Product, pk=product_id)
+    reviews = product.productreview_set.all()
     
     context = {
-        'product': product
+        'product': product,
+        'reviews': reviews
     }
     return render(request,'product_detail.html', context)
+
+#------------Product Review Form ------------------------------------------------
+
+def product_review(request, product_id):
+    """View that used the product id to leave a review for that product"""
+
+    product = get_object_or_404(Product, pk=product_id)
+    
+    if request.method == 'POST':
+        form = forms.ProductReview(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.product = product  
+            review.created_by = request.user  
+            review.save()
+            messages.success(request, 'Review uploaded successfully')
+            return redirect('product_details', product_id=product_id)
+        else:
+            messages.error(request, 'Could not upload your review please double check the inputs')
+    else: 
+        form = forms.ProductReview()
+
+    context = {
+        'form': form,
+        'product': product
+    }
+
+    return render(request, 'new_product_review.html', context)
