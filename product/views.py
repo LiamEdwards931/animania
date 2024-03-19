@@ -148,8 +148,13 @@ def all_products(request):
     sort_by = request.GET.get('sort')
     if sort_by == 'A-Z':
         products = products.order_by('series')
+    if sort_by == 'Z-A':
+        products = products.order_by('-series')
     elif sort_by == 'price low-high':
         products = products.order_by('price')
+    elif sort_by == 'price high-low':
+        products = products.order_by('-price')
+    
     
     
     # Product filtering logic for properties in the product: Used some help from boutique ado
@@ -159,12 +164,12 @@ def all_products(request):
             products = discounted_products
             product_count = discounted_products.count()
         elif 'new' in request.GET:
-                new_products = Product.objects.filter(new=True)
-                products = new_products
-                product_count = new_products.count()
+            new_products = Product.objects.filter(new=True)
+            products = new_products
+            product_count = new_products.count()
         elif 'series' in request.GET:
-            filtered_series = request.GET.getlist('series')
-            products = products.filter(series__in=filtered_series)
+            filtered_series = request.GET['series']
+            products = products.filter(series=filtered_series)
             product_count = products.count()
         elif 'category' in request.GET:
             filtered_categories = request.GET['category']

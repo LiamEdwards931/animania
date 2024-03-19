@@ -560,6 +560,11 @@ table{
 
 /* ----------------- All products.html style -------------------------------------------- */
 
+.filter-form-container{
+    display:none;
+}
+
+
 #results-found{
     float: right;
 }
