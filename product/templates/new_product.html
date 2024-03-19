@@ -25,85 +25,81 @@
                     <div class="form-group text-center">
                         <label for="id_name"><h5>Product Name</h5></label>
                         <br>
-                        <input type="text" name="name" class="form-control">
+                        {{ form.name }}
                     </div>
-            
                     <div class="form-group">
                         <label for="id_image"><h5>Product Image</h5></label>
                         <br>
-                        <input type="file" name="image" class="form-control-file">
+                        {{ form.image }}
                     </div>
-            
                     <div class="form-group">
                         <label for="id_alternative_images"><h5>Alternative Image</h5></label>
                         <br>
-                        <input type="file" name="alternative_images" class="form-control-file">
+                        {{ form.alternative_images }}
                     </div>
-            
                     <div class="form-group">
                         <label for="id_description"><h5>Product Description</h5></label>
                         <br>
-                        <textarea name="description" class="form-control"></textarea>
+                        {{ form.description }}
                     </div>
-            
                     <div class="form-group">
                         <label for="id_series"><h5>Product Series</h5></label>
                         <br>
-                        <input type="text" name="series" class="form-control">
+                        {{ form.series }}
                     </div>
-            
                     <div class="form-group">
-                        <label for="id_price"><h5>Sale Price</h5></label>
+                        <label for="id_price"><h5> Sale Price</h5></label>
                         <br>
-                        <input type="number" name="price" class="form-control">
+                        {{ form.price }}
                     </div>
-            
                     <div class="form-group">
-                        <label for="id_cost_price"><h5>Cost Price</h5></label>
+                        <label for="id_cost_price"><h5> Cost Price</h5></label>
                         <br>
-                        <input type="number" name="cost_price" class="form-control">
+                        {{ form.cost_price }}
                     </div>
-            
                     <div class="form-group">
                         <label for="id_category"><h5>Category</h5></label>
                         <br>
-                        <input type="text" name="category" class="form-control">
+                        {{ form.category }}
                     </div>
-            
                     <div class="form-group">
                         <label for="id_sub_category"><h5>Sub-Category</h5></label>
                         <br>
-                        <input type="text" name="sub_category" class="form-control">
+                        {{ form.sub_category }}
                     </div>
-            
                     <div class="form-group">
                         <label for="id_quantity_available"><h5>Quantity in stock</h5></label>
                         <br>
-                        <input type="number" name="quantity_available" class="form-control">
+                        {{ form.quantity_available }}
                     </div>
-            
                     <div class="form-group">
                         <label for="id_new"><h5>New Product?</h5></label>
                         <br>
-                        <input type="checkbox" name="new" class="form-check-input">
+                        {{ form.new }}
                     </div>
-            
                     <div class="form-group">
                         <label for="id_discounted"><h5>Discounted?</h5></label>
                         <br>
-                        <input type="checkbox" name="discounted" class="form-check-input">
+                        {{ form.discounted}}
                     </div>
-            
                     <div class="form-group">
                         <label for="id_discount_amount"><h5>Discount Amount</h5></label>
                         <br>
-                        <input type="number" name="discount_amount" class="form-control">
+                        {{ form.discount_amount}}
                     </div>
-            
-                    <button class="product-button" type="submit">Add Product</button>
+                    <div class="form-group">
+                        <label for="id_size"><h5>Size</h5></label>
+                        <br>
+                        {{ form.size}}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_related_products"><h5>Releated Products</h5></label>
+                        <br>
+                        {{ form.related_products}}
+                    </div>
+                    <button class="product-button" type ="submit">Add Product</button>
                 </form>
-            </div>            
             </div>
         </div>
     </div>
-{% endblock %}
+    {% endblock %}
