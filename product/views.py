@@ -144,7 +144,14 @@ def all_products(request):
     new_products = None
     discounted_products = None
     
-    # Product filtering logic
+    # Product filtering for organising the products on the page
+    sort_by = request.GET.get('sort')
+    if sort_by == 'A-Z':
+        products = products.order_by('series')
+    elif sort_by == 'price low-high':
+        products = products.order_by('price')
+    
+    # Product filtering logic for properties in the product: Used some help from boutique ado
     if request.GET:
         if 'discounted' in request.GET:
             discounted_products = Product.objects.filter(discounted=True)
@@ -162,6 +169,7 @@ def all_products(request):
             filtered_categories = request.GET['category']
             products = products.filter(category=filtered_categories)
             product_count = products.count()
+        
                 
    # Filtering by search query - taken from boutqiue ado walkthrough
     if 'q' in request.GET:

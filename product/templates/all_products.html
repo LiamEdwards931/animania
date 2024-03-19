@@ -25,6 +25,25 @@
     </div>
     <div class="container-fluid">
         <div class="row">
+            <form method="get" action="{% url 'allproducts' %}">
+                <label for="sort">Sort by:</label>
+                {% if request.GET.category %}
+                    <input type="hidden" name="category" value="{{ request.GET.category }}">
+                {% elif request.GET.series %}
+                    <input type="hidden" name="series" value="{{ request.GET.series }}">
+                {% elif request.GET.discounted %}
+                    <input type="hidden" name="discounted" value="{{ request.GET.discounted }}">
+                {% elif request.GET.new %}
+                    <input type="hidden" name="new" value="{{ request.GET.new }}">
+                {% endif %}
+                <select name="sort" id="sort">
+                    <option></option>
+                    <option value="A-Z">Products A-Z</option>
+                    <option value="price low-high">Price low-high</option>
+                    <option value="products">Clear Filters</option>    
+                </select>
+                <button type="submit">Apply Filter</button>
+            </form>
             {% for products in products %}
                 <div class="col-6 col-lg-3 col-md-4">
                     <div class="card product-card" style="margin-bottom:10px;">
@@ -58,6 +77,6 @@
                 </div>
             {% endfor %}   
         </div>
-    </div>
-             
+    </div>            
 {% endblock %}
+
