@@ -151,9 +151,9 @@
                 <div class="col-12 col-sm-4">
                     <h3>Anime Series</h3>
                     <ul class="useful-links">
-                        <li><a href="#">Demon Slayer</a></li>
-                        <li><a href="#">Sword Art</a></li>
-                        <li><a href="#">Tokyo Ghoul</a></li>
+                        {% for series in series %}
+                            <li><a class="dropdown-item" href="{% url 'allproducts' %}?series={{ series }}">{{ series }}</a></li>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="col-12 text-center">

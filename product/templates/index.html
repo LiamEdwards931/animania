@@ -43,17 +43,23 @@
                 </div>
                 <div class="col-4 text-center general-cat" id="pop-vinyl" style="background: url('{% static 'images/kiritopopvinyl.png' %}') no-repeat 50% 50%; background-size:contain;">
                     <div class ="opacity-film">
-                        <button type="button" class="product-btn">Shop All Pop-Vinyls</button>
+                        <button class="product-btn">
+                            <a href ="{% url 'allproducts' %}?category=Pop-Vinyl">Shop All Pop-Vinyl</a>
+                        </button> 
                     </div>
                 </div>
                 <div class="col-4 text-center general-cat general-cat-border" id="clothing-img"style="background: url('{% static 'images/nezukohoodie.png' %}') no-repeat 50% 50%; background-size:contain;">
                     <div class ="opacity-film">
-                        <button type="button" class="product-btn">Shop All Clothing</button>
+                        <button class="product-btn">
+                            <a href ="{% url 'allproducts' %}?category=Clothing">Shop All Clothing</a>
+                        </button> 
                     </div>
                 </div>
                 <div class="col-4 text-center general-cat" id="figure-img" style="background: url('{% static 'images/kanekifigure.png' %}') no-repeat 50% 50%; background-size:contain;">
                     <div class ="opacity-film">
-                        <button type="button" class="product-btn">Shop All Figures</button>
+                        <button class="product-btn">
+                            <a href ="{% url 'allproducts' %}?category=Figures">Shop All Figures</a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -64,6 +70,7 @@
             <div class="row text-center">
                 <div class="col-12 text-center new-item-container" style="background: url('{% static 'images/animebackground.jpg' %}') no-repeat 40% 60%; background-size:cover;">
                     <h2 class="main-section-header">New Items</h2>
+                    <a href="{% url 'allproducts' %}?new"><h6 class="main-section-link">Shop all New products</h6></a>
                     <div class="row">
                         {% for product in newProducts %}
                             {% if product.new %}
@@ -79,6 +86,34 @@
                                         </div>
                                     </div>
                                 
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>                          
+            </div>  
+        </div>
+    </section>
+    <section>
+        <div class="container-fluid">
+            <div class="row text-center">
+                <div class="col-12 text-center new-item-container" style="background: url('{% static 'images/animebackground.jpg' %}') no-repeat 40% 60%; background-size:cover;">
+                    <h2 class="main-section-header">Sale Items</h2>
+                    <a href="{% url 'allproducts' %}?discounted"><h6 class="main-section-link">Shop all Sale products</h6></a>
+                    <div class="row">
+                        {% for product in discount_products %}
+                            {% if product.discounted %}
+                                    <div class="col-12 col-md-3">
+                                        <div class="card text-center new-product-card">
+                                            <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                                                <img src="{{ product.image.url }}" class="card-img-top img-thumbnail new-image" alt="{{ product.name }}">
+                                                <h5 class="card-title percent-off">{{ product.discount_amount}}% Off</h5>
+                                                <h5 class="card-title">{{ product.name }}</h5>
+                                                <p class="card-text">{{ product.series }}</p>
+                                                <p class="card-text"><strike>£{{ product.price }}</strike>|£{{ product.discounted_price}}</p>
+                                                <button class="btn btn-primary new-btn">Add to Cart</button>
+                                            </div>                                                                                
+                                        </div>
+                                    </div>
                             {% endif %}
                         {% endfor %}
                     </div>

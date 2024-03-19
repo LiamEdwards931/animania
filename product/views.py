@@ -19,10 +19,12 @@ def index(request):
     products = Product.objects.all()
     banner = product_banner.objects.all()
     new_products = products.filter(new=True)[:4]
+    discount_products = products.filter(discounted=True)[:4]
 
     context = {
         'products': products,
         'newProducts': new_products,
+        'discount_products':discount_products,
         'messages': messages_to_render,
         'banner': banner,
     }
