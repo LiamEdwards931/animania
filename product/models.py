@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from cloudinary.models import CloudinaryField
 from django.core.validators import MinValueValidator, MaxValueValidator
 from decimal import Decimal, ROUND_DOWN
+from django.contrib.auth.models import User
 
 
 class Product(models.Model):
@@ -86,3 +87,12 @@ class Product(models.Model):
 class product_banner(models.Model):
     image = CloudinaryField('image')
     series = models.TextField(max_length=30, null=True)
+
+
+class ProductReview(models.Model):
+    product = models.ForeignKey("Product", on_delete=models.CASCADE)
+    rating = (models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(5)]))
+    content = models.CharField(max_length=250)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_on = models.DateField(auto_now_add=True)
+    updated_on = models.DateField(auto_now=True)
