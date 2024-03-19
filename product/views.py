@@ -151,6 +151,7 @@ def all_products(request):
     elif sort_by == 'price low-high':
         products = products.order_by('price')
     
+    
     # Product filtering logic for properties in the product: Used some help from boutique ado
     if request.GET:
         if 'discounted' in request.GET:
@@ -162,8 +163,8 @@ def all_products(request):
                 products = new_products
                 product_count = new_products.count()
         elif 'series' in request.GET:
-            filtered_series = request.GET['series']
-            products = products.filter(series=filtered_series)
+            filtered_series = request.GET.getlist('series')
+            products = products.filter(series__in=filtered_series)
             product_count = products.count()
         elif 'category' in request.GET:
             filtered_categories = request.GET['category']
