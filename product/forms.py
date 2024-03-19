@@ -1,7 +1,5 @@
 from django import forms
-from .models import Product,product_banner,Size
-from django.core.validators import MinValueValidator, MaxValueValidator
-
+from .models import Product, product_banner
 
 class ProductForm(forms.ModelForm):
     SERIES_CHOICES = [
@@ -26,14 +24,13 @@ class ProductForm(forms.ModelForm):
         ('The Rising of the Shield Hero', 'The Rising of the Shield Hero'),
         ('Akame ga Kill', 'Akame ga Kill'),
         ('Seven Deadly Sins', 'Seven Deadly Sins'),
-        
     ]
 
     CATEGORY_CHOICES = [
-        ('Figures','Figures'),
-        ('Pop-Vinyl','Pop-Vinyl'),
-        ('Clothing','Clothing'),
-        ('VideoGame','VideoGame')
+        ('Figures', 'Figures'),
+        ('Pop-Vinyl', 'Pop-Vinyl'),
+        ('Clothing', 'Clothing'),
+        ('VideoGame', 'VideoGame')
     ]
 
     SUB_CATEGORY_CHOICE = [
@@ -66,32 +63,31 @@ class ProductForm(forms.ModelForm):
     ]
 
     series = forms.ChoiceField(
-        choices=SERIES_CHOICES, 
+        choices=SERIES_CHOICES,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
-    
+
     category = forms.ChoiceField(
-        choices=CATEGORY_CHOICES, 
+        choices=CATEGORY_CHOICES,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
-    
+
     sub_category = forms.ChoiceField(
-        choices=SUB_CATEGORY_CHOICE, 
+        choices=SUB_CATEGORY_CHOICE,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
-    
+
     related_products = forms.ModelMultipleChoiceField(
-        queryset=Product.objects.all(), 
-        required=False, 
+        queryset=Product.objects.all(),
+        required=False,
         widget=forms.SelectMultiple(attrs={'class': 'form-control'})
     )
-    
+
     discount_amount = forms.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(100)],
         widget=forms.NumberInput(attrs={'class': 'form-control'}),
         required=False
     )
- 
+
     class Meta:
         model = Product
         fields = '__all__'
@@ -104,42 +100,8 @@ class ProductForm(forms.ModelForm):
             'quantity_available': forms.NumberInput(attrs={'class': 'form-control'}),
             'new': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
             'discounted': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
-            'size': forms.Select(attrs={'class': 'form-control'}),
+            'sizes': forms.SelectMultiple(attrs={'class': 'form-control'}),
         }
-
-    def clean(self):
-        cleaned_data = super().clean()
-        category = cleaned_data.get('category')
-        size = cleaned_data.get('size')
-        discounted = cleaned_data.get('discounted')
-        discount_amount = cleaned_data.get('discount_amount')
-        series = cleaned_data.get('series')
-        sub_category = cleaned_data.get('sub_category')
-        name = cleaned_data.get('name')
-        description = cleaned_data.get('description')
-        price = cleaned_data.get('price')
-
-        if discounted and not discount_amount:
-            raise forms.ValidationError('You must select a discount amount.')
-
-        if discount_amount is not None:
-            if discount_amount < 0:
-                raise forms.ValidationError('You cannot select a value less than 0 for the discount amount.')
-            elif discount_amount > 100:
-                raise forms.ValidationError('You cannot select a value higher than 100 for the discount amount.')
-            elif discount_amount % 1 != 0:
-                raise forms.ValidationError('Discount amount must be a whole number.')
-
-        if category == 'Clothing' and not size:
-            raise forms.ValidationError("Size is required for clothing items.")
-
-        search_tags = [tag for tag in [category, series, sub_category, name] if tag]
-        cleaned_data['search_tags'] = ', '.join(search_tags)
-
-        if not name or not description or not price:
-            raise forms.ValidationError("All required fields must be filled in.")
-
-        return cleaned_data
     
 class BannerForm(forms.ModelForm):
     

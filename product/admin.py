@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, product_banner,Size
+from .models import Product, product_banner
 
 # Register your models here.
 class ProductAdmin(admin.ModelAdmin):
@@ -9,7 +9,5 @@ class ProductAdmin(admin.ModelAdmin):
     readonly_fields = ('created_on', 'updated_on')
 
 admin.site.register(Product, ProductAdmin)
-
-admin.site.register(Size)
 
 admin.site.register(product_banner)
