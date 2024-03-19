@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product,product_banner
+from .models import Product,product_banner,Size
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 

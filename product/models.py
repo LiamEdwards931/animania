@@ -6,13 +6,17 @@ from decimal import Decimal, ROUND_DOWN
 
 # Create your models here.
 
-class Product(models.Model):
+class Size(models.Model):
     SIZE_CHOICES = [
     ('S', 'Small'),
     ('M', 'Medium'),
     ('L', 'Large'),
     ]
-    
+
+    Size = models.CharField(max_length=10, choices=SIZE_CHOICES, null=True, blank=True)
+
+class Product(models.Model):
+
     image = CloudinaryField('image',blank=True)
     alternative_images = CloudinaryField('image',blank=True)
     name = models.TextField(max_length=40)
@@ -30,7 +34,7 @@ class Product(models.Model):
     discount_amount = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(100)], null=True, blank=True)
     created_on = models.DateField(auto_now_add=True)
     updated_on = models.DateField(auto_now=True)
-    size = models.CharField(max_length=10, choices=SIZE_CHOICES, null=True, blank=True)
+    size_option = models.ForeignKey(Size, on_delete=models.SET_NULL, null=True, blank=True)
     
     def __str__(self):
         return self.name
@@ -82,7 +86,6 @@ class Product(models.Model):
             raise ValidationError({'price': 'Price must be greater than zero.'})
         if self.quantity_available < 0:
             raise ValidationError({'quantity_available': 'Quantity must be non-negative.'})
-
 
 class product_banner(models.Model):
     image = CloudinaryField('image')
