@@ -564,6 +564,32 @@ table{
     display:none;
 }
 
+.modal-header{
+    background-color: black;
+}
+
+.btn-close{
+    background-color:orange;
+}
+
+.modal-title {
+    font-family: "Luckiest Guy", cursive;
+    color:orange;
+    text-shadow: 2px solid white;
+}
+
+.modal-button{
+    background-color: black;
+    border: 1px solid orange;
+    margin-bottom: 5px;
+}
+
+.modal-button:hover{
+    color: orange;
+    background-color: black;
+    border:1px solid black;
+}
+
 
 #results-found{
     float: right;
