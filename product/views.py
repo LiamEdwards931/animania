@@ -210,10 +210,19 @@ def product_detail(request, product_id):
     """
     product = get_object_or_404(Product, pk=product_id)
     reviews = product.productreview_set.all()
+    review_amount = reviews.count()
+    # works out the average review score
+    total_rating = sum(review.rating for review in reviews)
+    if review_amount > 0:
+        average_rating = total_rating / review_amount
+    else:
+        average_rating = 0
     
     context = {
         'product': product,
-        'reviews': reviews
+        'reviews': reviews,
+        'review_amount': review_amount,
+        'average_rating': average_rating,
     }
     return render(request,'product_detail.html', context)
 

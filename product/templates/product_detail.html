@@ -15,37 +15,38 @@
             </div> 
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-                <div class="col-12">
-                    <div class="card mb-3" style="max-width: 100%; min-height:200px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="{{ product.image.url }}" class="img-fluid rounded-start main-img" alt="{{ products.name }}" style="height:100%;">   
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h2 class="card-title">{{ product.series }}</h2>
-                                    <p class="card-text">{{ product.name }}</p>
-                                    <p class="card-text">
-                                        {% if product.discounted %}
-                                            <strong><strike>£{{ product.price }}</strike> £{{ product.discounted_price }}</strong>
-                                            <h6 style ="width:25%;"class="percent-off">{{ product.discount_amount }}% off</h6>
-                                        {% elif product.new %}
-                                            <h6>Price:</h6>
-                                            <strong>£{{ product.price}}</strong>
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                    <div class="col-12">
+                        <div class="card mb-3" style="max-width: 100%; min-height:200px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ product.image.url }}" class="img-fluid rounded-start main-img" alt="{{ products.name }}" style="height:100%;">   
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body text-center">
+                                        <h2 class="card-title">{{ product.series }}</h2>
+                                        <p class="card-text">{{ product.name }}</p>
+                                        <p class="card-text text-center">
+                                            {% if product.discounted %}
+                                                <strong><strike>£{{ product.price }}</strike> £{{ product.discounted_price }}</strong>
+                                                <h6 class="percent-off">{{ product.discount_amount }}% off</h6>
+                                            {% elif product.new %}
+                                                <h6>Price:</h6>
+                                                <strong>£{{ product.price}}</strong>
+                                            {% else %}
+                                                <strong>£{{ product.price}}</strong>
+                                            {% endif %}
+                                        </p>
+                                        <p class ="card-text">{{ product.description }}</p>
+                                        {% if products.quantity_available <= 5 and product.quantity_available > 1 %}
+                                            <p style ="color:orange;" class="card-text">Hurry only <strong>{{product.quantity_available}}</strong> left!</p>
+                                        {% elif product.quantity_available <= 1 %}
+                                            <p style ="color:red;"class="card-text">Hurry only <strong>{{product.quantity_available}}</strong> left!</p>
                                         {% else %}
-                                            <strong>£{{ product.price}}</strong>
+                                            <p class="card-text">Quantity in stock: <strong>{{product.quantity_available}}</strong></p>
                                         {% endif %}
-                                    </p>
-                                    <p class ="card-text">{{ product.description }}</p>
-                                    {% if products.quantity_available <= 5 and product.quantity_available > 1 %}
-                                        <p style ="color:orange;" class="card-text">Hurry only <strong>{{product.quantity_available}}</strong> left!</p>
-                                    {% elif product.quantity_available <= 1 %}
-                                        <p style ="color:red;"class="card-text">Hurry only <strong>{{product.quantity_available}}</strong> left!</p>
-                                    {% else %}
-                                        <p class="card-text">Quantity in stock: <strong>{{product.quantity_available}}</strong></p>
-                                    {% endif %}
                                     <form>
                                         {% if product.category == 'Clothing' %}
                                             <label for="size">Choose your size:</label>
@@ -63,7 +64,6 @@
                                         <br>
                                         <button style="margin-top:10px;"class="add-to-basket">Add to Basket</button>
                                     </form>
-                                    <a href ="{% url 'productreview' product_id=product.id %}">Leave a review</a>
                                 </div>
                             </div>
                         </div>
@@ -71,22 +71,39 @@
                 </div>
             </div>
         </div>
+    </section>
+    <section>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h2> Reviews for this Product</h2>
-                    <ul>
-                        {% for review in reviews %}
-                            {% if review %}
-                                <li>{{ review.rating }}, {{ review.content}}</li>
-                            {% else %}
-                                No reviews exist for this product
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                    
-                        
+                    <h3>Customer reviews</h3> 
+                    <p>Average rating: <strong>{{ average_rating}}</strong> based on <strong>{{ review_amount }}</strong> Reviews.</p>
+                    <a class ="btn btn-primary" href ="{% url 'productreview' product_id=product.id %}">Leave a review</a>
                 </div>
             </div>
-        </div>          
+            <hr>
+            <div class="row">
+                {% for review in reviews %}
+                    <div class="col-12">
+                        <div class="row text-center mb-2">
+                            <div class="col-12 col-lg-3">
+                                <p>{{ review.rating }}</p>
+                            </div>
+                            <div class="col-12 col-lg-3">
+                                <p>{{ review.content }}</p>
+                                
+                            </div>
+                            <div class="col-12 col-lg-3">
+                                 <p>{{ review.created_by }}</p>
+                            </div>
+                            <div class="col-12 col-lg-3">
+                                <p><small>{{ review.created_on }}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </section>       
 {% endblock %}
