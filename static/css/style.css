@@ -473,6 +473,10 @@ footer{
     color:orange;
 }
 
+.my-reviews{
+    border: 1px solid black;
+}
+
 @media screen and (max-width: 997px){
     .amendproduct-link{
         display:none;

@@ -9,6 +9,7 @@ from django.urls import reverse
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from .models import Address
+from product.models import ProductReview
 # Create your views here.
 
 
@@ -29,10 +30,12 @@ def profile(request):
     # Fetch the addresses associated with the current user
     user = request.user
     addresses = Address.objects.filter(user=user)
+    reviews = ProductReview.objects.filter(created_by=user)
     
     context = {
         'user': user,
         'addresses': addresses,
+        'reviews': reviews,
     }
     return render(request, 'profile.html', context)
 
@@ -88,6 +91,18 @@ def addAddress(request):
         'form': form
     }
     return render(request, 'newaddress.html', context)
+
+
+def delete_review(request, review_id):
+    # Deletes the reviews object that the user has posted.
+    review = get_object_or_404(ProductReview, id=review_id)
+    if request.method == 'POST':
+        review.delete()
+        messages.success(request,'You have deleted the review for:{{review.product}}')
+    else:
+        messages.error(request,'Could not delete the {{review.product}} review')
+    return redirect('profile')
+
 
 
 def delete_address(request, address_id):

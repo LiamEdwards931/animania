@@ -26,7 +26,7 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6 col-12 profile-details text-center">
+            <div class="col-lg-4 col-12 profile-details text-center">
                 <h2> Your Details</h2>
                 <h6>Username</h6> 
                 <p>{{ user.username}}</p>
@@ -42,7 +42,7 @@
                 <br>                
             </div>
             {% if user.is_authenticated and user.is_superuser %}
-            <div class="col-lg-6 col-12 profile-details text-center amendproduct-link">
+            <div class="col-lg-4 col-12 profile-details text-center amendproduct-link">
                <h2>Product Overview</h2>
                <form method="post" action="{% url 'amendProducts' %}">
                 {% csrf_token %}
@@ -50,7 +50,7 @@
             </form>
             </div>
             {% else %} 
-            <div class="col-lg-6 col-12 profile-details text-center">
+            <div class="col-lg-4 col-12 profile-details text-center">
                 <h2>Address details</h2>
                 {% for address in addresses %}
                 <li>{{ address.door_number }} {{ address.street }}, {{ address.city }}, {{ address.state }}, {{ address.country }} - {{ address.postal_code }}</li>
@@ -70,6 +70,36 @@
                 </form>
             </div>
             {% endif %}
+            <div class="col-lg-4 col-12 profile-details text-center">
+                <h2>My Reviews</h2>
+                {% for review in reviews %}
+                <div class="text-center my-reviews">
+                    <h6>{{ review.product }}</h6> 
+                    {% for star in "x"|rjust:review.rating %}
+                        <i class="fas fa-star"></i>
+                    {% endfor %} 
+                    <p>{{review.title}} </p>
+                    <p> uploaded on: {{ review.created_on}}</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <form method ="post" action ="">
+                                {% csrf_token %}
+                                <button class="address-btn" type="submit">Update Review</button>
+                            </form>
+                        </div>
+                        <div class="col-6">
+                            <form method="post" action="{% url 'delete_review' review.id %}">
+                                {% csrf_token %}
+                                <button class="address-btn" type="submit">Delete Review</button>
+                            </form>
+                        </div>
+                    </div> 
+                </div>
+                {% empty %}
+                <p>No reviews posted</p>
+                <p>Browse and leave a review for our <a style="color:orange; text-decoration:underline" href="{% url 'allproducts' %}">Products!</a></p>
+                {% endfor %}
+            </div>
         </div>
     </div>
     {% endblock %}
