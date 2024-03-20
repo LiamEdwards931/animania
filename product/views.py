@@ -149,6 +149,11 @@ def all_products(request):
     filtered_categories = None
     new_products = None
     discounted_products = None
+
+    paginator = Paginator(products, 1)
+
+    page_number = request.GET.get('page')
+    paginated_products = paginator.get_page(page_number)
     
     # Product filtering for organising the products on the page
     sort_by = request.GET.get('sort')
@@ -203,6 +208,7 @@ def all_products(request):
         'filtered_categories': filtered_categories,
         'newProducts': new_products,
         'discountedProducts': discounted_products,
+        'paginated_products': paginated_products,
     }
 
     return render(request, 'all_products.html', context)
