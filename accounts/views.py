@@ -9,7 +9,8 @@ from django.urls import reverse
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from .models import Address
-from product.models import ProductReview
+from product.models import ProductReview, Product
+from product.forms import ProductReviewForm
 # Create your views here.
 
 
@@ -93,18 +94,6 @@ def addAddress(request):
     return render(request, 'newaddress.html', context)
 
 
-def delete_review(request, review_id):
-    # Deletes the reviews object that the user has posted.
-    review = get_object_or_404(ProductReview, id=review_id)
-    if request.method == 'POST':
-        review.delete()
-        messages.success(request,'You have deleted the review for:{{review.product}}')
-    else:
-        messages.error(request,'Could not delete the {{review.product}} review')
-    return redirect('profile')
-
-
-
 def delete_address(request, address_id):
     # Adds a button to the addresses in the profile.html page to delete
     address = get_object_or_404(Address, id=address_id)
@@ -115,6 +104,7 @@ def delete_address(request, address_id):
     else:
         messages.error(request,'Could not Delete this address')
     return redirect('profile')
+
 
 def update_address(request, address_id):
     # View to update the address
@@ -136,3 +126,35 @@ def update_address(request, address_id):
         'address_id': address_id,
     }
     return render(request, 'update_address.html', context)
+
+def delete_review(request, review_id):
+    # Deletes the reviews object that the user has posted.
+    review = get_object_or_404(ProductReview, id=review_id)
+    if request.method == 'POST':
+        review.delete()
+        messages.success(request,'You have successfully deleted this review')
+    else:
+        messages.error(request,'Could not delete the selected review')
+    return redirect('profile')
+
+
+def update_review(request, review_id):
+     # View to update reviews that users have posted
+    review = get_object_or_404(ProductReview, id=review_id)
+    
+    if request.method == 'POST':
+        # Populate the form with the existing address data and the new POST data
+        form = ProductReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'review updated successfully')
+            return redirect('profile')
+    else:
+        # Populate the form with the existing address data
+        form = ProductReviewForm(instance=review)
+    
+    context = {
+        'form': form,
+        'review_id': review_id,
+    }
+    return render(request, 'update_product_review.html', context)

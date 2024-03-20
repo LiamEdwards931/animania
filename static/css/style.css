@@ -475,6 +475,8 @@ footer{
 
 .my-reviews{
     border: 1px solid black;
+    margin-bottom:5px;
+    padding-bottom:5px;
 }
 
 @media screen and (max-width: 997px){

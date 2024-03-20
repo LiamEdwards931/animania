@@ -181,7 +181,7 @@ class BannerForm(forms.ModelForm):
         fields = ("image","series")
 
 
-class ProductReview(forms.ModelForm):
+class ProductReviewForm(forms.ModelForm):
 
     numberChoice = [
         (1, '1'),

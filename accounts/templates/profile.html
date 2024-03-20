@@ -72,34 +72,54 @@
             {% endif %}
             <div class="col-lg-4 col-12 profile-details text-center">
                 <h2>My Reviews</h2>
-                {% for review in reviews %}
-                <div class="text-center my-reviews">
-                    <h6>{{ review.product }}</h6> 
-                    {% for star in "x"|rjust:review.rating %}
-                        <i class="fas fa-star"></i>
-                    {% endfor %} 
-                    <p>{{review.title}} </p>
-                    <p> uploaded on: {{ review.created_on}}</p>
-                    <div class="row">
-                        <div class="col-6">
-                            <form method ="post" action ="">
-                                {% csrf_token %}
-                                <button class="address-btn" type="submit">Update Review</button>
-                            </form>
-                        </div>
-                        <div class="col-6">
-                            <form method="post" action="{% url 'delete_review' review.id %}">
-                                {% csrf_token %}
-                                <button class="address-btn" type="submit">Delete Review</button>
-                            </form>
-                        </div>
-                    </div> 
-                </div>
-                {% empty %}
-                <p>No reviews posted</p>
-                <p>Browse and leave a review for our <a style="color:orange; text-decoration:underline" href="{% url 'allproducts' %}">Products!</a></p>
-                {% endfor %}
+                <!-- Button trigger modal -->
+                <button type="button" class="address-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    My reviews
+                </button>
             </div>
         </div>
     </div>
-    {% endblock %}
+  <!-- Modal pop-up for all products -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">All Reviews posted by {{ user.username }}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            {% for review in reviews %}
+            <div class="text-center my-reviews">
+                <h6>{{ review.product }}</h6> 
+                {% for star in "x"|rjust:review.rating %}
+                    <i class="fas fa-star"></i>
+                {% endfor %} 
+                <p>{{review.title}} </p>
+                <p> Uploaded on: {{ review.created_on}}</p>
+                <div class="row">
+                    <div class="col-6">
+                        <form action="{% url 'update_review' review.id %}" method="get">
+                            {% csrf_token %}
+                            <button class="address-btn" type="submit">Update Review</button>
+                        </form>
+                    </div>
+                    <div class="col-6">
+                        <form method="post" action="{% url 'delete_review' review.id %}">
+                            {% csrf_token %}
+                            <button class="address-btn" type="submit">Delete Review</button>
+                        </form>
+                    </div>
+                </div> 
+            </div>
+            {% empty %}
+            <p>No reviews posted</p>
+            <p>Browse and leave a review for our <a style="color:orange; text-decoration:underline" href="{% url 'allproducts' %}">Products!</a></p>
+            {% endfor %}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

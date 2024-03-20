@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} New Product {% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'allproducts' %}">All products</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'profile' %}">Profile</a></li>
+                        <li class="breadcrumb-item"><a id="breadcrumb-active"href="#">Update Review</a></li>
+                    </ol>
+                </nav>    
+            </div>
+        </div>
+    </div>
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>Update Review for {{ review.product }}</h2>
+                    <form method ='post'>
+                        {% csrf_token %}
+                        <h6>Title</h6>
+                        <p>{{form.title}}</p>
+                        <br>
+                        <h6>Star Rating</h6>
+                        <p>{{form.rating}}</p>
+                        <br>
+                        <p>{{form.content}}</p>
+                        <button class="btn btn-primary modal-button" type="submit">Submit</button>
+                    </form>  
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
