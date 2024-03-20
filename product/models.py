@@ -90,6 +90,7 @@ class product_banner(models.Model):
 
 
 class ProductReview(models.Model):
+    title = models.CharField(max_length=50,null=True)
     product = models.ForeignKey("Product", on_delete=models.CASCADE)
     rating = (models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(5)]))
     content = models.CharField(max_length=250)
