@@ -77,7 +77,11 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <h3>Customer reviews</h3> 
-                    <p>Average rating: <strong>{{ average_rating}}</strong> based on <strong>{{ review_amount }}</strong> Reviews.</p>
+                    <p>
+                        Average rating:
+                        {% for star in "x"|rjust:average_rating%}<i class="fas fa-star"></i>{% endfor %}
+                        </strong> based on <strong>{{ review_amount }}</strong> Reviews.
+                    </p>
                     <a class ="btn btn-primary" href ="{% url 'productreview' product_id=product.id %}">Leave a review</a>
                 </div>
             </div>
@@ -87,7 +91,10 @@
                     <div class="col-12">
                         <div class="row text-center mb-2">
                             <div class="col-12 col-lg-3">
-                                <p>{{ review.rating }}</p>
+                            <!--Creates stared based on the review.rating value-->
+                                {% for star in "x"|rjust:review.rating %}
+                                    <i class="fas fa-star"></i>
+                                {% endfor %}
                             </div>
                             <div class="col-12 col-lg-3">
                                 <p>{{ review.content }}</p>
