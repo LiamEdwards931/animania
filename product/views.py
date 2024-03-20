@@ -6,6 +6,7 @@ from .models import Product, product_banner, ProductReview
 from . import forms
 from .forms import ProductForm, BannerForm
 from django.http import HttpResponseRedirect
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -38,9 +39,14 @@ def amendProducts(request):
     Gets all product instances.
     """
     products = Product.objects.all()
+    paginator = Paginator(products, 5)
 
+    page_number = request.GET.get('page')
+    paginated_table = paginator.get_page(page_number)
+    
     context = {
         'products': products,
+        'paginated_table': paginated_table,
     }
         
     return render(request, 'amendproducts.html', context )

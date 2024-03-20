@@ -31,7 +31,7 @@
             </div>
         </div>
     </div>
-    {% for product in products %}
+    {% for product in paginated_table %}
     <div id="modal-{{ product.id }}" class="full-detail-container" style="display: none;">
         <span class="close-product-details">&times;</span>
             <h4>All details for <em>{{ product.name }}</em></h4>
@@ -86,7 +86,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for product in products %}
+                            {% for product in paginated_table %}
                             <tr class="product-data">
                                 <td>
                                     <button class="product-button" data-product-id="{{ product.id }}">All details</button>
@@ -148,6 +148,35 @@
             </div>
         </div>
     </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          {% if paginated_table.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ paginated_table.previous_page_number }}">Previous</a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">Previous</span>
+          </li>
+          {% endif %}
+          
+          {% for num in paginated_table.paginator.page_range %}
+          <li class="page-item {% if num == paginated_table.number %}active{% endif %}">
+            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+          </li>
+          {% endfor %}
+          
+          {% if paginated_table.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ paginated_table.next_page_number }}">Next</a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">Next</span>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>      
     {% block script %}
     <script src="{% static 'javascript/product.js' %}"></script>
     {% endblock %}
