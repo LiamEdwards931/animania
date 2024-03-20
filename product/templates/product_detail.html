@@ -82,7 +82,7 @@
                         {% for star in "x"|rjust:average_rating%}<i class="fas fa-star"></i>{% endfor %}
                         </strong> based on <strong>{{ review_amount }}</strong> Reviews.
                     </p>
-                    <a class ="btn btn-primary" href ="{% url 'productreview' product_id=product.id %}">Leave a review</a>
+                    <a class ="btn btn-primary modal-button" href ="{% url 'productreview' product_id=product.id %}">Leave a review</a>
                 </div>
             </div>
             <hr>
@@ -91,17 +91,14 @@
                     <div class="col-12">
                         <div class="row text-center mb-2">
                             <div class="col-12 col-lg-3">
+                                <p>{{ review.created_by }}</p>
+                           </div>
+                            <div class="col-12 col-lg-6">
                             <!--Creates stared based on the review.rating value-->
                                 {% for star in "x"|rjust:review.rating %}
                                     <i class="fas fa-star"></i>
                                 {% endfor %}
-                            </div>
-                            <div class="col-12 col-lg-3">
                                 <p>{{ review.content }}</p>
-                                
-                            </div>
-                            <div class="col-12 col-lg-3">
-                                 <p>{{ review.created_by }}</p>
                             </div>
                             <div class="col-12 col-lg-3">
                                 <p><small>{{ review.created_on }}</small></p>

@@ -16,16 +16,35 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h2>Add new Review</h2>
-                <form method ='post'>
-                    {% csrf_token %}
-                    {{ form }}
-                    <button type="submit">Submit</button>
-                </form>
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card mb-3" style="max-width: 100%; min-height:200px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ product.image.url }}" class="img-fluid rounded-start main-img" alt="{{ products.name }}" style="height:100%;">   
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body text-center">
+                                    <h2>Add Review for {{ product.name }}</h2>
+                                    <form method ='post'>
+                                        {% csrf_token %}
+                                        <h6>Title</h6>
+                                        <p>{{form.title}}</p>
+                                        <br>
+                                        <h6>Star Rating</h6>
+                                        <p>{{form.rating}}</p>
+                                        <br>
+                                        <p>{{form.content}}</p>
+                                        <button class="btn btn-primary modal-button" type="submit">Submit</button>
+                                    </form>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    {% endblock %}
+    </section>
+{% endblock %}

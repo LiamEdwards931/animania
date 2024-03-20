@@ -180,8 +180,33 @@ class BannerForm(forms.ModelForm):
         model = product_banner
         fields = ("image","series")
 
+
 class ProductReview(forms.ModelForm):
 
+    numberChoice = [
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+    ]
+    
+    
+    
+    title = forms.CharField(
+        max_length=100, required=True, widget=forms.TextInput(
+        attrs={'placeholder': 'Enter Title'}
+        ))
+    
+    rating = forms.ChoiceField(
+        choices = numberChoice, 
+        widget=forms.Select()
+    )
+    
+    content = forms.CharField(widget=forms.Textarea(
+        attrs={'class': 'review-textarea', 'placeholder': 'Enter Your Review Here'}))
+
+    
     class Meta:
         model = ProductReview
-        fields = ("rating", "content")
+        fields = ("title","rating", "content")
