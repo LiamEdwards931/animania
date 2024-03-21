@@ -65,6 +65,15 @@ def amendProducts(request):
             filtered_categories = request.GET['category']
             products = products.filter(category=filtered_categories)
 
+    if 'a' in request.GET:
+        query = request.GET['a']
+        if not query:
+            messages.error(request, "Search field is empty!")
+            return redirect('allproducts')
+
+        queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(search_tags__icontains=query)
+        products = products.filter(queries)
+
     paginator = Paginator(products, 5)
     page_number = request.GET.get('page')
     paginated_table = paginator.get_page(page_number)

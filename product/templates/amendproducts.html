@@ -21,16 +21,33 @@
                 <h2>Amend Products</h2>
                 <form action ="{% url 'newProduct' %}">
                     {% csrf_token %}
-                    <button class="address-btn" type="submit">Add New Product +</button>
+                    <button class="btn btn-primary modal-button" type="submit">Add New Product +</button>
                 </form>
-                <br>
-                <button type="button" class="btn btn-primary modal-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Filter products
-                </button>
                 <br>
                 <form action ="{% url 'newBanner' %}">
                     {% csrf_token %}
-                    <button class="address-btn" type="submit">Add New Product Banner +</button>
+                    <button class="btn btn-primary modal-button"" type="submit">Add New Product Banner +</button>
+                </form>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-primary modal-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Filter products
+                        </button>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+                <form metod="GET" action="{% url 'amendProducts' %}" class="search-form">
+                    <div id="data-search">
+                        <input class="search-bar" type="text" name="a" placeholder="Search The Database">
+                        <button id="search-submit" type="submit"><i class="fa-solid fa-magnifying-glass i-link"></i></button> 
+                    </div>
                 </form>
             </div>
         </div>
