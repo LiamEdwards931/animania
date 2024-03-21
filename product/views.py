@@ -39,8 +39,33 @@ def amendProducts(request):
     Gets all product instances.
     """
     products = Product.objects.all()
-    paginator = Paginator(products, 5)
+    
+    sort_by = request.GET.get('sort')
+    if sort_by == 'A-Z':
+        products = products.order_by('series')
+    if sort_by == 'Z-A':
+        products = products.order_by('-series')
+    elif sort_by == 'price low-high':
+        products = products.order_by('price')
+    elif sort_by == 'price high-low':
+        products = products.order_by('-price')
+    
+    # Product filtering logic for properties in the product: Used some help from boutique ado
+    if request.GET:
+        if 'discounted' in request.GET:
+            discounted_products = Product.objects.filter(discounted=True)
+            products = discounted_products
+        elif 'new' in request.GET:
+            new_products = Product.objects.filter(new=True)
+            products = new_products
+        elif 'series' in request.GET:
+            filtered_series = request.GET['series']
+            products = products.filter(series=filtered_series)
+        elif 'category' in request.GET:
+            filtered_categories = request.GET['category']
+            products = products.filter(category=filtered_categories)
 
+    paginator = Paginator(products, 5)
     page_number = request.GET.get('page')
     paginated_table = paginator.get_page(page_number)
     
