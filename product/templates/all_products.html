@@ -30,7 +30,7 @@
                     Filter products
                 </button>
             </div>
-            {% for products in paginated_products %}
+            {% for products in products %}
                 <div class="col-6 col-lg-3 col-md-4">
                     <div class="card product-card" style="margin-bottom:10px;">
                         <a href="{% url 'product_details' product_id=products.id %}">
@@ -67,7 +67,7 @@
     <!-- Bootstrap pagination -->
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-          {% if paginated_products.has_previous %}
+          {% if products.has_previous %}
           <li class="page-item">
             <a class="page-link" href="?page={{ paginated_table.previous_page_number }}">Previous</a>
           </li>
@@ -77,13 +77,13 @@
           </li>
           {% endif %}
           
-          {% for num in paginated_products.paginator.page_range %}
+          {% for num in products.paginator.page_range %}
           <li class="page-item {% if num == paginated_table.number %}active{% endif %}">
             <a class="page-link" href="?page={{ num }}">{{ num }}</a>
           </li>
           {% endfor %}
           
-          {% if paginated_products.has_next %}
+          {% if products.has_next %}
           <li class="page-item">
             <a class="page-link" href="?page={{ paginated_table.next_page_number }}">Next</a>
           </li>
@@ -93,7 +93,7 @@
           </li>
           {% endif %}
         </ul>
-      </nav>      
+    </nav>      
     <!--- Filter Modal-->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">

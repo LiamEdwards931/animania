@@ -150,11 +150,6 @@ def all_products(request):
     new_products = None
     discounted_products = None
 
-    paginator = Paginator(products, 1)
-
-    page_number = request.GET.get('page')
-    paginated_products = paginator.get_page(page_number)
-    
     # Product filtering for organising the products on the page
     sort_by = request.GET.get('sort')
     if sort_by == 'A-Z':
@@ -165,8 +160,6 @@ def all_products(request):
         products = products.order_by('price')
     elif sort_by == 'price high-low':
         products = products.order_by('-price')
-    
-    
     
     # Product filtering logic for properties in the product: Used some help from boutique ado
     if request.GET:
@@ -199,6 +192,12 @@ def all_products(request):
         products = products.filter(queries)
         product_count = products.count()
 
+    page_size = 32
+    paginator = Paginator(products,page_size)
+    page_number = request.GET.get('page')
+    page_product = paginator.get_page(page_number)
+    products = page_product
+
     context = {
         'products': products,
         'banners': banners,
@@ -208,7 +207,7 @@ def all_products(request):
         'filtered_categories': filtered_categories,
         'newProducts': new_products,
         'discountedProducts': discounted_products,
-        'paginated_products': paginated_products,
+        'page_size': page_size,
     }
 
     return render(request, 'all_products.html', context)
