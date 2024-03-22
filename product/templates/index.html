@@ -87,7 +87,10 @@
                                                 <h5 class="card-title">{{ product.name }}</h5>
                                                 <p class="card-text">{{ product.series }}</p>
                                                 <p class="card-text">£{{ product.price}}</p>
-                                                <button class="btn btn-primary new-btn">Add to Cart</button>
+                                                <form method ="post" action="{% url 'product_details' product.id %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit"class="btn btn-primary new-btn">View Product</button>
+                                                </form>
                                             </div>                                                                                
                                         </div>
                                     </div>
@@ -116,7 +119,10 @@
                                                 <h5 class="card-title">{{ product.name }}</h5>
                                                 <p class="card-text">{{ product.series }}</p>
                                                 <p class="card-text"><strike>£{{ product.price }}</strike>|£{{ product.discounted_price}}</p>
-                                                <button class="btn btn-primary new-btn">Add to Cart</button>
+                                                <form method ="post" action="{% url 'product_details' product.id %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-primary new-btn">View Product</button>
+                                                </form>
                                             </div>                                                                                
                                         </div>
                                     </div>
