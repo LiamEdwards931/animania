@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>Your Basket</h2>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-3 d-none">
+                    <h6>Product</h6>
+                </div>
+                <div class="col-md-3 d-none">
+                    <h6>Product details</h6>
+                </div>
+                <div class="col-md-3 d-none">
+                    <h6>Quantity</h6>
+                </div>
+                <div class="col-md-3 d-none">
+                    <h6>Total</h6>
+                </div>
+            </div>
+            <hr>
+            {% for product in products %}                  
+                <div class="row mt-5 product-basket-row">
+                    <div class="col-12 col-lg-3">
+                        <!-- <h5 class="card-title">{{ product.series}}</h5> -->
+                        <img id="basket-product-image"src="{{ product.image.url }}" class="img-fluid rounded-start" alt="{{ product.name}}">
+                    </div>
+                    <div class="col-12 col-lg-3 text-left">
+                        <p><strong>{{product.name}}</strong></p>
+                        {% if product.size %}
+                            Size: <p>{{ product.size }}</p>
+                        {% endif %}
+                        {% if product.discounted %}
+                            <strike><p>£{{ product.price}} </strike>£{{ product.discounted_price}}</p>  
+                        {% else %}
+                            <p>£{{ product.price}}</p>
+                        {% endif %}
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <form method ="post">
+                            {% csrf_token %}
+                            <h6>Quantity</h6>
+                            <button class="quantity-btn minus">-</button>
+                            <input  style="width:50px; margin-top:10px;" type="number" class="quantity" value="1">
+                            <button class="quantity-btn plus">+</button>
+                        </form>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        {% if product.discounted %}
+                            <strike><p>£{{ product.price}} </strike>£{{ product.discounted_price}}</p>  
+                        {% else %}
+                            <p>£{{ product.price}}</p>
+                        {% endif %}
+                    </div>  
+                </div>
+                <hr>   
+            {% endfor %}
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <h3>Grand Total: 
+                        {% if grand_total %}
+                            £{{ grand_total}}
+                        {% else %}
+                            £0.00
+                        {% endif %}
+                    </h3>
+                    <p>Spend another <strong>£{{ free_delivery_delta }} </strong>for free delivery</p>
+                    <button id="checkout-button" class="btn btn-primary modal-button">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

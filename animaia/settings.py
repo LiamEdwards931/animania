@@ -21,6 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
 PRODUCT_TEMPLATES_DIR = os.path.join(BASE_DIR,'product','templates')
 ACCOUNTS_TEMPLATES_DIR = os.path.join(BASE_DIR, 'accounts', 'templates')
+BASKET_TEMPLATES_DIR = os.path.join(BASE_DIR,'basket','templates')
 
 
 # Quick-start development settings - unsuitable for production
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'product',
     'accounts',
+    'basket',
 ]
 
 MIDDLEWARE = [
@@ -68,7 +70,8 @@ TEMPLATES = [
         'DIRS': [
             TEMPLATES_DIR,
             PRODUCT_TEMPLATES_DIR,
-            ACCOUNTS_TEMPLATES_DIR
+            ACCOUNTS_TEMPLATES_DIR,
+            BASKET_TEMPLATES_DIR,
             ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -78,6 +81,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'product.templatetags.context_processors.products_context',
+                'basket.templatetags.contexts.basket_context',
             ],
         },
     },
@@ -153,3 +157,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = "profile"
 LOGOUT_REDIRECT_URL = "index"
 
+DELIVERY_AMOUNT = 75
+DELIVERY_COST = 10

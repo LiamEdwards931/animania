@@ -1,6 +1,7 @@
 /* --------------------------------general styling ------------------*/
 html{
     height:100%;
+    width:100%;
 }
 
 body{
@@ -250,6 +251,22 @@ a:hover{
     font-weight: bold;
 }
 
+.delivery-info-container{
+    background-color: orange;
+    color:white;
+    text-shadow: 2px 0 0 black;
+}
+
+#close-delivery{
+    float:left;
+    margin-left:10px;
+    cursor:pointer;
+}
+
+#close-delivery:hover{
+    color:orange;
+}
+
 /* ------------------------------------------banner images css -----------------------*/
 .banner-container{
     height:690px;
@@ -281,7 +298,7 @@ a:hover{
 
 .indicator{
     position: absolute;
-    bottom: 20px;
+    bottom: 25px;
     right: 5px; 
     color: white;
     padding: 5px 10px;
@@ -305,7 +322,7 @@ a:hover{
 
 .shop-btn{
     position:absolute;
-    bottom:70px;
+    bottom:80px;
     left:20px;
     width:200px;
     height:100px;
@@ -666,3 +683,17 @@ table{
     }
 }
 
+/*------------- Basket.html style -------*/
+
+.product-basket-row{
+    padding-bottom:15px;
+}
+
+#basket-product-image{
+    width:150px;
+    height:150px;
+}
+
+#checkout-button{
+    float:right;
+}
