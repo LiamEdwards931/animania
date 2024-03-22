@@ -69,12 +69,12 @@ def amendProducts(request):
         query = request.GET['a']
         if not query:
             messages.error(request, "Search field is empty!")
-            return redirect('allproducts')
+            return redirect('amendProducts')
 
         queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(search_tags__icontains=query)
         products = products.filter(queries)
 
-    paginator = Paginator(products, 5)
+    paginator = Paginator(products, 50)
     page_number = request.GET.get('page')
     paginated_table = paginator.get_page(page_number)
     

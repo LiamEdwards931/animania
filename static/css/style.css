@@ -51,6 +51,35 @@ a:hover{
     color:orange;
 }
 
+/* Pagination button CSS */
+.page-link {
+    background-color:black;
+    color:white;
+}
+
+.active > .page-link{
+    background-color:orange;
+    border: white;
+}
+
+.page-link:hover{
+    background-color:orange;
+    color:white;
+}
+
+.page-item-direction > .page-link{
+    background-color: orange;
+}
+
+.page-item-direction > .page-link:hover{
+    background-color: black;
+    color:orange;
+}
+
+.disabled > .page-link{
+    background-color: rgba(265, 155, 0, 0.5);
+}
+
 /* -------------------------------------------Navbar CSS ----------*/
 .navbar {
     padding: 0;

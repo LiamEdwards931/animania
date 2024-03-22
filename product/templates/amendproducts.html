@@ -169,11 +169,11 @@
             </div>
         </div>
     </div>
-    <nav aria-label="Page navigation example">
+    <nav aria-label="Paginated pages for the amend products database table">
         <ul class="pagination justify-content-center">
           {% if paginated_table.has_previous %}
-          <li class="page-item">
-            <a class="page-link" href="?page={{ paginated_table.previous_page_number }}">Previous</a>
+          <li class="page-item page-item-direction">
+            <a class="page-link" aria-label="Directs user to the next page of products" href="?page={{ paginated_table.previous_page_number }}">Previous</a>
           </li>
           {% else %}
           <li class="page-item disabled">
@@ -188,7 +188,7 @@
           {% endfor %}
           
           {% if paginated_table.has_next %}
-          <li class="page-item">
+          <li class="page-item page-item-direction">
             <a class="page-link" href="?page={{ paginated_table.next_page_number }}">Next</a>
           </li>
           {% else %}
