@@ -19,16 +19,20 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h2>Amend Products</h2>
-                <form action ="{% url 'newProduct' %}">
-                    {% csrf_token %}
-                    <button class="btn btn-primary modal-button" type="submit">Add New Product +</button>
-                </form>
-                <br>
-                <form action ="{% url 'newBanner' %}">
-                    {% csrf_token %}
-                    <button class="btn btn-primary modal-button"" type="submit">Add New Product Banner +</button>
-                </form>
-                <br>
+                <div class="row">
+                    <div class="col-6">
+                        <form action ="{% url 'newProduct' %}">
+                            {% csrf_token %}
+                            <button class="btn btn-primary modal-button" type="submit">Add New Product +</button>
+                        </form>
+                    </div>
+                    <div class="col-6">
+                        <form action ="{% url 'newBanner' %}">
+                            {% csrf_token %}
+                            <button class="btn btn-primary modal-button"" type="submit">Add New Product Banner +</button>
+                        </form>
+                    </div>
+                </div>
                 <br>
                 <div class="row">
                     <div class="col-12">
@@ -247,7 +251,7 @@
                             <br>
                         {% endfor %}
                         <div class="modal-footer">
-                            <a  class="btn btn-secondary modal-button" href="{% url 'amendProducts' %}">
+                            <a class="btn btn-secondary modal-button" href="{% url 'amendProducts' %}">
                                 Clear Filters
                             </a>
                             <button type="submit" class="btn btn-primary modal-button">Apply filter</button>
@@ -262,7 +266,21 @@
                             <br>
                         {% endfor %}
                         <div class="modal-footer">
-                            <a  class="btn btn-secondary modal-button" href="{% url 'amendProducts' %}">
+                            <a class="btn btn-secondary modal-button" href="{% url 'amendProducts' %}">
+                                Clear Filters
+                            </a>
+                            <button type="submit" class="btn btn-primary modal-button">Apply filter</button>
+                        </div>
+                    </form>
+                    <form method ="get" action ="{% url 'amendProducts' %}">
+                        <h6>Filter By New or Sale</h6>
+                        <input type="radio" name="new" id="new" value="">
+                        <label for ="new">New</label>
+                        <br>
+                        <input type="radio" name="discounted" value="">
+                        <label for="discounted">Sale</label>
+                        <div class="modal-footer">
+                            <a class="btn btn-secondary modal-button" href="{% url 'amendProducts' %}">
                                 Clear Filters
                             </a>
                             <button type="submit" class="btn btn-primary modal-button">Apply filter</button>

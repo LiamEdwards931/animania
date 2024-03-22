@@ -165,6 +165,20 @@
                             <button type="submit" class="btn btn-primary modal-button">Apply filter</button>
                         </div>
                     </form>
+                    <form method ="get" action ="{% url 'allproducts' %}">
+                        <h6>Filter By New or Sale</h6>
+                        <input type="radio" name="new" id="new" value="">
+                        <label for ="new">New</label>
+                        <br>
+                        <input type="radio" name="discounted" value="">
+                        <label for="discounted">Sale</label>
+                        <div class="modal-footer">
+                            <a class="btn btn-secondary modal-button" href="{% url 'allproducts' %}">
+                                Clear Filters
+                            </a>
+                            <button type="submit" class="btn btn-primary modal-button">Apply filter</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

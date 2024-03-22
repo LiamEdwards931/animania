@@ -64,7 +64,7 @@ def amendProducts(request):
         elif 'category' in request.GET:
             filtered_categories = request.GET['category']
             products = products.filter(category=filtered_categories)
-
+    
     if 'a' in request.GET:
         query = request.GET['a']
         if not query:
