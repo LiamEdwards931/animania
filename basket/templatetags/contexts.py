@@ -13,7 +13,11 @@ def basket_context(request):
 
     for item_id, quantity in basket.items():
         product = get_object_or_404(Product, pk=item_id)
-        total += quantity * product.price
+        if product.discounted:
+            total += quantity * product.discounted_price
+        else:
+            total += quantity * product.price
+        
         product_count += quantity
         basket_products.append({
             'product_id': item_id,
