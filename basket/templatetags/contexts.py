@@ -1,11 +1,26 @@
 from django.conf import settings
 from decimal import Decimal
+from django.shortcuts import get_object_or_404
+from product.models import Product
 
 def basket_context(request):
 
     basket_products = []
     total = 0
     product_count = 0
+    basket = request.session.get('basket', {})
+
+
+    for item_id, quantity in basket.items():
+        product = get_object_or_404(Product, pk=item_id)
+        total += quantity * product.price
+        product_count += quantity
+        basket_products.append({
+            'product_id': item_id,
+            'quantity': quantity,
+            'product': product,
+
+        })
 
     if total < settings.DELIVERY_AMOUNT:
         delivery = total * Decimal(settings.DELIVERY_COST/ 100)
@@ -24,6 +39,7 @@ def basket_context(request):
         'free_delivery_delta': free_delivery_delta,
         'free_delivery': settings.DELIVERY_AMOUNT,
         'grand_total': grand_total,
+        'product': Product,
     }
 
     return context

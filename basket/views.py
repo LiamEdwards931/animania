@@ -12,7 +12,7 @@ def basket(request):
 
     context = {
         'products': products,
-        'product_count': product_count
+        'product_count': product_count,
     }
     
     return render(request,'basket.html', context)
@@ -21,13 +21,13 @@ def add_to_basket(request,product_id):
 
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
-    bag = request.session.get('bag', {})
+    basket = request.session.get('bag', {})
 
-    if product_id in list(bag.keys()):
-        bag[product_id] += quantity
+    if product_id in list(basket.keys()):
+        basket[product_id] += quantity
     else:
-        bag[product_id] = quantity
+        basket[product_id] = quantity
 
-    request.session['bag'] = bag
-    print(request.session['bag'])
+    request.session['basket'] = basket
+    print(request.session['basket'])
     return redirect(redirect_url)

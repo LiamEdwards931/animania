@@ -188,6 +188,28 @@ a:hover{
     padding: 0 8px 0 8px;
 }
 
+.cart-icon {
+    position: relative;
+    display: inline-block;
+}
+
+.total-amount {
+    position: absolute;
+    top: 10px; 
+    left: 45%;
+    transform: translateX(-50%);
+    background-color: black;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: none;
+}
+
+.cart-icon:hover .total-amount {
+    display: block;
+}
+
+
 /* Media queries for Navbar */
 @media screen and (max-width:990px){
     .main-background{
@@ -228,6 +250,11 @@ a:hover{
 @media screen and (max-width:485px){
     .navbar-toggler{
         margin-right:70px;
+        margin-left:10px;
+    }
+
+    .total-opacity{
+        display:none;
     }
 }
 
@@ -266,6 +293,7 @@ a:hover{
 #close-delivery:hover{
     color:orange;
 }
+
 
 /* ------------------------------------------banner images css -----------------------*/
 .banner-container{

@@ -21,21 +21,21 @@
                 </div>
             </div>
             <hr>
-            {% for product in products %}                  
+            {% for item in basket_products %}                  
                 <div class="row mt-5 product-basket-row">
                     <div class="col-12 col-lg-3">
                         <!-- <h5 class="card-title">{{ product.series}}</h5> -->
-                        <img id="basket-product-image"src="{{ product.image.url }}" class="img-fluid rounded-start" alt="{{ product.name}}">
+                        <img id="basket-product-image"src="{{ item.product.image.url }}" class="img-fluid rounded-start" alt="{{ product.name}}">
                     </div>
                     <div class="col-12 col-lg-3 text-left">
-                        <p><strong>{{product.name}}</strong></p>
-                        {% if product.size %}
-                            Size: <p>{{ product.size }}</p>
+                        <p><strong>{{item.product.name}}</strong></p>
+                        {% if item.product.size %}
+                            Size: <p>{{ item.product.size }}</p>
                         {% endif %}
-                        {% if product.discounted %}
-                            <strike><p>£{{ product.price}} </strike>£{{ product.discounted_price}}</p>  
+                        {% if item.product.discounted %}
+                            <strike><p>£{{ item.product.price}} </strike>£{{ item.product.discounted_price}}</p>  
                         {% else %}
-                            <p>£{{ product.price}}</p>
+                            <p>£{{ item.product.price}}</p>
                         {% endif %}
                     </div>
                     <div class="col-12 col-lg-3">
@@ -43,15 +43,15 @@
                             {% csrf_token %}
                             <h6>Quantity</h6>
                             <button class="quantity-btn minus">-</button>
-                            <input  style="width:50px; margin-top:10px;" type="number" class="quantity" value="1">
+                            <input  style="width:50px; margin-top:10px;" type="number" class="quantity" value="{{ item.quantity}}">
                             <button class="quantity-btn plus">+</button>
                         </form>
                     </div>
                     <div class="col-12 col-lg-3">
-                        {% if product.discounted %}
-                            <strike><p>£{{ product.price}} </strike>£{{ product.discounted_price}}</p>  
+                        {% if item.product.discounted %}
+                            <strike><p>£{{ item.product.price}} </strike>£{{ item.product.discounted_price}}</p>  
                         {% else %}
-                            <p>£{{ product.price}}</p>
+                            <p>£{{ item.product.price}}</p>
                         {% endif %}
                     </div>  
                 </div>
