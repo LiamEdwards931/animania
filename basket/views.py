@@ -1,12 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from product.models import Product
 
 # Create your views here.
 
 def basket(request):
+    """
+    View for displaying the basket html file.
+    """
     products = Product.objects.all()
     product_count = products.count()
-    
 
     context = {
         'products': products,
@@ -14,3 +16,18 @@ def basket(request):
     }
     
     return render(request,'basket.html', context)
+
+def add_to_basket(request,product_id):
+
+    quantity = int(request.POST.get('quantity'))
+    redirect_url = request.POST.get('redirect_url')
+    bag = request.session.get('bag', {})
+
+    if product_id in list(bag.keys()):
+        bag[product_id] += quantity
+    else:
+        bag[product_id] = quantity
+
+    request.session['bag'] = bag
+    print(request.session['bag'])
+    return redirect(redirect_url)
