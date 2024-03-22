@@ -80,6 +80,34 @@ a:hover{
     background-color: rgba(265, 155, 0, 0.5);
 }
 
+/* Modal styles across the site */
+.modal-header{
+    background-color: black;
+}
+
+.btn-close{
+    background-color:orange;
+}
+
+.modal-title {
+    font-family: "Luckiest Guy", cursive;
+    color:orange;
+    text-shadow: 2px solid white;
+}
+
+/*Universal button style for consistent approach used with btn btn-primary */
+.modal-button{
+    background-color: black;
+    border: 1px solid orange;
+    margin-bottom: 5px;
+}
+
+.modal-button:hover{
+    color: orange;
+    background-color: black;
+    border:1px solid black;
+}
+
 /* -------------------------------------------Navbar CSS ----------*/
 .navbar {
     padding: 0;
@@ -493,15 +521,6 @@ footer{
     margin-top:25px;
 }
 
-.address-btn{
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-}
-
-.address-btn:hover{
-    color:orange;
-}
-
 .my-reviews{
     border: 1px solid black;
     margin-bottom:5px;
@@ -602,33 +621,6 @@ table{
 .filter-form-container{
     display:none;
 }
-
-.modal-header{
-    background-color: black;
-}
-
-.btn-close{
-    background-color:orange;
-}
-
-.modal-title {
-    font-family: "Luckiest Guy", cursive;
-    color:orange;
-    text-shadow: 2px solid white;
-}
-
-.modal-button{
-    background-color: black;
-    border: 1px solid orange;
-    margin-bottom: 5px;
-}
-
-.modal-button:hover{
-    color: orange;
-    background-color: black;
-    border:1px solid black;
-}
-
 
 #results-found{
     float: right;
