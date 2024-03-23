@@ -9,21 +9,24 @@ def basket_context(request):
     total = 0
     product_count = 0
     basket = request.session.get('basket', {})
+    subtotal = 0
 
 
     for item_id, quantity in basket.items():
         product = get_object_or_404(Product, pk=item_id)
         if product.discounted:
             total += quantity * product.discounted_price
+            subtotal = quantity * product.discounted_price
         else:
             total += quantity * product.price
+            subtotal = quantity * product.price
         
         product_count += quantity
         basket_products.append({
             'product_id': item_id,
             'quantity': quantity,
             'product': product,
-
+            'subtotal': subtotal,
         })
 
     if total < settings.DELIVERY_AMOUNT:
