@@ -124,7 +124,14 @@
                                     <form action="{% url 'delete_product' product.id %}" method="post">
                                         {% csrf_token %}
                                         <button type="submit" action="delete" class="product-button">Delete Product</button>
-                                    </form>    
+                                    </form>
+                                    {% if product.category == 'Clothing' %}
+                                        <button class="product-button">
+                                            <a style="color:white;"href="{% url 'newSize' product_id=product.id %}">
+                                            Add Size
+                                            </a>
+                                        </button>
+                                    {% endif %}
                                 </td>
                                 <td>{{ product.name }}</td>
                                 <td><img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-thumbnail"></td>
@@ -148,7 +155,19 @@
                                         {{ product.sub_category}}
                                     {% endif %}
                                 </td>
-                                <td>{{ product.quantity_available }}</td>
+                                <td>
+                                    {% if product.category == 'Clothing' %}
+                                        {% if product.size_set.exists %}
+                                            {% for size in product.size_set.all %}
+                                                {{ size.alternate_size }}: {{ size.size_quantity_available }}<br>
+                                            {% endfor %}
+                                        {% else %}
+                                            <p>Please add sizes for this product.</p>
+                                        {% endif %}
+                                    {% else %}
+                                        {{ product.quantity_available }}
+                                    {% endif %}
+                                </td>
                                 <td>{% if product.new %} <i style="font-size:30px;"class="fa-solid fa-check"></i> {% endif %}</td>
                                 <td>{% if product.discounted %} 
                                         {% if product.discount_amount %}
@@ -161,9 +180,9 @@
                                      {% endif %}
                                 </td>
                                 <td>
-                                    {% if product.size %}
-                                        {{ product.size }}
-                                    {% endif %}
+                                    {% for size in product.size_set.all %}
+                                        {{ size.alternate_size }}
+                                    {% endfor %}
                                 </td>
                             </tr>
                             {% endfor %}

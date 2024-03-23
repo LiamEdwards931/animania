@@ -7,12 +7,7 @@ from django.contrib.auth.models import User
 
 
 class Product(models.Model):
-    SIZE_CHOICES = [
-    ('S', 'Small'),
-    ('M', 'Medium'),
-    ('L', 'Large'),
-    ]
-    
+   
     image = CloudinaryField('image',blank=True)
     alternative_images = CloudinaryField('image',blank=True)
     name = models.TextField(max_length=40)
@@ -30,7 +25,7 @@ class Product(models.Model):
     discount_amount = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(100)], null=True, blank=True)
     created_on = models.DateField(auto_now_add=True)
     updated_on = models.DateField(auto_now=True)
-    size = models.CharField(max_length=10, choices=SIZE_CHOICES, null=True, blank=True)
+    
     
     def __str__(self):
         return self.name
@@ -88,6 +83,9 @@ class product_banner(models.Model):
     image = CloudinaryField('image')
     series = models.TextField(max_length=30, null=True)
 
+    def __str__(self):
+        return self.series
+
 
 class ProductReview(models.Model):
     title = models.CharField(max_length=50,null=True)
@@ -97,3 +95,21 @@ class ProductReview(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateField(auto_now_add=True)
     updated_on = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Size(models.Model):
+    SIZE_CHOICES = [
+    ('S', 'Small'),
+    ('M', 'Medium'),
+    ('L', 'Large'),
+    ]
+
+    product = models.ForeignKey("Product", on_delete=models.CASCADE)
+    alternate_size = models.CharField(max_length=10, choices=SIZE_CHOICES, null=True, blank=True)
+    size_quantity_available = models.PositiveIntegerField(validators=[MinValueValidator(0)],null=True)
+
+    def __str__(self):
+        return self.alternate_size

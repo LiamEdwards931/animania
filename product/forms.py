@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product, product_banner,ProductReview
+from .models import Product, product_banner,ProductReview,Size
 
 from django import forms
 from .models import Product,product_banner
@@ -109,6 +109,7 @@ class ProductForm(forms.ModelForm):
             'discounted': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
             'size': forms.Select(attrs={'class': 'form-control'}),
         }
+        
 
     def clean(self):
         cleaned_data = super().clean()
@@ -133,9 +134,6 @@ class ProductForm(forms.ModelForm):
             elif discount_amount % 1 != 0:
                 raise forms.ValidationError('Discount amount must be a whole number.')
 
-        if category == 'Clothing' and not size:
-            raise forms.ValidationError("Size is required for clothing items.")
-
         search_tags = [tag for tag in [category, series, sub_category, name] if tag]
         cleaned_data['search_tags'] = ', '.join(search_tags)
 
@@ -144,6 +142,37 @@ class ProductForm(forms.ModelForm):
 
         return cleaned_data
     
+class ProductSizeForm(forms.ModelForm):
+    alternate_size = forms.ChoiceField(
+        choices=Size.SIZE_CHOICES,widget=forms.Select(
+            attrs={'class': 'form-control'}),
+            required=False
+            )
+        
+    size_quantity_available = forms.IntegerField(
+        widget=forms.NumberInput(attrs={'class': 'form-control'})
+        )
+
+    class Meta:
+        model = Size
+        fields = ['alternate_size','size_quantity_available']
+
+        widgets = {
+            'size': forms.Select(attrs={'class': 'form-control'}),
+        }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        alternate_size = cleaned_data.get('alternate_size')
+        if alternate_size:
+            existing_sizes_with_alternate_size = Size.objects.filter(alternate_size=alternate_size)
+            if self.instance.pk:  # Exclude the current instance from the queryset if it's being updated
+                existing_sizes_with_alternate_size = existing_sizes_with_alternate_size.exclude(pk=self.instance.pk)
+            if existing_sizes_with_alternate_size.exists():
+                raise forms.ValidationError('Size already exists.')
+        return cleaned_data
+
+
 class BannerForm(forms.ModelForm):
     
     SERIES_CHOICES = [

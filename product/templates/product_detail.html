@@ -40,12 +40,24 @@
                                             {% endif %}
                                         </p>
                                         <p class ="card-text">{{ product.description }}</p>
-                                        {% if products.quantity_available <= 5 and product.quantity_available > 1 %}
-                                            <p style ="color:orange;" class="card-text">Hurry only <strong>{{product.quantity_available}}</strong> left!</p>
-                                        {% elif product.quantity_available <= 1 %}
-                                            <p style ="color:red;"class="card-text">Hurry only <strong>{{product.quantity_available}}</strong> left!</p>
+                                        {% if product.category == 'Clothing' %}
+                                            {% if product.size_set.exists %}
+                                                {% for size in product.size_set.all %}
+                                                    <p>Quantity in stock: 
+                                                        {{ size.alternate_size }}
+                                                        <strong>{{ size.size_quantity_available }}</strong>
+                                                    </p> 
+                                                    <br>
+                                                {% endfor %}
+                                            {% endif %}
                                         {% else %}
-                                            <p class="card-text">Quantity in stock: <strong>{{product.quantity_available}}</strong></p>
+                                            {% if products.quantity_available <= 5 and product.quantity_available > 1 %}
+                                                <p style ="color:orange;" class="card-text">Hurry only <strong>{{product.quantity_available}}</strong> left!</p>
+                                            {% elif product.quantity_available <= 1 %}
+                                                <p style ="color:red;"class="card-text">Hurry only <strong>{{product.quantity_available}}</strong> left!</p>
+                                            {% else %}
+                                                <p class="card-text">Quantity in stock: <strong>{{product.quantity_available}}</strong></p>
+                                            {% endif %}
                                         {% endif %}
                                     <form method ="post" action="{% url 'add_to_basket' product.id %}">
                                         {% csrf_token %}
@@ -59,6 +71,7 @@
                                             </select>
                                         <br>
                                         {% endif %}
+                                        <br>
                                         <div class="col-12 text-center">
                                             <button class="quantity-btn minus">-</button>
                                             <input class="qty_input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
@@ -114,5 +127,5 @@
                 {% endfor %}
             </div>
         </div>
-    </section>       
+    </section>      
 {% endblock %}

@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q
 from django.contrib import messages
-from .models import Product, product_banner, ProductReview
+from .models import Product, product_banner, ProductReview, Size
 from . import forms
 from .forms import ProductForm, BannerForm
 from django.http import HttpResponseRedirect
@@ -39,6 +39,7 @@ def amendProducts(request):
     Gets all product instances.
     """
     products = Product.objects.all()
+    productSizes = Product.objects.filter(size__isnull=False).distinct()
     
     sort_by = request.GET.get('sort')
     if sort_by == 'A-Z':
@@ -81,6 +82,7 @@ def amendProducts(request):
     context = {
         'products': products,
         'paginated_table': paginated_table,
+        'sizes': productSizes,
     }
         
     return render(request, 'amendproducts.html', context )
@@ -101,6 +103,33 @@ def newProduct(request):
         newProductForm = forms.ProductForm()
     
     return render(request, 'new_product.html', {'form': newProductForm})
+
+def productSize(request, product_id):
+    """
+    Form to create extra sizes for the new products
+    """
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.method == 'POST':
+        form = forms.ProductSizeForm(request.POST)
+        if form.is_valid():
+            size = form.save(commit=False)
+            size.product = product
+            size.save()
+            messages.success(request, 'Size created successfully')
+            return redirect('amendProducts')
+        else:
+            messages.error(request, 'Could not create the size. Please double-check the inputs.')
+    else:
+        form = forms.ProductSizeForm()
+
+    context = {
+        'form': form,
+        'product': product,
+        'product_id': product_id,
+    }
+
+    return render(request, 'newSize.html', context)
 
 @user_passes_test(lambda u: u.is_superuser)
 def delete_product(request, product_id):
