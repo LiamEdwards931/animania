@@ -36,7 +36,7 @@ def basket_context(request):
                 product_count += quantity
                 bag_items.append({
                     'item_id': item_id,
-                    'quantity': item_data,
+                    'quantity': quantity,
                     'product': product,
                     'subtotal': subtotal,
                     'size': size,
