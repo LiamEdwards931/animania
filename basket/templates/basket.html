@@ -5,6 +5,9 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h2>Your Basket</h2>
+                {% for item in bag_items %}
+                {{ item }}
+                {% endfor %}
             </div>
             <div class="row mt-5">
                 <div class="col-md-3 d-none">
@@ -21,7 +24,7 @@
                 </div>
             </div>
             <hr>
-            {% for item in basket_products %}                  
+            {% for item in bag_items %}                  
                 <div class="row mt-5 product-basket-row">
                     <div class="col-12 col-lg-3">
                         <img id="basket-product-image"src="{{ item.product.image.url }}" class="img-fluid rounded-start" alt="{{ product.name}}">

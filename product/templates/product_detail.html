@@ -59,12 +59,12 @@
                                                 <p class="card-text">Quantity in stock: <strong>{{product.quantity_available}}</strong></p>
                                             {% endif %}
                                         {% endif %}
-                                    <form method ="post" action="{% url 'add_to_basket' product.id %}">
+                                    <form method ="POST" action="{% url 'add_to_basket' product.id %}">
                                         {% csrf_token %}
                                         {% if product.category == 'Clothing' %}
                                             <label for="size">Choose your size:</label>
                                             <br>
-                                            <select style="width: 120px;" id="size">
+                                            <select style="width: 120px;" name="selected_size" id="size">
                                                 <option value="small">Small</option>
                                                 <option value="medium">Medium</option>
                                                 <option value="large">Large</option>
