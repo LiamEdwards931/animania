@@ -17,17 +17,14 @@ function search_bar_toggle(){
     }
 };
 
-
-// ---------------------Index.html script------------------
-// // Timesout the message container after 5 seconds of appearing
-
 function removeDelivery(){
     let delivery_container = document.getElementById('delivery-container')
 
     delivery_container.style.display = 'none';
 }
 
-
+// ---------------------Index.html script------------------
+// // Timesout the message container after 5 seconds of appearing
 const messageContainer = document.getElementById('remove-message');
 
     setTimeout(() => {

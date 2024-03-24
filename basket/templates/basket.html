@@ -7,7 +7,10 @@
                 <h2>Your Basket</h2>
                 {% for item in bag_items %}
                 {{ item }}
+                <br>
+                {{ request.session.bag }}
                 {% endfor %}
+                <br>
             </div>
             <div class="row mt-5">
                 <div class="col-md-3 d-none">
@@ -32,8 +35,8 @@
                     <div class="col-12 col-lg-3 text-left">
                         <p><strong>{{item.product.name}}</strong></p>
                         <p>{{ item.product.series }}</p>
-                        {% if item.product.size %}
-                            Size: <p>{{ item.product.size }}</p>
+                        {% if item.product.category == 'Clothing' %}
+                            <p>Size: {{ item.size| title }}</p>
                         {% endif %}
                     </div>
                     <div class="col-12 col-lg-3">
@@ -41,7 +44,7 @@
                             {% csrf_token %}
                             <h6>Quantity</h6>
                             <button class="quantity-btn minus">-</button>
-                            <input  style="width:50px; margin-top:10px;" type="number" class="quantity" value="{{ item.quantity}}">
+                            <input  style="width:50px; margin-top:10px;" type="number" class="quantity" value="{{ item.quantity }}">
                             <button class="quantity-btn plus">+</button>
                         </form>
                     </div>
@@ -61,14 +64,16 @@
                 <div class="col-4"></div>
                 <div class="col-4"></div>
                 <div class="col-4">
-                    <h3>Grand Total: 
+                    <h3>Total: 
                         {% if grand_total %}
-                            £{{ grand_total}}
+                            £{{ grand_total|floatformat:2 }}
                         {% else %}
                             £0.00
                         {% endif %}
                     </h3>
+                    <p>Delivery charge: £{{ delivery|floatformat:2 }}</p>
                     <p>Spend another <strong>£{{ free_delivery_delta }} </strong>for free delivery</p>
+                    <a href="{% url 'allproducts' %}" class="btn btn-primary modal-button">Keep shopping!</a>
                     <button id="checkout-button" class="btn btn-primary modal-button">Checkout</button>
                 </div>
             </div>
