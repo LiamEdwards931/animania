@@ -81,7 +81,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <form metod="GET" action="{% url 'allproducts' %}" class="search-form">
+                <form method="GET" action="{% url 'allproducts' %}" class="search-form">
                     <div id="search-container">
                         <input class="search-bar" type="text" name="q" placeholder="Search For Products..">
                         <button id="search-submit" type="submit"><i class="fa-solid fa-magnifying-glass i-link"></i></button> 
@@ -173,7 +173,8 @@
     </footer>
     <!-- Javascript and Jquery-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> 
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> 
     <script src="{% static 'javascript/script.js' %}"></script>
     {% block script %}
     {% endblock %}
