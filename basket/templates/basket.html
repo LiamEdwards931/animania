@@ -43,7 +43,7 @@
                             {% csrf_token %}
                             <h6>Quantity</h6>
                             <button class="quantity-btn minus"data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">-</button>
-                            <input class="quantity" type="number" name="quantity" value="{{ item.quantity}}" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
+                            <input class="quantity" type="number" name="quantity" value="{{ item.quantity}}" min="1" max="{{item.product.quantity_available}}" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}" required>
                             <button class="quantity-btn plus" data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">+</button>
                             {% if item.size %}
                                 <input type ="hidden" name="selected_size" value="{{ item.size }}">
