@@ -120,11 +120,8 @@ a:hover{
 
 .search-form{
     width:100%;
-}
-
-
-#search-container{
-    display:none;
+    border: 1px solid black;
+    margin-bottom:5px;
 }
 
 .search-bar{

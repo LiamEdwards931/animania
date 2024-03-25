@@ -26,6 +26,18 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
+                <form metod="GET" action="{% url 'allproducts' %}" class="search-form">
+                    <div id="search-container">
+                        <input class="search-bar" type="text" name="q" placeholder="Search For Products..">
+                        <button id="search-submit" type="submit"><i class="fa-solid fa-magnifying-glass i-link"></i></button> 
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
                 <button type="button" class="btn btn-primary modal-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Filter products
                 </button>
