@@ -65,14 +65,17 @@
                         <a class="nav-link" href="{% url 'login' %}"><i class="fa-regular fa-user i-link"></i></a>
                     {% endif %}
                     <a class="nav-link cart-icon" href="{% url 'basket' %}">
-                        <i class="fa-solid fa-cart-shopping i-link"></i>
-                        <div class="total-amount">
-                            {% if grand_total %}
+                        {% if grand_total %}  
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <div class="total-amount">
                                 £{{ grand_total|floatformat:2 }}
-                            {% else %}
+                            </div> 
+                        {% else %}
+                            <i class="fa-solid fa-cart-shopping i-link"></i>
+                            <div class="total-amount">
                                 £0.00
-                            {% endif %}
-                        </div>
+                            </div>
+                        {% endif %}
                     </a>                       
                 </div>
             </div>
