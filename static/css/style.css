@@ -722,3 +722,8 @@ table{
 #checkout-button{
     float:right;
 }
+
+.remove-item,
+.update-link{
+    cursor:pointer;
+}
