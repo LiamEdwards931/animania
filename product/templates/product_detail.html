@@ -74,7 +74,9 @@
                                         <br>
                                         <div class="col-12 text-center">
                                             <h6>Quantity</h6>
-                                            <input class="qty_input" type="number" name="quantity" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
+                                            <input class="qty_input" type="number" name="quantity" value="1" min="1" 
+                                            max="{{product.quantity_available}}" data-item_id="{{ product.id }}"  
+                                            id="id_qty_{{ product.id }}">
                                         </div>
                                         <br>
                                         <button type="submit" style="margin-top:10px;"class="btn btn-primary modal-button">Add to Basket</button>
