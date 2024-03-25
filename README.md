@@ -17,6 +17,10 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
 
     - Couldn't upload a banner for attack on titan this was due to two seperate values of Attack on Titan being available in series choices representing two different values
 
+    - Sizes were being delete when updating quantities in the shopping bag, fixed by adding a name to the size hidden input form in basket.html
+
+    - search bar was disappearing from base.html on click, made the search function only available in all products as it seemed more logical for it to live in there
+
 
 ## Credits 
 
