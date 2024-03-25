@@ -89,20 +89,20 @@ def remove_from_bag(request, item_id):
     """Remove the item from the shopping bag"""
 
     try:
-        size = None
-        if 'selected_size' in request.POST:
-            size = request.POST['selected_size']
+        size = request.POST.get('selected_size')
         bag = request.session.get('bag', {})
 
         if size:
-            del bag[item_id]['products_by_size'][size]
-            if not bag[item_id]['products_by_size']:
-                bag.pop(item_id)
-        else:
+            if item_id in bag:
+                if size in bag[item_id]['products_by_size']:
+                    del bag[item_id]['products_by_size'][size]
+                    if not bag[item_id]['products_by_size']:
+                        bag.pop(item_id)
+        elif item_id in bag:
             bag.pop(item_id)
 
         request.session['bag'] = bag
-        return HttpResponse(status=200)
+        return redirect(reverse('basket'))
 
     except KeyError:
         return HttpResponse(status=400)

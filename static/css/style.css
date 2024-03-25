@@ -723,7 +723,9 @@ table{
     float:right;
 }
 
-.remove-item,
-.update-link{
+.remove-item {
     cursor:pointer;
+    border:none;
+    background-color: white;
+    width:100px;
 }
