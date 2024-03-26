@@ -18,16 +18,21 @@ def index(request):
     """
     messages_to_render = messages.get_messages(request)
     products = Product.objects.all()
-    banner = product_banner.objects.all()
+    banners = product_banner.objects.all()
     new_products = products.filter(new=True)[:4]
     discount_products = products.filter(discounted=True)[:4]
 
+    product_series = set(products.values_list('series', flat=True))
+
+    # Filter banners to only include those with series that still exist in products
+    valid_banners = [banner for banner in banners if banner.series in product_series]
+    
     context = {
         'products': products,
         'newProducts': new_products,
         'discount_products':discount_products,
         'messages': messages_to_render,
-        'banner': banner,
+        'banner': valid_banners,
     }
     
     return render(request, 'index.html', context)
