@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Amend Products {% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'profile' %}">Profile</a></li>
+                        <li class="breadcrumb-item"><a id="breadcrumb"href="{% url 'amendProducts' %}">Amend Products</a></li>
+                        <li class="breadcrumb-item"><a id="breadcrumb-active"href="#">Amend Banners</a></li>
+                    </ol>
+                </nav>    
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>Amend Banners</h2>
+                <form action ="{% url 'newBanner' %}">
+                    {% csrf_token %}
+                    <button class="btn btn-primary modal-button"" type="submit">Add New Product Banner +</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="container">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="product-data">
+                                <th><h5>Series</h5></th>
+                                <th><h5>Image</h5></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for banner in banners %}
+                                <tr class="product-data">
+                                    <td>
+                                        <h6>{{ banner.series }}</h6>
+                                        <form action="{% url 'updatebanner' banner.id %}">
+                                            {% csrf_token %}
+                                           <button tpye="submit" class="btn btn-primary modal-button">Update Banner</button> 
+                                        </form>
+                                        <form method="POST" action ="{% url 'deletebanner' banner.id %}">
+                                            {% csrf_token %}
+                                            <button class="btn btn-primary modal-button">Delete Banner</button>
+                                        </form>   
+                                    </td>
+                                    <td><img class="amend-banner-img" src="{{ banner.image.url}}"></td>
+                                </tr>
+                            {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

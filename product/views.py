@@ -204,6 +204,58 @@ def new_banner(request):
     
     return render(request, 'new_banner.html', context)
 
+def amend_banner(request):
+    """
+    Dispays all the banners so superusers can amend them 
+    """
+    banners = product_banner.objects.all()
+
+    context ={
+        'banners': banners
+    }
+
+    return render(request, 'amendbanners.html', context)
+
+def update_banner(request, banner_id):
+    """
+    View to Edit all of a product instance on request by a superuser.
+    """
+    # Get the existing banner instance
+    banner = get_object_or_404(product_banner, id=banner_id)
+    
+    if request.method == 'POST':
+        # Populate the form with the new POST data and the existing banner data
+        form = BannerForm(request.POST, request.FILES, instance=banner)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Banner updated successfully')
+            return redirect('amendbanners')
+    else:
+        # Populate the form with the existing product data only
+        form = BannerForm(instance=banner)
+    
+    context = {
+        'form': form,
+        'banner_id': banner_id,
+    }
+    return render(request, 'update_banner.html', context)
+
+def delete_banner(request, banner_id):
+    """
+    View to delete all of a product instance on request by a superuser.
+    """
+    banner = get_object_or_404(product_banner, id=banner_id)
+    
+    if request.method == 'POST':
+        # Delete the product
+        banner.delete()
+        messages.success(request, 'Banner deleted successfully.')
+        return redirect('amendbanners')
+    else:
+        # If the request method is not POST, display the following error
+        messages.error(request, 'Could not delete banner. Invalid request method.')
+        return redirect('amendbanners')
+
 # ------------ All products view --------------------------------------
 
 def all_products(request):

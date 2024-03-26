@@ -9,8 +9,8 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
                         <li class="breadcrumb-item"><a href="{% url 'profile' %}">Profile</a></li>
-                        <li class="breadcrumb-item"><a href="{% url 'amendbanners'%}">Amend Banners</a></li>
-                        <li class="breadcrumb-item"><a id="breadcrumb-active"href="#">New Banner</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'amendbanners' %}">Amend Banners</a></li>
+                        <li class="breadcrumb-item"><a id="breadcrumb-active"href="#">Update Banners</a></li>
                     </ol>
                 </nav>    
             </div>
@@ -19,10 +19,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 text-center">
-                <h2>Add new Product Banner</h2>
+                <h2>Update Banner</h2>
                 <form method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; align-items: center;">
                     {% csrf_token %}
-                    
                     <div class="form-group text-center">
                         <label for="id_name"><h5>Banner image</h5></label>
                         <br>
@@ -33,7 +32,7 @@
                         <br>
                         {{ form.series }}
                     </div>
-                    <button class="product-button" type ="submit">Add Banner</button>
+                    <button class="product-button" type ="submit">Update Banner</button>
                 </form>
             </div>
         </div>

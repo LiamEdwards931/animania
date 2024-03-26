@@ -27,12 +27,10 @@
                         </form>
                     </div>
                     <div class="col-6">
-                        <form action ="{% url 'newBanner' %}">
+                        <form action="{% url 'amendbanners' %}">
                             {% csrf_token %}
-                            <button class="btn btn-primary modal-button"" type="submit">Add New Product Banner +</button>
-                        </form>
-                        <br>
-                        <button class="btn btn-primary modal-button">View Banners</button>
+                            <button class="btn btn-primary modal-button">Amend Home Page Banners</button>
+                        </form> 
                     </div>
                 </div>
                 <br>
