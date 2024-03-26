@@ -94,13 +94,17 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h3>Customer reviews</h3> 
+                    <h3 id="customer_reviews">Customer reviews</h3> 
                     <p>
                         Average rating:
                         {% for star in "x"|rjust:average_rating%}<i class="fas fa-star"></i>{% endfor %}
                         </strong> based on <strong>{{ review_amount }}</strong> Reviews.
                     </p>
-                    <a class ="btn btn-primary modal-button" href ="{% url 'productreview' product_id=product.id %}">Leave a review</a>
+                    {% if user.is_authenticated %}
+                        <a class ="btn btn-primary modal-button" href ="{% url 'productreview' product_id=product.id %}">Leave a review</a>
+                    {% else %}
+                        <a href="{% url 'login' %}"><strong>Sign in to leave a review!</strong></a>
+                    {% endif %}
                 </div>
             </div>
             <hr>

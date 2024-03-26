@@ -206,6 +206,7 @@ def all_products(request):
     """
     products = Product.objects.all()
     banners = product_banner.objects.all()
+    reviews = Product.objects.filter(productreview__isnull=False).distinct()
     product_count = products.count()
     query = None
     filtered_series = None
@@ -260,6 +261,15 @@ def all_products(request):
     page_number = request.GET.get('page')
     page_product = paginator.get_page(page_number)
     products = page_product
+
+    for product in products:
+        reviews = product.productreview_set.all()
+        if reviews:
+            total_rating = sum(review.rating for review in reviews)
+            review_amount = len(reviews)
+            product.average_rating = total_rating / review_amount
+        else:
+            product.average_rating = None
 
     context = {
         'products': products,
