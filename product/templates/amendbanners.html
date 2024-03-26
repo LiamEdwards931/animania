@@ -51,7 +51,7 @@
                                         <form method="POST" action ="{% url 'deletebanner' banner.id %}">
                                             {% csrf_token %}
                                             <button class="btn btn-primary modal-button">Delete Banner</button>
-                                        </form>   
+                                        </form>
                                     </td>
                                     <td><img class="amend-banner-img" src="{{ banner.image.url}}"></td>
                                 </tr>

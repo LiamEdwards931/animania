@@ -256,6 +256,7 @@ def delete_banner(request, banner_id):
         messages.error(request, 'Could not delete banner. Invalid request method.')
         return redirect('amendbanners')
 
+  
 # ------------ All products view --------------------------------------
 
 def all_products(request):
