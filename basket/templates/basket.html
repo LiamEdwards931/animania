@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item"><a id="breadcrumb-active"href="#">Basket</a></li>
+                    </ol>
+                </nav>    
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
@@ -88,7 +100,9 @@
                         <a href="{% url 'allproducts' %}" class="btn btn-primary modal-button">Keep shopping!</a>  
                     </div>
                         <div class="col-6 text-center">
-                            <button id="checkout-button" class="btn btn-primary modal-button">Checkout</button>
+                            <form action="{% url 'checkout' %}">
+                                <button id="checkout-button" class="btn btn-primary modal-button">Checkout</button>
+                            </form>
                         </div> 
                     </div> 
                 </div>

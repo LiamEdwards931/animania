@@ -22,6 +22,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
 PRODUCT_TEMPLATES_DIR = os.path.join(BASE_DIR,'product','templates')
 ACCOUNTS_TEMPLATES_DIR = os.path.join(BASE_DIR, 'accounts', 'templates')
 BASKET_TEMPLATES_DIR = os.path.join(BASE_DIR,'basket','templates')
+CHECKOUT_TEMPLATES_DIR = os.path.join(BASE_DIR,'checkout','templates')
 
 
 # Quick-start development settings - unsuitable for production
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'product',
     'accounts',
     'basket',
+    'checkout',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +74,7 @@ TEMPLATES = [
             PRODUCT_TEMPLATES_DIR,
             ACCOUNTS_TEMPLATES_DIR,
             BASKET_TEMPLATES_DIR,
+            CHECKOUT_TEMPLATES_DIR,
             ],
         'APP_DIRS': True,
         'OPTIONS': {
