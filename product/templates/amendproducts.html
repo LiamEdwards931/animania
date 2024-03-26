@@ -31,6 +31,8 @@
                             {% csrf_token %}
                             <button class="btn btn-primary modal-button"" type="submit">Add New Product Banner +</button>
                         </form>
+                        <br>
+                        <button class="btn btn-primary modal-button">View Banners</button>
                     </div>
                 </div>
                 <br>
@@ -134,7 +136,10 @@
                                     {% endif %}
                                 </td>
                                 <td>{{ product.name }}</td>
-                                <td><img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-thumbnail"></td>
+                                <td>
+                                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-thumbnail">
+                                    <hr>
+                                </td>
                                 <td>{{ product.description }}</td>
                                 <td>{{ product.series }}</td>
                                 <td>

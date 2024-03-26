@@ -45,6 +45,7 @@ def amendProducts(request):
     """
     products = Product.objects.all()
     productSizes = Product.objects.filter(size__isnull=False).distinct()
+    banners = product_banner.objects.all()
     
     sort_by = request.GET.get('sort')
     if sort_by == 'A-Z':
@@ -88,6 +89,7 @@ def amendProducts(request):
         'products': products,
         'paginated_table': paginated_table,
         'sizes': productSizes,
+        'banners': banners,
     }
         
     return render(request, 'amendproducts.html', context )
