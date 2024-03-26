@@ -21,6 +21,8 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
 
     - search bar was disappearing from base.html on click, made the search function only available in all products as it seemed more logical for it to live in there
 
+    - 404 returned when non-users tried to submit a review, fixed by using an if statement to only display leaving a review if you are logged in. 
+
 
 ## Credits 
 
