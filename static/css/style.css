@@ -275,6 +275,17 @@ a:hover{
     font-weight: bold;
 }
 
+.message-container-error{
+    height:50px;
+    background-color: red;
+    color: white;
+    text-shadow: 2px 0 0 black;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
 .delivery-info-container{
     background-color: orange;
     color:white;

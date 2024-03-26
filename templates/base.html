@@ -85,7 +85,7 @@
     {% for message in messages %}
         {% if message %}
             <div class="container-fluid" id="remove-message">
-                <div class="row message-container">
+                <div class="row {% if message.tags == 'success' %}message-container{% else %}message-container-error{% endif %}">
                     <div class="col-12 text-center">
                         <div>
                             <h3>{{ message }}</h3>
@@ -101,7 +101,7 @@
             {% for field, error_list in form.errors.items %}
                 {% for error in error_list %}
                 <div class="container-fluid" id="remove-message">
-                    <div class="row message-container">
+                    <div class="row message-container-error">
                         <div class="col-12 text-center">
                             <div>
                                 <h3>{{ field|title }}: {{ error }}</h3>
