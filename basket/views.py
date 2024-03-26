@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
 from product.models import Product
+from django.contrib import messages
 
 
 # Create your views here.
@@ -44,7 +45,11 @@ def add_to_basket(request,item_id):
             bag[item_id] = quantity
 
     request.session['bag'] = bag
-    print(request.session['bag'])
+    product_name = Product.objects.get(id=item_id).name
+    if size:
+        messages.success(request, f"{quantity} x {product_name}: { size } added to your basket.")
+    else:
+        messages.success(request, f"{quantity} x {product_name} added to your basket.")
     return redirect(redirect_url)
 
 
@@ -102,6 +107,11 @@ def remove_from_bag(request, item_id):
             bag.pop(item_id)
 
         request.session['bag'] = bag
+        product_name = Product.objects.get(id=item_id).name
+        if size:
+            messages.success(request, f"{product_name}: { size } removed from your basket.")
+        else:
+            messages.success(request, f"{product_name} removed from your basket.")
         return redirect(reverse('basket'))
 
     except KeyError:
