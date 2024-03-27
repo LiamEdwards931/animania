@@ -28,7 +28,7 @@ class Order(models.Model):
         generate a random order number
         """
         return uuid.uuid4().hex.upper()
-    
+   
     def calculate_total(self):
         """
         Calculates the total cost
@@ -40,7 +40,7 @@ class Order(models.Model):
             self.delivery_cost = 0
         self.grand_total = self.total_cost + self.delivery_cost
         self.save()
-    
+   
     def save(self, *args, **kwargs):
         """"
         sets the order number if it hasnt been set already
