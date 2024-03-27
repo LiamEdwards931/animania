@@ -107,7 +107,9 @@ def delete_address(request, address_id):
 
 
 def update_address(request, address_id):
-    # View to update the address
+    """
+    View to update the address
+    """
     address = get_object_or_404(Address, id=address_id)
     
     if request.method == 'POST':
