@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}Checkout{% endblock %}
 {% block content %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-6">
+            <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
@@ -14,15 +15,107 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h2>Checkout</h2>
-                <form>
-                    {{ order_form.as_p }}
-                    <button type="submit" class="btn btn-primary modal-button">Checkout</button>
-                </form>
+    <section>
+        <div class="container">
+            <div class="row checkout-title">
+                <div class="col-12 text-center">
+                    <h2>Checkout</h2>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6 col-12 order-md-2 order-1 text-center">
+                    <h5 class="text-center">Order Summary</h5>
+                    <hr class="order-summary-hr"> 
+                    {% for item in bag_items %}
+                        <div class="row order-summary-row">
+                            <div class="col-4">
+                                <img src ="{{ item.product.image.url}}" class="img-thumbnail-checkout" alt="{{ item.product.name}}">
+                            </div>
+                            <div class="col-4">
+                                <h6>{{ item.product.name }}</h6>
+                                <p>{{ item.product.series}}</p>
+                                {% if item.size %}
+                                    <p>Size: {{ item.size|title }}</p>
+                                {% endif %}
+                                <p>Quantity: {{ item.quantity }}</p>
+                            </div>
+                            <div class="col-4 order-summary-subtotal">
+                                <h6><small>Subtotal</small></h6>
+                                <p>£{{item.subtotal}}</p>
+                            </div>
+                        </div>
+                        <hr class="order-summary-hr">   
+                    {% endfor %}
+                    <div class="row">
+                        <div class="col-6 d-flex justify-content-end">
+                            <h5>Product total:</h5>
+                        </div>
+                        <div class="col-6">
+                            £{{ total}}
+                        </div>
+                        <div class="col-6 d-flex justify-content-end">
+                            <h5>Delivery:</h5>
+                        </div>
+                        <div class="col-6">
+                            £{{ delivery|floatformat:2 }}
+                        </div>
+                        <div class="col-6 d-flex justify-content-end">
+                            <h5>Total cost:</h5>
+                        </div>
+                        <div class="col-6">
+                            £{{ grand_total|floatformat:2 }}
+                        </div>
+                    </div>  
+                </div>
+                <div class="col-md-6 col-12 order-md-1 order-2">
+                    <p>Fill the form out to complete your purchase! Only a few steps away!</p>
+                    <hr>
+                    <form class="checkout-main-form" action="{% url 'checkout' %}" method="POST">
+                        <fieldset>
+                            <legend><h6>Your Details (* required)</h6></legend>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>{{ order_form.email }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="checkout-name-fields">{{ order_form.first_name }}</p>
+                                </div>
+                                <div class="col-md-6 text-left">
+                                    <p class="checkout-name-fields">{{ order_form.last_name }}</p>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <br>
+                        <fieldset>
+                            <legend class=""><h6>Delivery Address</h6></legend>
+                            <p>{{ order_form.country}}</p>
+                            <p>{{ order_form.postal_code }}</p>
+                            <p>{{ order_form.county}}</p>
+                            <p>{{ order_form.door_number }}</p>
+                            <p>{{ order_form.street}}</p>
+                            <p>{{ order_form.city}}</p>
+                        </fieldset>
+                        <br>
+                        <fieldset>
+                            <legend><h6>Payment Details</h6></legend>
+                        </fieldset>
+                        <div class="row">
+                            <div class="col-6">
+                                <a href="{% url 'basket' %}" class="btn btn-primary modal-button">Back to Basket</a>
+                            </div>
+                            <div class="col-6 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary modal-button">Checkout</button>
+                            </div> 
+                        </div>
+                        <div class="col-12 d-flex justify-content-end">
+                            <p><small class="text-danger">Your card will be charged <strong>£{{ grand_total|floatformat:2}}</strong></small></p>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 {% endblock %}

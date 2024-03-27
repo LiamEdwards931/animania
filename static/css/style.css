@@ -188,6 +188,7 @@ a:hover{
 .cart-icon {
     position: relative;
     display: inline-block;
+    padding-right: 10px
 }
 
 .total-amount {
@@ -209,10 +210,7 @@ a:hover{
 
 /* Media queries for Navbar */
 @media screen and (max-width:990px){
-    .main-background{
-        padding:0;
-    }
-
+    
     .search-bar{
         width:90%;
     }
@@ -749,6 +747,39 @@ table{
 
 /* -----------------Checkout Form Style------------- */
 
-.checkout-form{
-    width: 25%;
+.checkout-title{
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+.checkout-form {
+    border-radius: 5px;
+    margin-right: 0;
+    padding-right:0;
+    width:100%;
+    height: 40px;
+    border: 2px solid orange;
+}
+
+.checkout-form-buttons > a {
+    padding: 10px;
+}
+
+.img-thumbnail-checkout{
+    height:100%;
+    width:100px;
+}
+
+.order-summary-row{
+    margin-top:10px;
+    margin-left:25px;
+}
+
+.order-summary-hr{
+    margin-left:15%;
+    margin-right:15%;
+}
+
+.order-summary-subtotal{
+    padding-top:5%;
 }
