@@ -101,6 +101,7 @@
                         <br>
                         <fieldset>
                             <legend><h6>Payment Details</h6></legend>
+                            <div class="mb-3" id="card-element"></div>
                         </fieldset>
                         <div class="row">
                             <div class="col-6">
@@ -118,4 +119,10 @@
             </div>
         </div>
     </section>
+{% endblock %}
+{% block script %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'javascript/stripe_elements.js' %}"></script>
 {% endblock %}

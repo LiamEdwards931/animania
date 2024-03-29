@@ -33,7 +33,9 @@ def checkout(request):
         order_form = forms.OrderForm()
 
     context ={
-        'order_form':order_form
+        'order_form':order_form,
+        'stripe_public_key':'pk_test_51OzJZPGiFvkcenzZK9VSVu9XPPPUzX98it6nibktnVsnQkq4MvTP6jBY8jZdmVbstNHVaLeC9Mr4tTIX15zuASAN00Vk3v73YO',
+        'client_secret': 'test_secret',
     }
     
     return render(request, template, context)
