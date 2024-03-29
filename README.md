@@ -23,6 +23,10 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
 
     - 404 returned when non-users tried to submit a review, fixed by using an if statement to only display leaving a review if you are logged in. 
 
+    - 404 on submitting a new product, fixed by assigning making sure the order number after generation was being passed back into itself. 
+
+    - Calculations for delivery were not being recognised, had some wrong variable names in the model that were causing the issue of not calculating properly.
+
 
 ## Credits 
 
