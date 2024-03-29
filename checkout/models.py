@@ -33,7 +33,7 @@ class Order(models.Model):
         """
         Calculates the total cost
         """
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
+        self.order_total = self.lineitems.aggregate(Sum('subtotal'))['subtotal__sum']
         if self.order_total < settings.DELIVERY_AMOUNT:
             self.delivery_cost = self.total_cost * settings.DELIVERY_COST / 100
         else:
@@ -47,7 +47,7 @@ class Order(models.Model):
         """
 
         if not self.order_number:
-            self._generate_order_number()
+            self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
 
     def __str__(self):

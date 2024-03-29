@@ -46,7 +46,7 @@ def checkout(request):
                         ))
                     order.delete()
                     return redirect(reverse('basket'))
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkoutSuccess', args=[order.order_number]))
         else:
             messages.error(request,
                            'There was an issue with your form, please double check all the information is correct.') 
@@ -117,4 +117,4 @@ def checkout_success(request, order_number):
         'order': order,
     }
 
-    return render(request,context,template)
+    return render(request,template,context)
