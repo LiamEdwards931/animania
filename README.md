@@ -27,6 +27,7 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
 
     - Calculations for delivery were not being recognised, had some wrong variable names in the model that were causing the issue of not calculating properly.
 
+    - Bug where the size was not being processed in the checkout, changed the way that size was being fetched in the context processor and made sure that the size was correctly matching the values specified in the Size model.
 
 ## Credits 
 

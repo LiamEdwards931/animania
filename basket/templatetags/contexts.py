@@ -1,6 +1,6 @@
 from decimal import Decimal
 from django.conf import settings
-from product.models import Product
+from product.models import Product,Size
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 
@@ -28,6 +28,8 @@ def basket_context(request):
         else:
             for size, quantity in item_data['products_by_size'].items():
                 product = get_object_or_404(Product, pk=item_id)
+                size_instance = get_object_or_404(Size, alternate_size=size, product=product)
+                print(f"Type of size_instance: {type(size_instance)}")
                 if product.discounted:
                     total += quantity * product.discounted_price
                     subtotal = quantity * product.discounted_price
@@ -40,8 +42,9 @@ def basket_context(request):
                     'quantity': quantity,
                     'product': product,
                     'subtotal': subtotal,
-                    'size': size,
+                    'size': size_instance,
                 })
+                print(bag_items)
  
     if total < settings.DELIVERY_AMOUNT:
         delivery = total * Decimal(settings.DELIVERY_COST / 100)

@@ -32,12 +32,12 @@ def checkout(request):
                        order_line.save()
                     else:
                         for size, quantity in item_data['products_by_size'].items():
-                            size_instance = Size.objects.get(alternate_size=size)
+                            size_instance = get_object_or_404(Size, alternate_size=size)
                             order_line = OrderLine(
                                 order = order,
                                 product = product,
                                 quantity = quantity,
-                                size = size_instance
+                                product_size = size_instance,
                             )
                             order_line.save()             
                 except Product.DoesNotExist:
