@@ -71,7 +71,8 @@
                 <div class="col-md-6 col-12 order-md-1 order-2">
                     <p>Fill the form out to complete your purchase! Only a few steps away!</p>
                     <hr>
-                    <form class="checkout-main-form" action="{% url 'checkout' %}" method="POST">
+                    <form class="checkout-main-form" action="{% url 'checkout' %}" method="POST" id="payment-form">
+                        {% csrf_token %}
                         <fieldset>
                             <legend><h6>Your Details (* required)</h6></legend>
                             <div class="row">
@@ -102,13 +103,14 @@
                         <fieldset>
                             <legend><h6>Payment Details</h6></legend>
                             <div class="mb-3" id="card-element"></div>
+                            <div id="card-errors"></div>
                         </fieldset>
                         <div class="row">
                             <div class="col-6">
                                 <a href="{% url 'basket' %}" class="btn btn-primary modal-button">Back to Basket</a>
                             </div>
                             <div class="col-6 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary modal-button">Checkout</button>
+                                <button id="submit-button" type="submit" class="btn btn-primary modal-button">Checkout</button>
                             </div> 
                         </div>
                         <div class="col-12 d-flex justify-content-end">

@@ -823,3 +823,10 @@ table{
     border: 1px solid orange;
     border-radius:5px;
 }
+
+/* Error message*/
+
+#card-errors{
+    color:red;
+    margin-bottom:10px;
+}
