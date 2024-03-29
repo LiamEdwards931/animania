@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Checkout Success{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item"><a id="breadcrumb"href="{% url 'basket' %}">Basket</a></li>
+                        <li class="breadcrumb-item"><a id="breadcrumb"href="{% url 'checkout' %}">Checkout</a></li>
+                        <li class="breadcrumb-item"><a id="breadcrumb-active"href="#">Checkout Success</a></li>
+                    </ol>
+                </nav>    
+            </div>
+        </div>
+    </div>
+{% endblock %}

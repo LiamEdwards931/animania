@@ -58,7 +58,7 @@ class OrderLine(models.Model):
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE,related_name='lineitems')
     product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
-    product_size = models.ForeignKey(Size, on_delete=models.CASCADE)
+    product_size = models.ForeignKey(Size,null=True,blank=True, on_delete=models.CASCADE)
     subtotal = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
     def save(self, *args, **kwargs):
@@ -67,9 +67,9 @@ class OrderLine(models.Model):
         and update the order total.
         """
         if self.product.discounted:
-            self.lineitem_total = self.product.discounted_price * self.quantity
+            self.subtotal = self.product.discounted_price * self.quantity
         else:
-            self.lineitem_total = self.product.price * self.quantity
+            self.subtotal = self.product.price * self.quantity
         super().save(*args, **kwargs)
 
     def __str__(self):
