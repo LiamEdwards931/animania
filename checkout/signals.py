@@ -11,9 +11,9 @@ def update_on_save(sender, instance, created, **kwargs):
     instance.order.calculate_total()
 
 @ receiver(post_delete, sender=OrderLine)
-def update_on_save(sender, instance, **kwargs):
+def update_on_delete(sender, instance, **kwargs):
     """
     Update the Order costs based on the deletion of 
     Order Line Items.
     """
-    instance.order.update_total()
+    instance.order.calculate_total()

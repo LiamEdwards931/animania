@@ -29,6 +29,8 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
 
     - Bug where the size was not being processed in the checkout, changed the way that size was being fetched in the context processor and made sure that the size was correctly matching the values specified in the Size model.
 
+    - Used a wrong variable in the model that was causing the order total, grand total and delivery not to to update in the admin for new orders. 
+
 ## Credits 
 
 - Code for adding products to the basket was taken from the boutique-ado walkthrough project.
