@@ -830,3 +830,22 @@ table{
     color:red;
     margin-bottom:10px;
 }
+
+/* ------------------------checkout success styling------------*/
+
+.order-container{
+    padding-top:10px;
+    padding-left:10px;
+    margin-bottom:10px;
+    margin-left:15px;
+}
+
+.orderline-image{
+    width:100px;
+    height:100px;
+}
+
+.orderline-divider{
+    margin-top:10px;
+}
+

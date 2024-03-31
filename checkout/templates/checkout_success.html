@@ -16,4 +16,69 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="col-12">
+                <h2>Thank you for your order!</h2>
+            </div>
+        </div>
+        <div class="row order-container text-center">
+            <div class="col-12 col-md-6">
+                <h4>Delivery Details:</h4>
+                <ul style="list-style-type: none; text-align:left;">
+                    <li>{{order.first_name}} {{order.last_name}}</li>
+                    <li>{{ order.email}}</li>
+                    <li>{{ order.door_number }} {{ order.street }}</li>
+                    <li>{{ order.city }}</li>
+                    <li>{{ order.county}}</li>
+                    <li>{{ order.country }}</li>
+                    <li>{{ order.postal_code}}</li>
+                </ul>  
+            </div>
+            <div class="col-12 col-md-6 text-center">
+                <h4>Order Details:</h4>
+                <ul class="float-left-list" style="list-style-type: none;">
+                    <li>Order Number: {{ order.order_number }}</li>
+                    <li>Date of purchase: {{ order.date }}</li>
+                    <li>item(s) subtotal: £{{ order.total_cost}}</li>
+                    <li>Delivery cost: £{{ order.delivery_cost}}</li>
+                    <hr>
+                    <li><h6>Grand Total:</h6> £{{ order.grand_total}}</li>
+                </ul> 
+            </div>
+        </div>
+        <div class="row order-container">
+            <div class="col-12 text-center">
+                <h4>Your Purchased Products:</h4>
+                {% for item in order.lineitems.all %}
+                <div class="row">
+                    <div class="col-4 text-center">
+                        <p>
+                            {{ item.product.name}}:
+                            {% if item.product_size %}
+                                {{ item.product_size }}
+                            {% endif %}
+                        </p>
+                        <img class="orderline-image" src ="{{item.product.image.url}}" alt="{{ item.product.name}}"/>  
+                    </div>
+                    <div class="col-4 text-center">
+                          <ul style="list-style-type: none;">
+                            <li>Quantity: {{ item.quantity }}</li>
+                            {% if item.product.discounted %}
+                                <li>Price: £{{ item.product.discounted_price }}</li>
+                            {% else %}
+                                <li>Price: £{{ item.product.price }}</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="col-4 text-center">
+                        <h6>Subtotal</h6>
+                        <p>£{{ item.subtotal }}</p>
+                    </div>
+                </div>
+                <hr class="orderline-divider">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

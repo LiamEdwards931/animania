@@ -34,3 +34,4 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
 ## Credits 
 
 - Code for adding products to the basket was taken from the boutique-ado walkthrough project.
+- Used the project boutique-ado walkthrough for the creating order, order-lines code.

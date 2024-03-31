@@ -29,6 +29,7 @@ class ProductForm(forms.ModelForm):
         ('The Rising of the Shield Hero', 'The Rising of the Shield Hero'),
         ('Akame ga Kill', 'Akame ga Kill'),
         ('Seven Deadly Sins', 'Seven Deadly Sins'),
+        ('Pokemon', 'Pokemon')
         
     ]
 
@@ -197,6 +198,7 @@ class BannerForm(forms.ModelForm):
         ('The Rising of the Shield Hero', 'The Rising of the Shield Hero'),
         ('Akame ga Kill', 'Akame ga Kill'),
         ('Seven Deadly Sins', 'Seven Deadly Sins'),
+        ('Pokemon', 'Pokemon'),
         
     ]
 
