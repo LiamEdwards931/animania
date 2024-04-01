@@ -8,6 +8,7 @@ from .models import OrderLine, Order
 from basket.templatetags.contexts import basket_context
 import stripe
 from django.conf import settings
+from django.db import transaction
 
 # Create your views here.
 
@@ -108,6 +109,8 @@ def checkout_success(request, order_number):
                      f"Your order has been completed, your order number is: {order_number}")
     if 'bag' in request.session:
         del request.session['bag']
+
+    update_product_quantities(order)
     
     template = 'checkout_success.html'
 
@@ -116,3 +119,18 @@ def checkout_success(request, order_number):
     }
 
     return render(request,template,context)
+
+
+@transaction.atomic
+def update_product_quantities(order):
+    for line_item in order.lineitems.all():
+        product = line_item.product
+        quantity_purchased = line_item.quantity
+
+        if line_item.product_size:
+            size = line_item.product_size
+            size.size_quantity_available -= quantity_purchased
+            size.save()
+        else:
+            product.available_quantity -= quantity_purchased
+            product.save()
