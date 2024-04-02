@@ -228,7 +228,7 @@ def new_banner(request):
             if Product.objects.filter(series=series_name).exists():
                 form.save()
                 messages.success(request, 'Banner uploaded successfully')
-                return redirect('amendProducts')
+                return redirect('amendbanners')
             else:
                 messages.error(request, 'No products for this series available, please add them if you want a banner.')
         else:
