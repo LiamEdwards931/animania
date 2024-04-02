@@ -9,6 +9,7 @@ urlpatterns = [
     path('delete_product/<int:product_id>/', views.delete_product, name='delete_product'),
     path('update_product/<int:product_id>/', views.update_product, name='update_product'),
     path('newSize/<int:product_id>', views.productSize, name='newSize'),
+    path('updateSize/<int:product_id>', views.updateProductSize, name='updateSize'),
     path('new_banner', views.new_banner, name="newBanner"),
     path('amendbanners', views.amend_banner, name='amendbanners'),
     path('updatebanner/int<banner_id>',views.update_banner,name='updatebanner'),

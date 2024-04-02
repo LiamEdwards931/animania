@@ -122,13 +122,18 @@ def productSize(request, product_id):
         if form.is_valid():
             size = form.save(commit=False)
             size.product = product
-            size.save()
-            messages.success(request, 'Size created successfully')
-            return redirect('amendProducts')
+            existing_size = Size.objects.filter(product=product, alternate_size=size.alternate_size)
+            if existing_size.exists():
+                messages.error(request, 'This Size already exists for this product.')
+            else:
+                size.product = product
+                size.save()
+                messages.success(request, 'Size created successfully')
+                return redirect('amendProducts')
         else:
             messages.error(request, 'Could not create the size. Please double-check the inputs.')
     else:
-        form = forms.ProductSizeForm()
+        form = forms.ProductSizeForm(instance=product)
 
     context = {
         'form': form,
@@ -137,6 +142,39 @@ def productSize(request, product_id):
     }
 
     return render(request, 'newSize.html', context)
+
+def updateProductSize(request, product_id):
+    """
+    Form to update the size and quantity for the product
+    """
+    product = get_object_or_404(Product, pk=product_id)
+    size = product.size_set.first()  # Retrieve the size associated with the product
+
+    if request.method == 'POST':
+        form = forms.ProductSizeForm(request.POST, instance=size)
+        if form.is_valid():
+            updated_size = form.save(commit=False)
+            existing_size = Size.objects.filter(product=product, alternate_size=updated_size.alternate_size)
+            if existing_size.exists() and existing_size.first() != size:
+                messages.error(request, 'This size already exists for this product.')
+            else:
+                updated_size.save()
+                messages.success(request, 'Size updated successfully')
+                return redirect('amendProducts')
+        else:
+            messages.error(request, 'Could not update the size. Please double-check the inputs.')
+    else:
+        form = forms.ProductSizeForm(instance=size)
+
+    context = {
+        'form': form,
+        'product': product,
+        'product_id': product_id,
+        'size_id': size.id if size else None,  # Pass the size ID if available
+    }
+
+    return render(request, 'update_size.html', context)
+
 
 @user_passes_test(lambda u: u.is_superuser)
 def delete_product(request, product_id):

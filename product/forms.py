@@ -162,17 +162,6 @@ class ProductSizeForm(forms.ModelForm):
             'size': forms.Select(attrs={'class': 'form-control'}),
         }
 
-    def clean(self):
-        cleaned_data = super().clean()
-        alternate_size = cleaned_data.get('alternate_size')
-        if alternate_size:
-            existing_sizes_with_alternate_size = Size.objects.filter(alternate_size=alternate_size)
-            if self.instance.pk:  # Exclude the current instance from the queryset if it's being updated
-                existing_sizes_with_alternate_size = existing_sizes_with_alternate_size.exclude(pk=self.instance.pk)
-            if existing_sizes_with_alternate_size.exists():
-                raise forms.ValidationError('Size already exists.')
-        return cleaned_data
-
 
 class BannerForm(forms.ModelForm):
     
@@ -221,8 +210,6 @@ class ProductReviewForm(forms.ModelForm):
         (4, '4'),
         (5, '5'),
     ]
-    
-    
     
     title = forms.CharField(
         max_length=100, required=True, widget=forms.TextInput(

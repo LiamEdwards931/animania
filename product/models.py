@@ -108,7 +108,7 @@ class Size(models.Model):
     ]
 
     product = models.ForeignKey("Product", on_delete=models.CASCADE)
-    alternate_size = models.CharField(max_length=10, choices=SIZE_CHOICES, null=True, blank=True)
+    alternate_size = models.CharField(max_length=10, choices=SIZE_CHOICES, null=True, blank=True, default=None)
     size_quantity_available = models.PositiveIntegerField(validators=[MinValueValidator(0)],null=True)
 
     def __str__(self):

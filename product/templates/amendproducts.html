@@ -126,6 +126,11 @@
                                             Add Size
                                             </a>
                                         </button>
+                                         <button class="product-button">
+                                            <a style="color:white;"href="{% url 'updateSize' product.id %}">
+                                            Update Size
+                                            </a>
+                                        </button>
                                     {% endif %}
                                 </td>
                                 <td>{{ product.name }}</td>

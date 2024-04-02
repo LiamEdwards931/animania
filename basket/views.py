@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
-from product.models import Product
+from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from product.models import Product,Size
 from django.contrib import messages
 
 
@@ -27,6 +27,14 @@ def add_to_basket(request,item_id):
     size = None
     if 'selected_size' in request.POST:
         size = request.POST['selected_size']
+    
+    if size:
+        product = get_object_or_404(Product, id=item_id)
+        size_exists = Size.objects.filter(product=product, alternate_size=size).exists()
+        if not size_exists:
+            messages.error(request, "The selected size does not exist for this product.")
+            return redirect(redirect_url)
+    
     bag = request.session.get('bag', {})
 
     if size:

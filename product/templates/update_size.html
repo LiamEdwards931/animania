@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} New Product {% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'profile' %}">Profile</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'amendProducts' %}">Amend Products</a></li>
+                        <li class="breadcrumb-item"><a id="breadcrumb-active"href="#">Update Size</a></li>
+                    </ol>
+                </nav>    
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>Add new Size for {{ product.name }}</h2>
+                <form method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; align-items: center;">
+                    {% csrf_token %}
+                    {{ form }}
+                    <br>
+                    <input type="hidden" name="product_id" value="{{ product_id }}">
+                    <button class="btn btn-primary modal-button" type ="submit">Add Size</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

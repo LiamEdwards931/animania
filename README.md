@@ -31,6 +31,8 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
 
     - Used a wrong variable in the model that was causing the order total, grand total and delivery not to to update in the admin for new orders. 
 
+    - bug where only the first product was allowed to have a size, amended the view for new products and removed the init method of the form to make sure that it now works correctly, added extra validation in the view to prevent mulitple sizes being submitted.
+
 ## Credits 
 
 - Code for adding products to the basket was taken from the boutique-ado walkthrough project.
