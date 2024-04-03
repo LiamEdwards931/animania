@@ -132,5 +132,5 @@ def update_product_quantities(order):
             size.size_quantity_available -= quantity_purchased
             size.save()
         else:
-            product.available_quantity -= quantity_purchased
+            product.quantity_available -= quantity_purchased
             product.save()
