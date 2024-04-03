@@ -46,11 +46,21 @@ def add_to_basket(request,item_id):
         else:
             bag[item_id] = {'products_by_size': {size: quantity}}
     else:
-    
         if item_id in list(bag.keys()):
             bag[item_id] += quantity
         else:
             bag[item_id] = quantity
+
+    if size:
+        size_object = get_object_or_404(Size, product=product, alternate_size=size)
+        product_id = product.id
+        if quantity > size_object.size_quantity_available:
+            messages.error(request, f"The selected quantity exceeds the available quantity for size {size}.")
+            return redirect(redirect_url)
+    else:
+        if quantity > product.quantity_available:
+            messages.error(request, "The selected quantity exceeds the available quantity.")
+            return redirect(redirect_url)
 
     request.session['bag'] = bag
     product_name = Product.objects.get(id=item_id).name
