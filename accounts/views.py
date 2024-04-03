@@ -11,6 +11,7 @@ from django.contrib.auth import update_session_auth_hash
 from .models import Address
 from product.models import ProductReview, Product
 from product.forms import ProductReviewForm
+from checkout.models import Order, OrderLine
 # Create your views here.
 
 
@@ -32,11 +33,23 @@ def profile(request):
     user = request.user
     addresses = Address.objects.filter(user=user)
     reviews = ProductReview.objects.filter(created_by=user)
+    orders = Order.objects.all()
+    total_sales = sum(order.grand_total for order in orders)
+    processed_order = orders.count()
+
+    # Work out the total profit for the store
+    total_profit = 0
+    order_lines = OrderLine.objects.all()
+    for order_line in order_lines:
+        total_profit += order_line.product.profit_amount * order_line.quantity
     
     context = {
         'user': user,
         'addresses': addresses,
         'reviews': reviews,
+        'total_sales': total_sales,
+        'processed_orders': processed_order,
+        'total_profit': total_profit,
     }
     return render(request, 'profile.html', context)
 

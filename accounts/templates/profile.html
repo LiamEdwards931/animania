@@ -37,7 +37,11 @@
                 <form action="{% url 'amendbanners' %}">
                     {% csrf_token %}
                     <button class="btn btn-primary modal-button">Banner Overview</button>
-                </form> 
+                </form>
+                <br>
+                <button type="button" class="btn btn-primary modal-button" data-bs-toggle="modal" data-bs-target="#salesData">
+                    Sales Data
+                </button>
             </div>
             {% else %} 
             <div class="col-lg-4 col-12 profile-details text-center">
@@ -160,4 +164,26 @@
       </div>
     </div>
 </div>
+<div class="modal fade" id="salesData" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Sales Data for Animania</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <h4>Total Sales</h4>
+            <p>£{{ total_sales }}</p>
+            <h4>Total Profit</h4>
+            <p>£{{ total_profit }}</p>
+            <h4>Orders Processed</h4>
+            <p>{{processed_orders}}</p>
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-button" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
