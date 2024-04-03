@@ -144,33 +144,31 @@ def productSize(request, product_id):
     return render(request, 'newSize.html', context)
 
 def updateProductSize(request, product_id):
-    """
-    Form to update the size and quantity for the product
-    """
     product = get_object_or_404(Product, pk=product_id)
-    size = product.size_set.first()  # Retrieve the size associated with the product
+    sizes = dict(Size.SIZE_CHOICES)
 
     if request.method == 'POST':
-        form = forms.ProductSizeForm(request.POST, instance=size)
+        form = forms.ProductSizeForm(request.POST, instance=product)
         if form.is_valid():
-            updated_size = form.save(commit=False)
-            existing_size = Size.objects.filter(product=product, alternate_size=updated_size.alternate_size)
-            if existing_size.exists() and existing_size.first() != size:
-                messages.error(request, 'This size already exists for this product.')
-            else:
-                updated_size.save()
-                messages.success(request, 'Size updated successfully')
+            selected_size = form.cleaned_data.get('alternate_size')
+            size = product.size_set.filter(alternate_size=selected_size).first()
+            if size:
+                size_quantity = form.cleaned_data.get('size_quantity_available')
+                size.size_quantity_available = size_quantity
+                size.save()
+                messages.success(request, f'{sizes[selected_size]} size updated successfully')
                 return redirect('amendProducts')
+            else:
+                messages.error(request, 'Invalid size selected')
         else:
             messages.error(request, 'Could not update the size. Please double-check the inputs.')
     else:
-        form = forms.ProductSizeForm(instance=size)
+        form = forms.ProductSizeForm(instance=product)
 
     context = {
         'form': form,
         'product': product,
         'product_id': product_id,
-        'size_id': size.id if size else None,  # Pass the size ID if available
     }
 
     return render(request, 'update_size.html', context)
