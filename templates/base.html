@@ -142,7 +142,7 @@
                     <h3>Useful Links</h3>
                     <ul class="useful-links">
                         <li><a href="{% url 'allproducts' %}">All products</a></li>
-                        <li><a href="#">News</a></li>
+                        <li><a href="{% url 'news' %}">News</a></li>
                         {% if user.is_authenticated %}
                             <li><a href="{% url 'profile' %}">Account</a></li>
                         {% else %}
