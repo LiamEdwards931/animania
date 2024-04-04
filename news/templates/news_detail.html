@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row article-snippet-container">
+            <div class="col-12 text-center">
+                <h2>{{ article.title }}</h2>
+            </div>
+            {% if article.video_url %}
+            <div class="col-12">
+                
+            </div>
+            {% else %} 
+            <div class="col-12">
+                Image
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

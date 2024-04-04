@@ -10,7 +10,7 @@
             <div class="text-center">
                 <h4>Add your news post!</h4>
             </div>
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group text-center">
                     {{ form.title.label_tag }}

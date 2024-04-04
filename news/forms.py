@@ -1,11 +1,11 @@
 from django import forms
-from .models import news
+from .models import News
 
 
 class newsForm(forms.ModelForm):
 
     class Meta:
-        model = news
+        model = News
         fields = ['title','news_image','short_description','description','video_url']
 
     def __init__(self, *args, **kwargs):
@@ -26,3 +26,5 @@ class newsForm(forms.ModelForm):
                 field.widget = forms.Textarea(attrs={'rows': 10, 'cols': 50})
             elif field_name == 'short_description':
                 field.widget = forms.Textarea(attrs={'rows':5, 'cols':50})
+            elif field_name == 'title':
+                field.widget = forms.Textarea(attrs={'rows':1,'cols':50})

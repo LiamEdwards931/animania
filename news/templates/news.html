@@ -16,18 +16,22 @@
 </div>
 {% if user.is_authenticated %}
 <div class="container">
-    <div class="row">
-        <div class="col-md-4 col-6 text-center">
-            <div id="news-title">
-                <h4>News Title</h4>
+    <div class="row article-snippet-container">
+        {% for article in articles %}
+            <div class="col-md-4 col-12 text-center" id="article">
+                <div id="news-title">
+                    <h4>{{ article.title}}</h4>
+                </div>
+                <div id="news-description">
+                    <h6>{{ article.short_description}}</h6>
+                </div>
+                <div id="news-image-container" style="background: url('{% static 'images/animebackground.jpg' %}') no-repeat 40% 60%; background-size:cover;">
+                    <img id="news-image" src="{{ article.news_image.url }}" alt="{{article.title}}"/>
+                </div>
+                <br>
+                <a href="{% url 'news_detail' article.id %}" class="btn btn-primary modal-button">See Full Article</a>
             </div>
-            <div id="news-image">
-                News Image container
-            </div>
-            <div id="news-description">
-                description
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% else %}
