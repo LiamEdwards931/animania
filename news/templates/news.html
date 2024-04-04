@@ -8,6 +8,9 @@
     <div class="row">
         <div class="col-12 text-center">
             <h2>News</h2>
+            {% if user.is_authenticated and user.is_superuser %}
+                <a class="btn btn-primary modal-button" href="{% url 'create_news' %}">Upload A News Article</a>
+            {% endif %}
         </div>
     </div>
 </div>

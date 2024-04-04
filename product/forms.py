@@ -1,10 +1,6 @@
 from django import forms
 from .models import Product, product_banner,ProductReview,Size
-
-from django import forms
-from .models import Product,product_banner
 from django.core.validators import MinValueValidator, MaxValueValidator
-
 
 class ProductForm(forms.ModelForm):
     SERIES_CHOICES = [

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class news(models.Model):
-    title = models.CharField(max_length=15, blank=False, null=False)
+    title = models.CharField(max_length=50, blank=False, null=False)
     news_image = CloudinaryField('image',blank=True)
     short_description = models.CharField(max_length=50, blank=False, null=False)
     description = models.CharField(max_length=1000, blank=False, null=False)
