@@ -3,6 +3,10 @@
 }
 
 #news-image{
-    height:250px;
+    height:200px;
+    border:1px solid black;
+}
+
+#news-description{
     border:1px solid black;
 }
