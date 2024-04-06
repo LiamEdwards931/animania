@@ -6,7 +6,10 @@ This project is deployed on Heroku
 the link for which is here: [live deployment](https://animania-175b65d61606.herokuapp.com/)
 
 ## Bugs 
-- fixed bugs 
+- Unfixed bugs
+    - No bugs left unfixed within the website as far as the testing is concerened, features all seem to behave as expected.
+
+- Fixed bugs 
     - Issue rendering the dynamic links in the navbar when a filter was in, this was due to a conflict in variable names in the context processor for the site and the variable in the view for the all products page.
     
     - Issue with button on the banner image on index.html not submitting a filter query when pressed, button was not inside a form and therefore had nowehere to navigate too.
