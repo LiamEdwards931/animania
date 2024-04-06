@@ -33,6 +33,8 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
 
     - bug where only the first product was allowed to have a size, amended the view for new products and removed the init method of the form to make sure that it now works correctly, added extra validation in the view to prevent mulitple sizes being submitted.
 
+    - bug where a non size item was being prevented from being added to the basket fixed by adding the a variable for the product in the add to basket app so that it could correctly calculate a validation for the quantity available and not let a user buy more than available
+
 ## Credits 
 
 - Code for adding products to the basket was taken from the boutique-ado walkthrough project.
