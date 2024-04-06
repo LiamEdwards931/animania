@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover a wide range of anime merchandise including apparel, figures, accessories, and more at our online store. Shop now for the latest anime products!">
+    <meta name="keywords" content="animania, anime merchandise, anime store, anime apparel, anime figures, anime accessories, anime merch">
     {% block meta %}
     {% endblock %}
     <title>{% block title %} Animania {% endblock %}</title>
@@ -64,11 +66,11 @@
                 <div class="navbar-nav ms-auto d-flex flex-row order-3" id="linksContainer">
                     <a class="nav-link" href="{% url 'allproducts' %}"><i class="fa-solid fa-magnifying-glass i-link"></i></a>  
                     {% if user.is_authenticated %}
-                        <a class="nav-link" href="{% url 'profile' %}"><i class="fa-regular fa-user i-link"></i></a>
+                        <a class="nav-link" id="profile" href="{% url 'profile' %}"><i class="fa-regular fa-user i-link"></i></a>
                     {% else %}
-                        <a class="nav-link" href="{% url 'login' %}"><i class="fa-regular fa-user i-link"></i></a>
+                        <a class="nav-link" id="login" href="{% url 'login' %}"><i class="fa-regular fa-user i-link"></i></a>
                     {% endif %}
-                    <a class="nav-link cart-icon" href="{% url 'basket' %}">
+                    <a class="nav-link cart-icon" id="shopping-cart" href="{% url 'basket' %}">
                         {% if grand_total %}  
                             <i class="fa-solid fa-cart-plus"></i>
                             <div class="total-amount">
