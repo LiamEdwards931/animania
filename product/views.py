@@ -11,6 +11,11 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 # -------------------Homepage view-------------------------
+def styled_404(request, exception):
+    # View for the 404.html page
+    return render(request, '404.html', {}, status=404)
+
+
 def index(request):
     """
      Creates a view to render index.html, 

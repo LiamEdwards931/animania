@@ -1,5 +1,4 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from . import views
 
 urlpatterns = [
@@ -18,3 +17,5 @@ urlpatterns = [
     path('<product_id>', views.product_detail, name='product_details'),
     path('<int:product_id>/', views.product_review, name='productreview'),
 ]
+
+handler404 = 'product.views.styled_404'

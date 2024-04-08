@@ -56,4 +56,4 @@ function removeDelivery(){
     let delivery_container = document.getElementById('delivery-container')
 
     delivery_container.style.display = 'none';
-}
+};
