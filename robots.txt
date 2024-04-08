@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /checkout/
+Disallow: /checkout_success/
+Disallow: /basket/
+Disallow: /add/
+Disallow: /update/
+Disalow: /delete/
+Disallow: /accounts/
+Disallow: /addaddress/
+Disallow: /changepassword/
+Allow: /signup/
+Sitemap: https://animania-175b65d61606.herokuapp.com/sitemap.xml
