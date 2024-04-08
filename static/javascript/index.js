@@ -1,13 +1,4 @@
 // ---------------------Index.html script------------------
-// // Timesout the message container after 5 seconds of appearing
-const messageContainer = document.getElementById('remove-message');
-
-    setTimeout(() => {
-        if (messageContainer) {
-            messageContainer.remove();
-        }
-    }, 5000);
-
 // banner image js function that allows users to click the image to move to the next one in the list
 var images = document.querySelectorAll('.img-banner');
 var imageButton = document.querySelectorAll('.banner-form-button')
