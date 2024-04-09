@@ -32,7 +32,6 @@ def profile(request):
     # Fetch the addresses associated with the current user
     user = request.user
     addresses = Address.objects.filter(user=user)
-    reviews = ProductReview.objects.filter(created_by=user)
     orders = Order.objects.all()
     total_sales = sum(order.grand_total for order in orders)
     processed_order = orders.count()
@@ -46,7 +45,6 @@ def profile(request):
     context = {
         'user': user,
         'addresses': addresses,
-        'reviews': reviews,
         'total_sales': total_sales,
         'processed_orders': processed_order,
         'total_profit': total_profit,
@@ -142,6 +140,17 @@ def update_address(request, address_id):
     }
     return render(request, 'update_address.html', context)
 
+def my_reviews(request):
+    user = request.user
+    reviews = ProductReview.objects.filter(created_by=user)
+
+    context = {
+        'reviews': reviews,
+    }
+    
+    return render(request, 'myreviews.html', context)
+
+
 def delete_review(request, review_id):
     # Deletes the reviews object that the user has posted.
     review = get_object_or_404(ProductReview, id=review_id)
@@ -150,7 +159,7 @@ def delete_review(request, review_id):
         messages.success(request,'You have successfully deleted this review')
     else:
         messages.error(request,'Could not delete the selected review')
-    return redirect('profile')
+    return redirect('my_reviews')
 
 
 def update_review(request, review_id):
@@ -163,7 +172,7 @@ def update_review(request, review_id):
         if form.is_valid():
             form.save()
             messages.success(request,'review updated successfully')
-            return redirect('profile')
+            return redirect('my_reviews')
     else:
         # Populate the form with the existing address data
         form = ProductReviewForm(instance=review)

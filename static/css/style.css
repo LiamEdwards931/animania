@@ -673,6 +673,13 @@ table{
     height:250px;
 }
 
+/* -------------------- My reviews style ------------------*/
+@media screen and (max-width:500px){
+    .myreviewcol{
+        margin-top:5px !important; /*Needed to use the important here to overwrite the mt-5 used in html */
+    }
+}
+
 /* ----------------- All products.html style -------------------------------------------- */
 
 .filter-form-container{

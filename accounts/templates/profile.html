@@ -69,121 +69,75 @@
             <div class="col-lg-4 col-12 profile-details text-center">
                 <h2>My Reviews</h2>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary modal-button" data-bs-toggle="modal" data-bs-target="#reviewBackdrop">
-                    My reviews
-                </button>
+                <a class="btn btn-primary modal-button" href ="{% url 'my_reviews'%}">My reviews </a>
             </div>
         </div>
     </div>
-  <!-- Modal pop up that filters all reviews -->
-  <div class="modal fade" id="reviewBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">All Reviews posted by {{ user.username }}</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            {% for review in reviews %}
-            <div class="text-center my-reviews">
-                <h6>{{ review.product }}</h6> 
-                {% for star in "x"|rjust:review.rating %}
-                    <i class="fas fa-star"></i>
-                {% endfor %} 
-                <p>{{review.title}} </p>
-                <p> Uploaded on: {{ review.created_on}}</p>
-                <div class="row">
-                    <div class="col-6">
-                        <form action="{% url 'update_review' review.id %}" method="get">
-                            {% csrf_token %}
-                            <button class="btn btn-primary modal-button" type="submit">Update Review</button>
-                        </form>
-                    </div>
-                    <div class="col-6">
-                        <form method="post" action="{% url 'delete_review' review.id %}">
-                            {% csrf_token %}
-                            <button class="btn btn-primary modal-button" type="submit">Delete Review</button>
-                        </form>
-                    </div>
-                </div> 
+    <!-- Modal pop up for Adress details-->
+    <div class="modal fade" id="addressBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Address details for: {{ user.username }}</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            {% empty %}
-            <p>No reviews posted</p>
-            <p>Browse and leave a review for our <a style="color:orange; text-decoration:underline" href="{% url 'allproducts' %}">Products!</a></p>
-            {% endfor %}
+            <div class="modal-body">
+                {% for address in addresses %}
+                    <div class="text-center">
+                        <form action="{% url 'addaddress' %}">
+                            <button class="btn btn-primary modal-button" type="submit">Add new address +</button>
+                        </form>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <p>{{ address.door_number }} {{ address.street }}</p>
+                        <p>{{ address.city }}</p>
+                        <p>{{ address.state }}</p>
+                        <p>{{ address.country }}</p>
+                        <p> {{ address.postal_code }}</p>
+                        
+                        <div class="row">
+                            <div class="col-6">
+                                <form action="{% url 'update_address' address.id %}" method="get">
+                                    <button class="btn btn-primary modal-button" type="submit">Update Address</button>
+                                </form>
+                            </div>
+                            <div class="col-6">
+                                <form method="post" action="{% url 'delete_address' address.id %}">
+                                    {% csrf_token %}
+                                    <button class="btn btn-primary modal-button" style="margin-top:5px;" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </div> 
+                    </div>
+                    <hr>
+                {% endfor %}    
+            </div>  
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary modal-button" data-bs-dismiss="modal">Close</button>
+            </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary modal-button" data-bs-dismiss="modal">Close</button>
         </div>
-      </div>
     </div>
-  </div>
-  <!-- Modal pop up for Adress details-->
-  <div class="modal fade" id="addressBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Address details for: {{ user.username }}</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal fade" id="salesData" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Sales Data for Animania</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4>Total Sales</h4>
+                <p>£{{ total_sales }}</p>
+                <h4>Total Profit</h4>
+                <p>£{{ total_profit }}</p>
+                <h4>Orders Processed</h4>
+                <p>{{processed_orders}}</p>   
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary modal-button" data-bs-dismiss="modal">Close</button>
+            </div>
         </div>
-        <div class="modal-body">
-            {% for address in addresses %}
-                <div class="text-center">
-                    <form action="{% url 'addaddress' %}">
-                        <button class="btn btn-primary modal-button" type="submit">Add new address +</button>
-                    </form>
-                </div>
-                <hr>
-                <div class="text-center">
-                    <p>{{ address.door_number }} {{ address.street }}</p>
-                    <p>{{ address.city }}</p>
-                    <p>{{ address.state }}</p>
-                    <p>{{ address.country }}</p>
-                    <p> {{ address.postal_code }}</p>
-                    
-                    <div class="row">
-                        <div class="col-6">
-                            <form action="{% url 'update_address' address.id %}" method="get">
-                                <button class="btn btn-primary modal-button" type="submit">Update Address</button>
-                            </form>
-                        </div>
-                        <div class="col-6">
-                            <form method="post" action="{% url 'delete_address' address.id %}">
-                                {% csrf_token %}
-                                <button class="btn btn-primary modal-button" style="margin-top:5px;" type="submit">Delete</button>
-                            </form>
-                        </div>
-                    </div> 
-                </div>
-                <hr>
-            {% endfor %}    
-        </div>  
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary modal-button" data-bs-dismiss="modal">Close</button>
         </div>
-      </div>
     </div>
-</div>
-<div class="modal fade" id="salesData" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Sales Data for Animania</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <h4>Total Sales</h4>
-            <p>£{{ total_sales }}</p>
-            <h4>Total Profit</h4>
-            <p>£{{ total_profit }}</p>
-            <h4>Orders Processed</h4>
-            <p>{{processed_orders}}</p>
-            
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary modal-button" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
 {% endblock %}
