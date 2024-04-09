@@ -70,6 +70,9 @@
                     {% else %}
                         <a class="nav-link" id="login" href="{% url 'login' %}"><i class="fa-regular fa-user i-link"></i></a>
                     {% endif %}
+                    {% if user.is_authenticated %}
+                        <a class="nav-link" id="wishlist" href="{% url 'wishlist' %}"><i class="fa-solid fa-heart"></i></a>
+                    {% endif %}
                     <a class="nav-link cart-icon" id="shopping-cart" href="{% url 'basket' %}">
                         {% if grand_total %}  
                             <i class="fa-solid fa-cart-plus"></i>

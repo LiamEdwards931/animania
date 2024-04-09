@@ -49,6 +49,14 @@
                             <img src="{{ product.image.url }}" class="card-img-top all-products-card-image-top" alt="{{ product.name }}">
                         </a>
                         <div class="card-body product-card-body text-center">
+                            {% if user.is_authenticated %}
+                                <form id="add-to-wishlist-form" method="post" action="{% url 'add_to_wishlist' product.id %}">
+                                    {% csrf_token %}
+                                    <button id="wishlist-button" type="submit">
+                                        <i class="fa-solid fa-heart-circle-plus"></i>
+                                    </button>
+                                </form>
+                            {% endif %}
                             {% if product.discounted %}
                                 <h6 class="percent-off card-title">{{ product.discount_amount }}% off</h6>
                             {% elif product.new %}

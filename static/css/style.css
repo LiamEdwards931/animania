@@ -708,6 +708,16 @@ table{
     margin-right: 5px;
 }
 
+#wishlist-button{
+    border: none;
+    background-color:white;
+    margin-bottom: 5px;
+}
+
+#wishlist-button:hover{
+    color:orange;
+}
+
 @media screen and (max-width:480px){
     .all-products-card-image-top{
         height:300px;
@@ -728,6 +738,26 @@ table{
     .review-textarea{
         width:300px;
     }
+}
+
+/* ---------------wishlist stlye------------- */
+.wishlist-image-container{
+    margin-bottom:10px;
+}
+
+.wishlist-image{
+    height:250px;
+    width:250px;
+}
+
+.remove-wishlist-item{
+    border: none;
+    background-color: white;
+    color: red;
+}
+
+.remove-wishlist-item:hover{
+    color:orange;
 }
 
 /*------------- Basket.html style -------*/

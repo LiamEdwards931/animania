@@ -1,11 +1,11 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import user_passes_test, login_required
 from django.db.models import Q
 from django.contrib import messages
-from .models import Product, product_banner, ProductReview, Size
+from .models import Product, product_banner, Size, Wishlist
 from . import forms
 from .forms import ProductForm, BannerForm
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -41,6 +41,7 @@ def index(request):
     }
     
     return render(request, 'index.html', context)
+
 
 # ---Create/update/delete products views (SuperUser only from the profile page)---------
 def amendProducts(request):
@@ -99,6 +100,7 @@ def amendProducts(request):
         
     return render(request, 'amendproducts.html', context )
 
+
 def newProduct(request):
     """
     Renders the product form for adding a new product,
@@ -115,6 +117,7 @@ def newProduct(request):
         newProductForm = forms.ProductForm()
     
     return render(request, 'new_product.html', {'form': newProductForm})
+
 
 def productSize(request, product_id):
     """
@@ -148,7 +151,11 @@ def productSize(request, product_id):
 
     return render(request, 'newSize.html', context)
 
+
 def updateProductSize(request, product_id):
+    """
+    View that allows users to update the quantites for the each individual size of clothing.
+    """
     product = get_object_or_404(Product, pk=product_id)
     sizes = dict(Size.SIZE_CHOICES)
 
@@ -283,7 +290,7 @@ def update_banner(request, banner_id):
 
 def delete_banner(request, banner_id):
     """
-    View to delete all of a product instance on request by a superuser.
+    View to delete banner instance on request by a superuser.
     """
     banner = get_object_or_404(product_banner, id=banner_id)
     
@@ -438,3 +445,52 @@ def product_review(request, product_id):
     }
 
     return render(request, 'new_product_review.html', context)
+
+# -----------------Wishlist views-------------------------
+@login_required
+def add_to_wishlist(request, product_id):
+    """
+    Functionality for adding a product into your wishlist.
+    """
+    try:
+        wishlist_item, created = Wishlist.objects.get_or_create(user=request.user, product_id=product_id)
+        if created:
+            product_name = wishlist_item.product.name
+            messages.success(request, f'Added {product_name} to your wishlist!')
+        else:
+            messages.info(request, 'This product is already in your wishlist.')
+    except Exception as e:
+        messages.error(request, f"Error: {str(e)}", status=500)
+
+    return redirect('allproducts')
+
+
+def wishlist(request):
+    """
+    View that displays the users product wishlist
+    """
+    user = request.user
+    wishlist_item = Wishlist.objects.filter(user=user)
+
+    context = {
+        'wishlist_item': wishlist_item,
+    }
+    
+    return render(request,'wishlist.html',context)
+
+
+def delete_wishlist_item(request, product_id):
+    """
+    View to delete all of a product instance on request by a superuser.
+    """
+    wishlist_item = get_object_or_404(Wishlist, product_id=product_id, user=request.user)
+    
+    if request.method == 'POST':
+        # Delete the product
+        wishlist_item.delete()
+        messages.success(request, 'Removed item from your wishlist')
+        return redirect('wishlist')
+    else:
+        # If the request method is not POST, display the following error
+        messages.error(request, 'Could not remove your item from the wishlist')
+        return redirect('wishlist')
