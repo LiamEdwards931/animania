@@ -5,6 +5,10 @@
 This project is deployed on Heroku 
 the link for which is here: [live deployment](https://animania-175b65d61606.herokuapp.com/)
 
+## Testing
+The manual testing performed for animania is all document below:
+[Animania-testing](TESTING.md)
+
 ## Bugs 
 - Unfixed bugs
     - No bugs left unfixed within the website as far as the testing is concerened, features all seem to behave as expected.
