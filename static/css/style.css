@@ -96,6 +96,30 @@ a:hover{
     text-shadow: 2px solid white;
 }
 
+/* delete confirmation modal */ 
+#custom-modal{
+    background-color: black;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 500px;
+    height:25%;
+    color:white;
+}
+
+.modal-content{
+    height:100%;
+    background-color:black;
+}
+
+.close:hover{
+    color:orange;
+    cursor:pointer;
+}
+
+
 /*Universal button style for consistent approach used with btn btn-primary */
 .modal-button{
     background-color: black;

@@ -18,17 +18,12 @@
                     <h5>{{ item.product.name}}</h5>
                     <p>{{ item.product.series }}</p>
                     <p>£{{ item.product.price }}</p>
-                    <form method ="POST" action="{% url 'delete_wishlist_item' item.product.id %}"onsubmit="return confirmDelete()">
+                    <form method ="POST" id ="delete-wishlist-item" action="{% url 'delete_wishlist_item' item.product.id %}" onsubmit="confirmDelete()">
                         {% csrf_token %}
-                        <button class="remove-wishlist-item" type ="submit">Remove from Wishlist</button>
+                        <button class="remove-wishlist-item delete-button" type="submit">Remove from Wishlist</button>
                     </form>   
                 </div>
             {% endfor %}
         </div>
     </div>
-    <script>
-        function confirmDelete() {
-            return confirm("Are you sure you want to delete this item?");
-        }
-    </script>
 {% endblock %}

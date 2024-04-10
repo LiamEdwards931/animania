@@ -118,7 +118,7 @@
                                     <br>
                                     <form action="{% url 'delete_product' product.id %}" method="post">
                                         {% csrf_token %}
-                                        <button type="submit" action="delete" class="product-button">Delete Product</button>
+                                        <button type="submit" action="delete" class="product-button delete-button">Delete Product</button>
                                     </form>
                                     {% if product.category == 'Clothing' %}
                                         <button class="product-button">
