@@ -1,5 +1,11 @@
 # Animania
 
+## Animania Anime merchandise
+
+Animania is an e-commerce merchandise store, the core behind animania is that it offers anime merchandise all in one place for anime lovers to buy. I decided to go for this particular genre as I know several anime fans, myself included and the market for being able to purchase and browse a selection of merchandise from different anime is quite scarce and difficult to find.
+
+Even though this site is fictional and the products shown in this site are not available I do believe that there is a potential in the market for a store like this one, that could have little competition when browsing and purchasing goods for anime.
+
 ## Live deployment 
 
 This project is deployed on Heroku 
