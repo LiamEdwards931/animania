@@ -44,7 +44,7 @@ To give users a feeling of satisfaction when shopping the site so that repeat cu
  'Nearly three-quarters of British shoppers prefer mobile devices when making online purchases, with 48% of them using their phones for purchases at least once a week.' - 
  [dontdisappoint](dontdisappoint.me.uk/resources/finance/mobile-commerce-statistics-uk/)
  - Social media presence is a huge factor in todays success of a business, sometimes though it is difficult to filter through the authenticity of a business. Animania uses a facebook page as a source of marketing
- ![animania-facebook-page](readmeimages\facebookpage.png)
+ ![animania-facebook-page](readmeimages/facebookpage.png)
  
 
 
