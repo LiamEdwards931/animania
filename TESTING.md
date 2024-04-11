@@ -150,6 +150,10 @@ This testing section covers the login/logout functionality and the profile page
 |Superusers should be able to add new news content through a form| An intuitive functional button should be available to navigate to the form to create news articles| button is at the top of the screen on pressing it user navigates to the create news article page| Pass|
 |News form validation messages| Message should guide the user if the form has been submitted wrong| Messages appear for required items on creating an article, gives the user an indication of what they did wrong| Pass|
 
+## 404
+| Description                                    | Expected Result | Actual Result  | Pass/Fail |
+|------------------------------------------------|-----------------|----------------|-----------|
+|404 page should appear when a user navigates away from the site| custom 404 page when a user navigates away from the site| 404 page displays when links are accessed that are not part of the website, button exists to take the user back to the home page|Pass|
 
 ## Final note on testing 
 I have tested these features thoroughly and to the best of my ability, I used testing with Precious my mentor and testing through friends and family to try and find and work out kinks within Animania all testing documented in this readme were as a result of my own personal testing throughout the site.
