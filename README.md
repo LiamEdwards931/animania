@@ -17,13 +17,16 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
 - [Testing](#testing)
 - [Bugs](#bugs)
 - [Credits](#credits)
-- [Project_outline](#project-outline)
+- [Project outline](#project-outline)
     - [Purpose](#purpose)
-    - [User_goals](#user-goals)
-    - [Site_manager_goals](#site-manager-goals)
-    - [Business_model](#business-model)
-        - [Marketing_strategies](#marketing-strategies)
+    - [User goals](#user-goals)
+    - [Site manager goals](#site-manager-goals)
+    - [Business model](#business-model)
+        - [Marketing strategies](#marketing-strategies)
         - [SEO](#search-engine-optimisation)
+- [Agile method](#agile-method-for-project-management)
+-[Database Models](#database-schema)
+    - [Relationships](#relationships)
 
 
 ## Project outline 
@@ -49,16 +52,18 @@ To give users a feeling of satisfaction when shopping the site so that repeat cu
  - Changes to products can be amended swiftly, changes to banners can be adjusted swiftly giving the user a more dynamic approach and hopefully they see something new when they do decide to revisit the store.
  - Customer engagement and feedback is also imperative when it comes to marketing and a new user is much more likely to purchase from the site if the level of positive feedback is high, this is shown in the all products page as an average review score, and all reviews are displayed within the product detail page to let customers persuade other customers about the quality.
  - Animania is responsive on all devices allowing users to be able to shop on a multitude of devices. according to google 
- 'Nearly three-quarters of British shoppers prefer mobile devices when making online purchases, with 48% of them using their phones for purchases at least once a week.' - 
- [dontdisappoint](dontdisappoint.me.uk/resources/finance/mobile-commerce-statistics-uk/)
+ 'Nearly three-quarters of British shoppers prefer mobile devices when making online purchases, with 48% of them using their phones for purchases at least once a week.' - dontdisappoint
  - Social media presence is a huge factor in todays success of a business, sometimes though it is difficult to filter through the authenticity of a business. Animania uses a facebook page as a source of marketing
  ![animania-facebook-page](readmeimages/facebookpage.png)
  
 #### Search engine optimisation
-SEO (search engine optimisation) - Important for authenticity of a website, important for ranking in a search engines search queries, the higher you score the more likely it is that your site is going to be shopped and viewed by customers. 
-Ways to increase SEO
+SEO (search engine optimisation) is Important for authenticity of a website, important for ranking in a search engines search queries, the higher you score the more likely it is that your site is going to be shopped and viewed by customers. 
+
+Animania SEO implementation:
 - Meta description: "Discover a wide range of anime merchandise including apparel, figures, accessories, and more at our online store. Shop now for the latest anime products!
-- Meta keywords: "animania, anime merchandise, anime store, anime apparel, anime figures, anime accessories, anime merch, pop-vinyl, clothing, sale-items"
+- Meta keywords: 
+I used [Wordstream](https://tools.wordstream.com/fkt?website=animania&cid=&camplink=&campname=&geoflow=1) to check my keywords against competition, the link only includes the result for the animania keyword.
+"animania, anime merchandise, anime store, anime apparel, anime figures, anime accessories, anime merch, pop-vinyl, clothing, sale-items"
 - Inclusions
     - Inclusion of a robots.txt file: As I am aware this only improves performance based on the site being a custom domain that needs card details.
     - Inclusion of a sitemap.xml file.
@@ -66,7 +71,74 @@ Ways to increase SEO
 - Lighthouse SEO score
 ![SEO_score](readmeimages/animaniaSEOscore.png)
 
+## Agile method for project management
 
+- I used github issues, milestones and the project board to implement a MosCow approach to the development of Animania
+The issues outline the general criteria I need to fulfill and within the milestones I have the explored deeper into what may be expected from each feature and the acceptance criteria needed to pass the project through to it's next phase. 
+[Animania Project Board](https://github.com/users/LiamEdwards931/projects/6/views/1)
+
+## Database Models
+There are multiple models with the animania project:
+- Product app
+    - Product - This model handles creating the details for the product
+        | Model property        | Property value       |
+        |-----------------------|----------------------|
+        | image                 | CloudinaryField      |
+        | alternative_images    | CloudinaryField      |
+        | name                  | TextField            |
+        | description           | TextField            |
+        | series                | TextField            |
+        | price                 | DecimalField         |
+        | category              | CharField            |
+        | sub_category          | CharField            |
+        | cost_price            | DecimalField         |
+        | search_tags           | CharField            |
+        | related_products      | ManyToManyField      |
+        | quantity_available    | PositiveIntegerField |
+        | new                   | BooleanField         |
+        | discounted            | BooleanField         |
+        | discount_amount       | PositiveIntegerField |
+        | created_on            | DateField            |
+        | updated_on            | DateField            |
+        
+        The product model has properites also such as:
+        - Discounted price
+            - Gets the discount amount and turns it into a percentage e.g value 10 = 10%, then that value gets worked out from the product price and subtracted to get the discount with the correct % value.
+        - Profit margin 
+            - Gets worked out by subtracting the cost price from the sale price in a variable called margin, the margin is then divided by the cost price and multiplied by 100 to work out the profit margin % of a product.
+        - Profit amount
+            - Works in a similar way to the profit margin except it's price - cost price / cost price
+
+    - Size - This model handles adding quantites to individual sizes as opposed to having one generic quantity that covers all of the sizes. 
+        | Model property         | Property value       |
+        |------------------------|----------------------|
+        | product                | ForeignKey("Product")|
+        | alternate_size         | CharField            |
+        | Size_quantity_available|PositiveIntegerField |
+    
+    - Banners - This model handles creating new banners for the home screen
+        | Model property        | Property value       |
+        |-----------------------|----------------------|
+        | image                 | CloudinaryField      |
+        | Series                | Textfield            |
+        - The banner is a standalone model, I did add validation check in the form to upload this to check if a product series exists before uploading the image which returns validation errors if the product series does not exist.
+
+    - Product Review - This model handles the reviews submitted to products. 
+        | Model property   | Property value         |
+        |------------------|------------------------|
+        | title            | CharField              |
+        | product          | ForeignKey("Product")  |
+        | rating           | PositiveIntegerField   |
+        | content          | CharField              |
+        | created_by       | ForeignKey(User)       |
+        | created_on       | DateField              |
+        | updated_on       | DateField              |
+        - As you can see the review model has a foreign key to both the User and The product, this allows association with the review and it's associated product and also the user who has uploaded the review. 
+
+    
+
+
+### Relationships
 
 ## Testing
 The manual testing performed for animania is all document below:
