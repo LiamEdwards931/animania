@@ -17,6 +17,14 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
 - [Testing](#testing)
 - [Bugs](#bugs)
 - [Credits](#credits)
+- [Project_outline](#project-outline)
+    - [Purpose](#purpose)
+    - [User_goals](#user-goals)
+    - [Site_manager_goals](#site-manager-goals)
+    - [Business_model](#business-model)
+        - [Marketing_strategies](#marketing-strategies)
+        - [SEO](#search-engine-optimisation)
+
 
 ## Project outline 
 
@@ -46,6 +54,17 @@ To give users a feeling of satisfaction when shopping the site so that repeat cu
  - Social media presence is a huge factor in todays success of a business, sometimes though it is difficult to filter through the authenticity of a business. Animania uses a facebook page as a source of marketing
  ![animania-facebook-page](readmeimages/facebookpage.png)
  
+#### Search engine optimisation
+SEO (search engine optimisation) - Important for authenticity of a website, important for ranking in a search engines search queries, the higher you score the more likely it is that your site is going to be shopped and viewed by customers. 
+Ways to increase SEO
+- Meta description: "Discover a wide range of anime merchandise including apparel, figures, accessories, and more at our online store. Shop now for the latest anime products!
+- Meta keywords: "animania, anime merchandise, anime store, anime apparel, anime figures, anime accessories, anime merch, pop-vinyl, clothing, sale-items"
+- Inclusions
+    - Inclusion of a robots.txt file: As I am aware this only improves performance based on the site being a custom domain that needs card details.
+    - Inclusion of a sitemap.xml file.
+- Suitable rel tags for external links: the tags used in this project are noopeners as they do not have direct content linked to animania, they are standalone webpages that do not need to be crawled to learn about the animania site. 
+- Lighthouse SEO score
+![SEO_score](readmeimages/animaniaSEOscore.png)
 
 
 
