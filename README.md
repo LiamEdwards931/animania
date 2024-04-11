@@ -48,6 +48,8 @@ The manual testing performed for animania is all document below:
 
     - bug where a non size item was being prevented from being added to the basket fixed by adding the a variable for the product in the add to basket app so that it could correctly calculate a validation for the quantity available and not let a user buy more than available
 
+    - 500 error code returning for 404, the issue was I missed a path name in urls.py on products so when a user typed in http://127.0.0.1:8000/b for example it was looking for a product and not a faulty url returning the 500 code and not the 404.
+
 ## Credits 
 
 - Code for adding products to the basket was taken from the boutique-ado walkthrough project.
