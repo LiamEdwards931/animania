@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('styled_404',views.styled_404,name='styled_404'),
     path('amendProducts', views.amendProducts, name='amendProducts'),
     path('newProduct', views.newProduct, name='newProduct'),
     path('delete_product/<int:product_id>/', views.delete_product, name='delete_product'),
@@ -20,5 +21,3 @@ urlpatterns = [
     path('<product_id>', views.product_detail, name='product_details'),
     path('<int:product_id>/', views.product_review, name='productreview'),
 ]
-
-handler404 = 'product.views.styled_404'

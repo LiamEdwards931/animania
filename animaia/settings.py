@@ -165,6 +165,9 @@ LOGOUT_REDIRECT_URL = "index"
 DELIVERY_AMOUNT = 75
 DELIVERY_COST = 10
 
+# 404 
+handler404 = 'product.views.styled_404'
+
 #Stripe
 
 STRIPE_CURRENCY ='gbp'
