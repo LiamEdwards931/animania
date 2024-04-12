@@ -33,6 +33,8 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
     - [User Stories](#user-stories)
     - [Site Perspective](#site-perspectives)
     - [Design choices](#design-choices)
+    - [Features](#features)
+        -[Home](#homepage)
 
 
 ## Project outline 
@@ -363,16 +365,75 @@ Superusers have access to everything on the site, the main difference lies withi
 
     - Some of the headers are complemented with a text-shadow just make them have more of a cartoon characteristic. 
 
-#### Features
-- Homepage
-    - Navbar
-    The navbar is fixed to the top of the screen and responsive on mobile devices, it contains links to the relevant sections that users need to make purchases.
+### Features
+#### Homepage
+- Navbar
+    The navbar is fixed to the top of the screen and responsive on mobile devices, it contains links to the relevant sections that users need to make purchases. category and series links are automatically generated when a product with a new series or category are created.
+    
+    Large screen
     ![Navbar](readmeimages/feature-images/Home/navbar.png)
 
+    Small screens.
     ![Navbar](readmeimages/feature-images/Home/responsivenavbar1.png)
 
     ![Navbar](readmeimages/feature-images/Home/responsivenavbar2.png)
 
+- Main banner image 
+    The main banner displays the image of a series as long as a product of that series exists for it, it also generates a button that takes the user to browse products by that specific series.
+
+    ![Main image](readmeimages/feature-images/Home/mainimage.png)
+
+- Delivery banner
+    A banner appears on loading the page that displays a threshold a user needs to spend to be entitled to free delivery.
+    the banner can be closed off if the user wishes to do so.
+
+    ![Delivery banner](readmeimages/feature-images/Home/delivery-pop-up.png)
+
+- Category sections 
+    There is a section on the home page for categories that allow users to filter the products by the 3 main categories that exist for animanaia. 
+
+    ![Category](readmeimages/feature-images/Home/home-category.png)
+
+- New section 
+    There is a section that displays 4 new products, this was designed intentionally so that the products didn't clutter the home page and allows user to access the details of the appended products or they can shop all sale items with the top link
+
+    ![New section](readmeimages/feature-images/Home/home-new.png)
+
+- Sale section 
+    There is a section that displays 4 sale products, works the same as news and allows user to access the details of the appended products or they can shop all sale items with the top link
+
+    ![Sale section](readmeimages/feature-images/Home/home-sale.png)
+
+- Facebook banner 
+    There is a banner suggesting users to follow the site on facebook the icon is a link that will take the user to the animania facebook page
+
+    ![facebook](readmeimages/feature-images/Home/social-media-banner.png)
+
+- Footer 
+    The footer is positioned at the bottom of the screen, it has a section about animania, it has useful links for site navigation and it has links for series that generate the same way they do in the navbar 
+
+    ![Footer](readmeimages/feature-images/Home/footer.png)
+
+#### Profile
+
+- User view
+    The users on coming to the profile page have a selection of options:
+    - logout - redirects to the home page with a message 
+    - change password - redirects to a form to change password
+    - address - brings up a modal that shows all of the address details and the option to add a new address
+    if an address exists there are options for a user to update or delete them too. 
+    - my reviews - redirects to a page that displays all of the logged in users reviews and allows users to update or delete them. 
+    
+    ![User-profile](readmeimages/feature-images/Profile/userprofile.png)
+
+- Superuser view
+    - Similar page layout to the User except
+     - address becomes product overview 
+     - product overview button redirects to the amend products page where superusers can add update and delete products.
+     - banner overview button redirects to banner page where superuses can add update and delete banners. 
+     - sales data - opens a modal that shows total turnover, total profit and amount of orders processed.
+
+     ![Superuser Profile](readmeimages/feature-images/Profile/superuserprofile.png)
 
 [Back to top](#animania)
 
