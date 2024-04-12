@@ -45,6 +45,10 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
 - [Future features](#future-features)
 - [Technology used](#technology-used)
 - [Testing](#testing)
+    - [User story testing](#user-story-testing)
+    - [Manual testing](#manual-testing)
+    - [Automated testing](#automated-testing)
+    - [Responsive testing](#responsive-testing)
 - [Bugs](#bugs)
 - [Credits](#credits)
 
@@ -620,6 +624,8 @@ The manual features testing performed for animania is all documented below:
 
 ### Automated testing
 No automated testing has been done for the Animania project.
+
+### Responsive testing
 
 [Back to top](#animania)
 
