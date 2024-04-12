@@ -28,6 +28,11 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
 - [Database Models](#database-models)
     - [Models](#models)
     - [Relationships](#relationships)
+-[UX](#ux-user-experience)
+    -[Wireframes](#wireframes)
+    -[User Stories](#user-stories)
+    -[Site Perspective](#site-perspectives)
+    -[Design choices](#design-choices)
 
 
 ## Project outline 
@@ -219,6 +224,145 @@ This section shows the design progress and choices for animania, it outlines the
 - Home page 
 
 ![homepage](readmeimages/Wireframe1Homepage.png)
+
+- All products
+
+![All Products](readmeimages/Wireframe2allProducts.png)
+
+- Product Detail
+
+![All products](readmeimages/wireframe3productdetail.png)
+
+- Basket
+
+![Basket](readmeimages/wireframe4basket.png)
+
+- Checkout
+
+![Checkout](readmeimages/wireframe5checkout.png)
+
+- Checkout success
+
+![Checkout Success](readmeimages/wireframe6checkoutsuccess.png)
+
+- Profile
+
+![Profile](readmeimages/wireframe7profile.png)
+
+- Amend Products
+
+![Amend products](readmeimages/wireframe8amendproducts.png)
+
+### User stories
+
+#### Home page 
+|User Type| User story|Completed|
+|--------|-----------|----------|
+|User| As a user I expect a Nav bar shows links to the relevant pages such as products and accounts|[x]|
+|User| As a user I expect to see a clear indication through images of what the page is about|[x]|
+|User| As a user I expect to see products that could inspire me to buy|[x]|
+|User| As a user I expect to see a link to take me to other sources that could be related to Animania e.g. a facebookpage|[x]|
+|User| As a user I expect to see a useful footer that gives me information and important links|[x]|
+|Superuser & User| As a sitemanager/User I expect to see a promotional message to encourage purchase such as a promotion on delivery|[x]|
+
+#### Accounts/Profile
+|User Type| User story|Completed|
+|--------|-----------|----------|
+|User| As a user I expect to be able to log in to the site|[x]|
+|User| As a user I expect to be able to log out of the site|[x]|
+|User| As a user if i don't have an account I expect to be able to log into the site|[x]|
+|User| As a user I expect to be able to change my password for security|[x]|
+|User| As a user I expect to be able to add some address details that are saved to my profile|[x]|
+|User| As a user I expect to be able to update and remove my address details|[x]|
+|User| As a user I expect to be able to see my personal details|[x]|
+|User and Superuser| As a site manager/User I expect to be able to read a list of all the reviews I have posted|[x]|
+|User and Superuser| As a site manager/User I expect to be able to update any of the reviews I have posted|[x]|
+|User and Superuser| As a site manager/User I expect to be able to delete any of the reviews I have posted|[x]|
+|Superuser| As a Site manager I expect to be able to add new products|[x]|
+|Superuser| As a Site manager I expect to be able to make adjustments to products|[x]|
+|Superuser| As a Site manager I expect to be delete products|[x]|
+|Superuser| As a Site manager I expect to be able to create new home page banners|[x]|
+|Superuser| As a Site manager I expect to be able to update home page banners|[x]|
+|Superuser| As a Site manager I expect to be able to remove home page banners |[x]|
+|Superuser| As a Site manager I expect to be able to track the total performance of the site|[x]|
+
+#### Products
+|User Type| User story|Completed|
+|--------|-----------|----------|
+|User| As a user I expect to be able to browse a all the products available on the site|[x]|
+|User| As a user I expect to be able to filter the products to narrow down the product I want|[x]|
+|User| As a user I expect to be able to search for a product that I want |[x]|
+|User| As a user I expect to be able to see a number of search results |[x]|
+|User| As a user I expect to be able to see relevant details of the product|[x]|
+|User| As a user I expect to be able to add a product to my wishlist|[x]|
+|User| As a user I expect to be able to find out more details about a product |[x]|
+|User| As a user I expect to be able to quickly see if it's on sale or if it's new |[x]|
+|User| As a user I expect to be able to quickly see a review score for the product|[x]|
+|User| As a user I expect to be able to be able to navigate the products without excessive page length (pagination) |[x]|
+|User| As a user I expect to be able to choose a quantity of product I want and add it to my basket|[x]|
+|User| As a user I expect to be able to add a specific size of clothing to my basket |[x]|
+|SuperUser| As a site manager I expect to be able to see live changes as I update products e.g. price/sale/new/quantities|[x]|
+
+#### Basket
+|User Type| User story|Completed|
+|--------|-----------|----------|
+|User| As a user I expect to be able to be able to view the contents of my basket|[x]|
+|User| As a user I expect to be able to adjust the quantity of items within my basket|[x]|
+|User| As a user I expect to be able to remove items from my basket|[x]|
+|User| As a user I expect to be able to see a checkout amount before I proceed to the checkout |[x]|
+|User| As a user I expect to be able to see a breakdown of my costs before proceeding to the checkout |[x]|
+|User| As a user I expect to be able to have a quick way to rebrowse products in case I want to add more |[x]|
+
+
+#### Checkout
+|User Type| User story|Completed|
+|--------|-----------|----------|
+|User| As a user I expect to be able to see the contents of my basket again before I proceed forward for confirmation|[x]|
+|User| As a user I expect to be able to fill out an easy to fill form that requires my personal details for delivery |[x]|
+|User| As a user I expect to be able to see this form prepopulated with my details I filled out previously |[x]|
+|User| As a guest user I expect to be able to still be able to complete checkouts.|[x]|
+|User| As a user I expect to be able to complete a payment option|[x]|
+|User| As a user I expect to be able to see a confirmation of my order once I have purchased it|[x]|
+|User| As a user I expect to be able to see an invoice of the items I have purchased, the costs and the delivery address |[x]|
+
+#### News
+|User Type| User story|Completed|
+|--------|-----------|----------|
+|User| As a user I expect to be able to see up to date relevant news about the site or associated topics. |[x]|
+|User| As a logged in user I expect to be able to see more details about an article. |[x]|
+|SuperUser| As a Site manager I expect to be able to add new articles to the page |[x]|
+
+#### Site perspectives 
+A user logged in, a user not logged in and a superuser have different experiences in animania.
+
+- Logged out differences to logged in users
+Guest users(non logged in) these users do not have access to wishlists, they do not have access to browse news articles and forms in the checkout are not prepopulated with details. The profile button in the navbar points to a log in page rather than a profile page and the footer has the same effect indirectily meaning that address details for non logged in users cannot be accessed or added.
+A non logged in user cannot submit a product a review. 
+The reverse is all true for the logged in user and they have access to all of the mentioned features
+
+- Superusers 
+Superusers have access to everything on the site, the main difference lies within the profile a superuser has no need to add an address so in it's stead the product management buttons exist, where a superuser can add products and banners and perform CRUD operations on them and also can see the sales data for the performance of the website.
+
+#### Design choices
+
+- Typography
+    - Headers in animania are in custom google font: "Luckiest Guy" with a backup of "cursive"; 
+    - All other text is standard sans-serif;
+
+- Colour scheme
+    - The colours chosen were intential to provoke a nostalgia like feeling when shopping animania in matching colours up with the massive platform for anime crunchyroll; 
+    I didn't want to overbear the user with colour and only really used it where I felt it would be effective
+    colours:
+    
+    Orange
+    ![color-image](readmeimages/colorimage.png)
+
+    Black
+    ![black-image](readmeimages/black-color-image.png)
+
+    White
+    ![White-image](readmeimages/color-image-white.png)
+
 
 [Back to top](#animania)
 
