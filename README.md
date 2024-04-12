@@ -430,7 +430,8 @@ Superusers have access to everything on the site, the main difference lies withi
     - change password - redirects to a form to change password
     - address - brings up a modal that shows all of the address details and the option to add a new address
     if an address exists there are options for a user to update or delete them too. 
-    - my reviews - redirects to a page that displays all of the logged in users reviews and allows users to update or delete them. 
+    - my reviews - redirects to a page that displays all of the logged in users reviews and allows users to update or delete them.
+    - Breadcrumb links to allow backtracking of urls so users know their path back.
     
     ![User-profile](readmeimages/feature-images/Profile/userprofile.png)
 
@@ -444,6 +445,18 @@ Superusers have access to everything on the site, the main difference lies withi
      ![Superuser Profile](readmeimages/feature-images/Profile/superuserprofile.png)
 
 #### Amend products
+Super users can navigate to the amend products page from the profile this is the hub for all product creation, updating and deletion.
+- The amend product features:
+    - search bar to navigate to specific products in the amend products table 
+    - Filter options to pinpoint items, a-z, z-a, price, category, series - the filter box appears as a modal 
+    - Displays all of the products in a table, updates along with the products 
+    - buttons to update and delete products 
+    - button to display all product details in a modal for an easier overview
+    - button to add size quantities for products that are clothing.
+    - paginated pages. 
+
+    ![Amend products page](readmeimages/feature-images/Amend_products/amendproducts.png)
+
 #### All products
 - The all products features:
     - it has a search bar that allows user to search for the products that they wish to purchase
@@ -460,9 +473,30 @@ Superusers have access to everything on the site, the main difference lies withi
 
     Pagination display
     ![pagination](readmeimages/feature-images/All_products/pagination.png)
+
 #### Product detail
+- Product detail features:
+    - main image displaying the product
+    - details about the product such as if its new or on sale, price, series and name also gives the user the quantity available.
+    - If product is clothing has 3 different values of quantity for the sizes and also has a size selector box. 
+    - a quantity to add the product to the basket 
+    - won't let users add more than the available amount to the basket.
+
+    ![product-details](readmeimages/feature-images/Product_detail/productdetailpage.png)
+
 #### Checkout Basket
+- Basket features:
+    - products that have been added to the basket will all be displayed here 
+    - the quantities selected from the product detail will mirror what has been selected
+    - the size will also display if a clothing item is being purchased
+    - calculates a subtotal for each product in the basket based on quantity and price status e.g discounted or not
+    - calculates a delivery total if it's below the threshold and tells users how much more they need to spend 
+    - calculates a grand total which is the product subtotals combined + delivery
+
+    ![basket](readmeimages/feature-images/Basket/Basket.png)
+
 #### Checkout features
+
 #### Checkout success
 #### News features
 
