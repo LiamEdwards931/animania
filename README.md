@@ -30,19 +30,20 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
     - [User Stories](#user-stories)
     - [Site Perspective](#site-perspectives)
     - [Design choices](#design-choices)
-    - [Features](#features)
-        - [Home](#homepage)
-        - [Profile](#profile)
-        - [Amend Products](#amend-products)
-        - [All products](#all-products)
-        - [Product-detail](#product-detail)
-        - [basket](#checkout-basket)
-        - [checkout](#checkout-features)
-        - [Checkout success](#checkout-success)
-        - [News](#news-features)
-        - [News detail](#news-detail-page)
-        - [Forms](#forms)
-    - [Future features](#future-features)
+- [Features](#features)
+    - [Home](#homepage)
+    - [Profile](#profile)
+    - [Amend Products](#amend-products)
+    - [All products](#all-products)
+    - [Product-detail](#product-detail)
+    - [basket](#checkout-basket)
+    - [checkout](#checkout-features)
+    - [Checkout success](#checkout-success)
+    - [News](#news-features)
+    - [News detail](#news-detail-page)
+    - [Forms](#forms)
+- [Future features](#future-features)
+- [Technology used](#technology-used)
 - [Testing](#testing)
 - [Bugs](#bugs)
 - [Credits](#credits)
@@ -283,7 +284,7 @@ This section shows the design progress and choices for animania, it outlines the
 |--------|-----------|----------|
 |User| As a user I expect to be able to log in to the site|[x]|
 |User| As a user I expect to be able to log out of the site|[x]|
-|User| As a user if i don't have an account I expect to be able to log into the site|[x]|
+|User| As a user if i don't have an account I expect to be able to create an account|[x]|
 |User| As a user I expect to be able to change my password for security|[x]|
 |User| As a user I expect to be able to add some address details that are saved to my profile|[x]|
 |User| As a user I expect to be able to update and remove my address details|[x]|
@@ -556,14 +557,69 @@ In the future some more features that could be included in the animania project 
 - Gift cards
 - Coupons
 
+[Back to top](#animania)
 
-
-
+### Technology used
+- The main technology used in this project are:
+    - Code editor
+        - Code editor - VS Code
+    - Languages
+        - Html
+        - CSS
+        - Javascript
+        - Python
+    - Hosting sites
+        - Github - Holds the repository for the site
+        - Heroku - Hosts the finished site
+        - Cloudinary - Stores the media files
+        - elephant SQL - stores the database models
+    - Design sites
+        - Balsamiq - Used to design the site via wireframes
+        - Markdown live preview - Keep my README file consistent
+        - LucidChart - Created the model relationship diagram
+    - Google chrome dev tools
+        - Built in responsive tester 
+        - Lighthouse - SEO testing
+        - Applications - Clear the session data for basket testing
+        - Console - Check for logs reported from Javascript/Python
+        - Network - Used in debugging 500 errors on the live site.
+- VS code extensions used in this project are:
+    - Python debugger 
+    - Pylance
+    - GitHub Codepaces
+    - Git history
+    - Dev containers
+    - Github Copilot
+    - Close HTML/XML tag
+    - Github actions
+    - Github Pull Requests
+    - Github repositories
+    - Gitignore
+    - Remote Repositories
+- Libraries used in this project are:
+    - Bootstrap 
+    - Django 
+    - cloudinary
+    - dj3-cloudinary-storage
+    - Stripe
+    - psycopg2
+    - gunicorn
+    - dj-database-url
+    
 [Back to top](#animania)
 
 ## Testing
-The manual testing performed for animania is all document below:
+
+### User story testing
+User story testing performed for animania is all documented below:
+[User story testing](USER_STORY_TESTING.md)
+
+### Manual testing
+The manual features testing performed for animania is all documented below:
 [Animania-testing](TESTING.md)
+
+### Automated testing
+No automated testing has been done for the Animania project.
 
 [Back to top](#animania)
 
