@@ -25,7 +25,8 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
         - [Marketing strategies](#marketing-strategies)
         - [SEO](#search-engine-optimisation)
 - [Agile method](#agile-method-for-project-management)
--[Database Models](#database-schema)
+- [Database Models](#database-models)
+    - [Models](#models)
     - [Relationships](#relationships)
 
 
@@ -71,13 +72,19 @@ I used [Wordstream](https://tools.wordstream.com/fkt?website=animania&cid=&campl
 - Lighthouse SEO score
 ![SEO_score](readmeimages/animaniaSEOscore.png)
 
+[Back to top](#animania)
+
 ## Agile method for project management
 
 - I used github issues, milestones and the project board to implement a MosCow approach to the development of Animania
 The issues outline the general criteria I need to fulfill and within the milestones I have the explored deeper into what may be expected from each feature and the acceptance criteria needed to pass the project through to it's next phase. 
 [Animania Project Board](https://github.com/users/LiamEdwards931/projects/6/views/1)
 
+[Back to top](#animania)
+
 ## Database Models
+
+### Models
 There are multiple models with the animania project:
 - Product app
     - Product - This model handles creating the details for the product
@@ -197,15 +204,29 @@ There are multiple models with the animania project:
     | author              | ForeignKey to User      |
     | date                | DateField               |
     
-
-    
-
-
 ### Relationships
+The image below outlines the relationships of the models
+
+![Model-relationships](readmeimages/Model-relationships.png)
+
+[Back to top](#animania)
+
+## UX (User experience)
+This section shows the design progress and choices for animania, it outlines the user stories
+
+### Wireframes
+
+- Home page 
+
+![homepage](readmeimages/Wireframe1Homepage.png)
+
+[Back to top](#animania)
 
 ## Testing
 The manual testing performed for animania is all document below:
 [Animania-testing](TESTING.md)
+
+[Back to top](#animania)
 
 ## Bugs 
 - Unfixed bugs
@@ -246,3 +267,7 @@ The manual testing performed for animania is all document below:
 
 - Code for adding products to the basket was taken from the boutique-ado walkthrough project.
 - Used the project boutique-ado walkthrough for the creating order, order-lines code.
+- Used Stack overflow for help with size association guidance 
+- Used W3 schools for help creating the amend products table 
+
+[Back to top](#animania)
