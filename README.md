@@ -133,7 +133,70 @@ There are multiple models with the animania project:
         | created_by       | ForeignKey(User)       |
         | created_on       | DateField              |
         | updated_on       | DateField              |
-        - As you can see the review model has a foreign key to both the User and The product, this allows association with the review and it's associated product and also the user who has uploaded the review. 
+        - As you can see the review model has a foreign key to both the User and The product, this allows review association with products and users.
+
+    - Wishlist - This model handles wishlisted products.
+        | Model property   | Property value         |
+        |------------------|------------------------|
+        | product          | ForeignKey("Product")  |
+        | created_by       | ForeignKey(User)       |
+            - The wishlist has 2 properties user and product, it's a simple model that allows users to keep track of items that they wish to purchase in the future. 
+
+- Accounts app
+    - Address 
+    | Model property | Property value        |
+    |----------------|-----------------------|
+    | user           | ForeignKey User       |
+    | door_number    | IntegerField          |
+    | street         | CharField             |
+    | city           | CharField             |
+    | state          | CharField             |
+    | country        | CharField             |
+    | postal_code    | CharField             |
+        - The accounts app has a singular model not inclusive of the User, extra fields are submitted to user data in the form to create a new user such as email address and first and last names.
+
+- Checkout app
+    - Order: this model handles all of the orders processed through animania.
+        | Model property | Property value                                 |
+        |----------------|------------------------------------------------|
+        | order_number   | CharField                                      |
+        | first_name     | CharField                                      |
+        | last_name      | CharField                                      |
+        | email          | EmailField                                     |
+        | door_number    | IntegerField                                   |
+        | street         | CharField                                      |
+        | city           | CharField                                      |
+        | county         | CharField                                      |
+        | country        | CharField                                      |
+        | postal_code    | CharField                                      |
+        | date           | DateField                                      |
+        | delivery_cost  | DecimalField                                   |
+        | total_cost     | DecimalField                                   |
+        | grand_total    | DecimalField                                   |
+        - This model has associated properites such as generating an order number and calculating total costs.
+
+    - Order-line - this creates product lines for each order, for order tracking and item tracking.
+        | Model Property | Property Value                        |
+        |----------------|---------------------------------------|
+        | order          | ForeignKey to Order model             |
+        | product        | ForeignKey to Product model           |
+        | quantity       | IntegerField                          |
+        | product_size   | ForeignKey to Size model (nullable)   |
+        | subtotal       | DecimalField                          |
+        - Has a calculated subtototal within the save method of this model.
+
+- News app
+    - News this model handles news article creation
+    | Model Property      | Property Value          |
+    |---------------------|-------------------------|
+    | title               | CharField               |
+    | news_image          | CloudinaryField         |
+    | short_description   | CharField               |
+    | description         | CharField               |
+    | video_url           | URLField                |
+    | author              | ForeignKey to User      |
+    | date                | DateField               |
+    
 
     
 
