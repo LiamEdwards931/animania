@@ -14,9 +14,6 @@ This project is deployed on Heroku
 the link for which is here: [live deployment](https://animania-175b65d61606.herokuapp.com/)
 
 ## Contents
-- [Testing](#testing)
-- [Bugs](#bugs)
-- [Credits](#credits)
 - [Project outline](#project-outline)
     - [Purpose](#purpose)
     - [User goals](#user-goals)
@@ -43,6 +40,12 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
         - [checkout](#checkout-features)
         - [Checkout success](#checkout-success)
         - [News](#news-features)
+        - [News detail](#news-detail-page)
+        - [Forms](#forms)
+    - [Future features](#future-features)
+- [Testing](#testing)
+- [Bugs](#bugs)
+- [Credits](#credits)
 
 
 ## Project outline 
@@ -496,9 +499,64 @@ Super users can navigate to the amend products page from the profile this is the
     ![basket](readmeimages/feature-images/Basket/Basket.png)
 
 #### Checkout features
+- The features in the checkout are:
+    - A summary of all the products that are being processed in the checkout app 
+    - a form for a user to fill out with name, email, delivery details 
+    - a stripe payment form
+    - Multiple messages displaying how much the card is going to be charged
+    - Messages if form for details or card isn't filled out correctly 
+    - Return to basket button to allow users to change their minds.
+
+    ![checkout](readmeimages/feature-images/Checkout/checkoutpage.png)
 
 #### Checkout success
+- The features of the checkout success page are:
+    - A success message on successful transaction 
+    - A summary of the order including order number, subtotals, delivery and grand total
+    - A summary of the delivery address filled in by the user
+    - A breakdown of all of the products that have been purchased by the user. 
+
+    ![Checkout success](readmeimages/feature-images/Checkout%20success/checkoutsuccess.png)
+
 #### News features
+- The features of the news page are:
+    - Superusers have the option to upload a new article from the top of the page 
+    - Normal users can look through and see the available articles and choose to see more of them if they choose too
+    - Non-logged in users see a message suggesting to the user to either log in or signup so they can browse the content.
+
+    Logged in as superuser:
+    ![News logged in](readmeimages/feature-images/news/newspage.png)
+
+    Not logged in:
+    ![Not logged in news page](readmeimages/feature-images/news/nonloggedinnews.png)
+
+#### News detail page
+- The features of the news detail page are:
+    - An image is displayed the same as the news page except larger
+    - Content for the article is displayed on the right hand side
+    - The url link requested in the form has a link that takes you to the video uploaded. 
+    - Each news article has a link to crunchyroll to allow users to browse more animes and hopefully increase visitation.
+
+#### Forms
+- All forms with the exception of the checkout form follow the following style:
+
+    ![form](readmeimages/feature-images/form.png)
+
+    - Forms have validation messages if form data is missing or the screen automatically focuses on the content that is missing suggesting to the user it needs filling in.
+
+### Future features
+In the future some more features that could be included in the animania project are:
+- Delivery times and live tracking
+- Advertisements through social media, partners (youtube)
+- Order confirmation (email, on profile)
+- Routing addresses for quick transport
+- Calculation of shipping costs from the business end
+- More in depth sales tracking 
+- Automated quantity updates based on resupply 
+- Gift cards
+- Coupons
+
+
 
 
 [Back to top](#animania)
