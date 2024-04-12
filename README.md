@@ -28,11 +28,11 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
 - [Database Models](#database-models)
     - [Models](#models)
     - [Relationships](#relationships)
--[UX](#ux-user-experience)
-    -[Wireframes](#wireframes)
-    -[User Stories](#user-stories)
-    -[Site Perspective](#site-perspectives)
-    -[Design choices](#design-choices)
+- [UX](#ux-user-experience)
+    - [Wireframes](#wireframes)
+    - [User Stories](#user-stories)
+    - [Site Perspective](#site-perspectives)
+    - [Design choices](#design-choices)
 
 
 ## Project outline 
@@ -370,7 +370,7 @@ Superusers have access to everything on the site, the main difference lies withi
     ![Navbar](readmeimages/feature-images/Home/navbar.png)
 
     ![Navbar](readmeimages/feature-images/Home/responsivenavbar1.png)
-    
+
     ![Navbar](readmeimages/feature-images/Home/responsivenavbar2.png)
 
 
