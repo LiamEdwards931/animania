@@ -351,17 +351,27 @@ Superusers have access to everything on the site, the main difference lies withi
 
 - Colour scheme
     - The colours chosen were intential to provoke a nostalgia like feeling when shopping animania in matching colours up with the massive platform for anime crunchyroll; 
-    I didn't want to overbear the user with colour and only really used it where I felt it would be effective
-    colours:
+    - I didn't want to overbear the user with colour and only really used it where I felt it would be effective colours
+        - Orange
+            ![color-image](readmeimages/colorimage.png)
+
+        - Black
+            ![black-image](readmeimages/black-color-image.png)
+
+        - White
+            ![White-image](readmeimages/color-image-white.png)
+
+    - Some of the headers are complemented with a text-shadow just make them have more of a cartoon characteristic. 
+
+#### Features
+- Homepage
+    - Navbar
+    The navbar is fixed to the top of the screen and responsive on mobile devices, it contains links to the relevant sections that users need to make purchases.
+    ![Navbar](readmeimages/feature-images/Home/navbar.png)
+
+    ![Navbar](readmeimages/feature-images/Home/responsivenavbar1.png)
     
-    Orange
-    ![color-image](readmeimages/colorimage.png)
-
-    Black
-    ![black-image](readmeimages/black-color-image.png)
-
-    White
-    ![White-image](readmeimages/color-image-white.png)
+    ![Navbar](readmeimages/feature-images/Home/responsivenavbar2.png)
 
 
 [Back to top](#animania)
