@@ -34,7 +34,15 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
     - [Site Perspective](#site-perspectives)
     - [Design choices](#design-choices)
     - [Features](#features)
-        -[Home](#homepage)
+        - [Home](#homepage)
+        - [Profile](#profile)
+        - [Amend Products](#amend-products)
+        - [All products](#all-products)
+        - [Product-detail](#product-detail)
+        - [basket](#checkout-basket)
+        - [checkout](#checkout-features)
+        - [Checkout success](#checkout-success)
+        - [News](#news-features)
 
 
 ## Project outline 
@@ -434,6 +442,30 @@ Superusers have access to everything on the site, the main difference lies withi
      - sales data - opens a modal that shows total turnover, total profit and amount of orders processed.
 
      ![Superuser Profile](readmeimages/feature-images/Profile/superuserprofile.png)
+
+#### Amend products
+#### All products
+- The all products features:
+    - it has a search bar that allows user to search for the products that they wish to purchase
+    - it has a filter button that pops up a modal and allows users to filter through different options such as a-z, z-a, price, series, category
+    - Returns a number of search results
+    - displays all products displayed on the animania page.
+    - Shows the page number you are on for the products.
+
+    Page for all products
+    ![all products main page](readmeimages/feature-images/All_products/allproducts1.png)
+
+    Each product container
+    ![Products in all products](readmeimages/feature-images/All_products/allproducts2.png)
+
+    Pagination display
+    ![pagination](readmeimages/feature-images/All_products/pagination.png)
+#### Product detail
+#### Checkout Basket
+#### Checkout features
+#### Checkout success
+#### News features
+
 
 [Back to top](#animania)
 
