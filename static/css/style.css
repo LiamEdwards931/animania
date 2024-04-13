@@ -93,7 +93,7 @@ a:hover{
 .modal-title {
     font-family: "Luckiest Guy", cursive;
     color:orange;
-    text-shadow: 2px solid white;
+    text-shadow: 2px 2px white;
 }
 
 /* delete confirmation modal */ 

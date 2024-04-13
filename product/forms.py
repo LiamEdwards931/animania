@@ -1,6 +1,7 @@
 from django import forms
-from .models import Product, product_banner,ProductReview,Size
+from .models import Product, product_banner, ProductReview, Size
 from django.core.validators import MinValueValidator, MaxValueValidator
+
 
 class ProductForm(forms.ModelForm):
     SERIES_CHOICES = [
@@ -21,19 +22,20 @@ class ProductForm(forms.ModelForm):
         ('Tokyo Ghoul', 'Tokyo Ghoul'),
         ('Shangri la frontier', 'Shangri la frontier'),
         ('Solo Leveling', 'Solo Leveling'),
-        ('That Time I Got Reincarnated as a Slime', 'That Time I Got Reincarnated as a Slime'),
+        ('That Time I Got Reincarnated as a Slime',
+         'That Time I Got Reincarnated as a Slime'),
         ('The Rising of the Shield Hero', 'The Rising of the Shield Hero'),
         ('Akame ga Kill', 'Akame ga Kill'),
         ('Seven Deadly Sins', 'Seven Deadly Sins'),
         ('Pokemon', 'Pokemon')
-        
+
     ]
 
     CATEGORY_CHOICES = [
-        ('Figures','Figures'),
-        ('Pop-Vinyl','Pop-Vinyl'),
-        ('Clothing','Clothing'),
-        ('VideoGame','VideoGame')
+        ('Figures', 'Figures'),
+        ('Pop-Vinyl', 'Pop-Vinyl'),
+        ('Clothing', 'Clothing'),
+        ('VideoGame', 'VideoGame')
     ]
 
     SUB_CATEGORY_CHOICE = [
@@ -66,47 +68,49 @@ class ProductForm(forms.ModelForm):
     ]
 
     series = forms.ChoiceField(
-        choices=SERIES_CHOICES, 
+        choices=SERIES_CHOICES,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
-    
+
     category = forms.ChoiceField(
-        choices=CATEGORY_CHOICES, 
+        choices=CATEGORY_CHOICES,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
-    
+
     sub_category = forms.ChoiceField(
-        choices=SUB_CATEGORY_CHOICE, 
+        choices=SUB_CATEGORY_CHOICE,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
-    
+
     related_products = forms.ModelMultipleChoiceField(
-        queryset=Product.objects.all(), 
-        required=False, 
+        queryset=Product.objects.all(),
+        required=False,
         widget=forms.SelectMultiple(attrs={'class': 'form-control'})
     )
-    
+
     discount_amount = forms.IntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(100)],
         widget=forms.NumberInput(attrs={'class': 'form-control'}),
         required=False
     )
- 
+
     class Meta:
         model = Product
         fields = '__all__'
 
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'form-control-textarea'}),
+            'description': forms.Textarea(
+                attrs={'class': 'form-control-textarea'}),
             'price': forms.NumberInput(attrs={'class': 'form-control'}),
             'cost_price': forms.NumberInput(attrs={'class': 'form-control'}),
-            'quantity_available': forms.NumberInput(attrs={'class': 'form-control'}),
+            'quantity_available': forms.NumberInput(
+                attrs={'class': 'form-control'}),
             'new': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
-            'discounted': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'discounted': forms.CheckboxInput(
+                attrs={'class': 'form-check-input'}),
             'size': forms.Select(attrs={'class': 'form-control'}),
         }
-        
 
     def clean(self):
         cleaned_data = super().clean()
@@ -125,34 +129,44 @@ class ProductForm(forms.ModelForm):
 
         if discount_amount is not None:
             if discount_amount < 0:
-                raise forms.ValidationError('You cannot select a value less than 0 for the discount amount.')
+                raise forms.ValidationError(
+                 'You cannot select a value less than 0'
+                 'for the discount amount.'
+                 )
             elif discount_amount > 100:
-                raise forms.ValidationError('You cannot select a value higher than 100 for the discount amount.')
+                raise forms.ValidationError(
+                    'You cannot select a value higher than 100'
+                    'for the discount amount.')
             elif discount_amount % 1 != 0:
-                raise forms.ValidationError('Discount amount must be a whole number.')
+                raise forms.ValidationError(
+                    'Discount amount must be a whole number.')
 
-        search_tags = [tag for tag in [category, series, sub_category, name] if tag]
+        search_tags = [
+            tag for tag in [category, series, sub_category, name] if tag
+            ]
         cleaned_data['search_tags'] = ', '.join(search_tags)
 
         if not name or not description or not price:
-            raise forms.ValidationError("All required fields must be filled in.")
+            raise forms.ValidationError(
+                "All required fields must be filled in.")
 
         return cleaned_data
-    
+
+
 class ProductSizeForm(forms.ModelForm):
     alternate_size = forms.ChoiceField(
-        choices=Size.SIZE_CHOICES,widget=forms.Select(
+        choices=Size.SIZE_CHOICES, widget=forms.Select(
             attrs={'class': 'form-control'}),
-            required=False
+        required=False
             )
-        
+
     size_quantity_available = forms.IntegerField(
         widget=forms.NumberInput(attrs={'class': 'form-control'})
         )
 
     class Meta:
         model = Size
-        fields = ['alternate_size','size_quantity_available']
+        fields = ['alternate_size', 'size_quantity_available']
 
         widgets = {
             'size': forms.Select(attrs={'class': 'form-control'}),
@@ -160,7 +174,7 @@ class ProductSizeForm(forms.ModelForm):
 
 
 class BannerForm(forms.ModelForm):
-    
+
     SERIES_CHOICES = [
         ('Naruto', 'Naruto'),
         ('Dragon Ball', 'Dragon Ball'),
@@ -179,22 +193,23 @@ class BannerForm(forms.ModelForm):
         ('Tokyo Ghoul', 'Tokyo Ghoul'),
         ('Shangri la frontier', 'Shangri la frontier'),
         ('Solo Leveling', 'Solo Leveling'),
-        ('That Time I Got Reincarnated as a Slime', 'That Time I Got Reincarnated as a Slime'),
+        ('That Time I Got Reincarnated as a Slime',
+         'That Time I Got Reincarnated as a Slime'),
         ('The Rising of the Shield Hero', 'The Rising of the Shield Hero'),
         ('Akame ga Kill', 'Akame ga Kill'),
         ('Seven Deadly Sins', 'Seven Deadly Sins'),
         ('Pokemon', 'Pokemon'),
-        
+
     ]
 
     series = forms.ChoiceField(
-        choices=SERIES_CHOICES, 
+        choices=SERIES_CHOICES,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
-    
+
     class Meta:
         model = product_banner
-        fields = ("image","series")
+        fields = ("image", "series")
 
 
 class ProductReviewForm(forms.ModelForm):
@@ -206,21 +221,23 @@ class ProductReviewForm(forms.ModelForm):
         (4, '4'),
         (5, '5'),
     ]
-    
+
     title = forms.CharField(
         max_length=100, required=True, widget=forms.TextInput(
-        attrs={'placeholder': 'Enter Title'}
+         attrs={'placeholder': 'Enter Title'}
         ))
-    
+
     rating = forms.ChoiceField(
-        choices = numberChoice, 
+        choices=numberChoice,
         widget=forms.Select()
     )
-    
-    content = forms.CharField(widget=forms.Textarea(
-        attrs={'class': 'review-textarea', 'placeholder': 'Enter Your Review Here'}))
 
-    
+    content = forms.CharField(widget=forms.Textarea(
+        attrs={
+            'class': 'review-textarea',
+            'placeholder': 'Enter Your Review Here'
+        }))
+
     class Meta:
         model = ProductReview
-        fields = ("title","rating", "content")
+        fields = ("title", "rating", "content")
