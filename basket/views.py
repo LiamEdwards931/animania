@@ -1,5 +1,7 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
-from product.models import Product,Size
+from django.shortcuts import (
+    render, redirect, reverse, HttpResponse, get_object_or_404
+    )
+from product.models import Product, Size
 from django.contrib import messages
 
 
@@ -16,10 +18,11 @@ def basket(request):
         'products': products,
         'product_count': product_count,
     }
-    
-    return render(request,'basket.html', context)
 
-def add_to_basket(request,item_id):
+    return render(request, 'basket.html', context)
+
+
+def add_to_basket(request, item_id):
     """ Add a quantity of the specified product to the shopping bag """
 
     quantity = int(request.POST.get('quantity'))
@@ -27,14 +30,16 @@ def add_to_basket(request,item_id):
     size = None
     if 'selected_size' in request.POST:
         size = request.POST['selected_size']
-    
+
     if size:
         product = get_object_or_404(Product, id=item_id)
-        size_exists = Size.objects.filter(product=product, alternate_size=size).exists()
+        size_exists = Size.objects.filter(
+            product=product, alternate_size=size).exists()
         if not size_exists:
-            messages.error(request, "The selected size does not exist for this product.")
+            messages.error(
+                request, "The selected size does not exist for this product.")
             return redirect(redirect_url)
-    
+
     bag = request.session.get('bag', {})
 
     if size:
@@ -52,23 +57,34 @@ def add_to_basket(request,item_id):
             bag[item_id] = quantity
 
     product = get_object_or_404(Product, id=item_id)
-    
+
     if size:
-        size_object = get_object_or_404(Size, product=product, alternate_size=size)
+        size_object = get_object_or_404(
+            Size, product=product, alternate_size=size)
         if quantity > size_object.size_quantity_available:
-            messages.error(request, f"The selected quantity exceeds the available quantity for size {size}.")
+            messages.error(
+                request,
+                f"The selected quantity"
+                "exceeds the available quantity for size {size}.")
             return redirect(redirect_url)
     else:
         if quantity > product.quantity_available:
-            messages.error(request, "The selected quantity exceeds the available quantity.")
+            messages.error(
+                request, "The selected quantity"
+                "exceeds the available quantity.")
             return redirect(redirect_url)
 
     request.session['bag'] = bag
     product_name = Product.objects.get(id=item_id).name
     if size:
-        messages.success(request, f"{quantity} x {product_name}: { size } added to your basket.")
+        messages.success(
+             request,
+             f"{quantity} x {product_name}:"
+             f"{ size } added to your basket.")
     else:
-        messages.success(request, f"{quantity} x {product_name} added to your basket.")
+        messages.success(
+            request,
+            f"{quantity} x {product_name} added to your basket.")
     return redirect(redirect_url)
 
 
@@ -84,7 +100,10 @@ def adjust_bag(request, item_id):
     if item_id in bag:
         if size:  # If size is specified
             if quantity > 0:
-                # Check if the product has 'products_by_size' dictionary in the bag
+                """
+                Check if the product has
+                'products_by_size' dictionary in the bag
+                """
                 if 'products_by_size' in bag[item_id]:
                     bag[item_id]['products_by_size'][size] = quantity
                 else:
@@ -95,7 +114,8 @@ def adjust_bag(request, item_id):
                 if size in bag[item_id]['products_by_size']:
                     del bag[item_id]['products_by_size'][size]
                     if not bag[item_id]['products_by_size']:
-                        # If there are no more sizes for the product, remove the product from the bag
+                        # If there are no more sizes for the product,
+                        # remove the product from the bag
                         bag.pop(item_id)
         else:  # If size is not specified
             if quantity > 0:
@@ -128,9 +148,13 @@ def remove_from_bag(request, item_id):
         request.session['bag'] = bag
         product_name = Product.objects.get(id=item_id).name
         if size:
-            messages.success(request, f"{product_name}: { size } removed from your basket.")
+            messages.success(
+                request,
+                f"{product_name}: { size } removed from your basket.")
         else:
-            messages.success(request, f"{product_name} removed from your basket.")
+            messages.success(
+                request,
+                f"{product_name} removed from your basket.")
         return redirect(reverse('basket'))
 
     except KeyError:

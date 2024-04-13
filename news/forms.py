@@ -6,7 +6,8 @@ class newsForm(forms.ModelForm):
 
     class Meta:
         model = News
-        fields = ['title','news_image','short_description','description','video_url']
+        fields = ['title', 'news_image', 'short_description',
+                  'description', 'video_url']
 
     def __init__(self, *args, **kwargs):
         super(newsForm, self).__init__(*args, **kwargs)
@@ -25,6 +26,6 @@ class newsForm(forms.ModelForm):
             if field_name == 'description':
                 field.widget = forms.Textarea(attrs={'rows': 10, 'cols': 50})
             elif field_name == 'short_description':
-                field.widget = forms.Textarea(attrs={'rows':5, 'cols':50})
+                field.widget = forms.Textarea(attrs={'rows': 5, 'cols': 50})
             elif field_name == 'title':
-                field.widget = forms.Textarea(attrs={'rows':1,'cols':50})
+                field.widget = forms.Textarea(attrs={'rows': 1,  'cols': 50})

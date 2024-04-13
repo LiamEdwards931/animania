@@ -5,24 +5,23 @@ from .models import Order, OrderLine
 
 class OrderLineAdminInLine(admin.TabularInline):
     model = OrderLine
-    readonly_fields =('subtotal',)
+    readonly_fields = ('subtotal',)
 
 
 class OrderAdmin(admin.ModelAdmin):
     inlines = (OrderLineAdminInLine,)
-    readonly_fields = ('order_number','delivery_cost',
-                       'total_cost','grand_total','date')
+    readonly_fields = ('order_number', 'delivery_cost',
+                       'total_cost', 'grand_total', 'date')
 
-    field = ('order_number','first_name','last_name','email',
-             'door_number','street','city','county','country',
+    field = ('order_number', 'first_name', 'last_name', 'email',
+             'door_number', 'street', 'city', 'county', 'country',
              'postal_code')
-    
-    list_display =('order_number','first_name','last_name',
-                   'date','total_cost','delivery_cost',
-                   'grand_total')
-    
+
+    list_display = ('order_number', 'first_name', 'last_name',
+                    'date', 'total_cost', 'delivery_cost',
+                    'grand_total')
+
     ordering = ('-date',)
 
 
 admin.site.register(Order, OrderAdmin)
-

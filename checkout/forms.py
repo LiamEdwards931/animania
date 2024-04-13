@@ -4,9 +4,11 @@ from accounts.models import Address
 
 
 class OrderForm(forms.ModelForm):
-        class Meta:
-            model = Order
-            fields = ('first_name','last_name','email','country','postal_code','door_number','street','city','county')
+    class Meta:
+        model = Order
+        fields = ('first_name', 'last_name', 'email',
+                  'country', 'postal_code', 'door_number',
+                  'street', 'city', 'county')
 
         def __init__(self, *args, **kwargs):
             """
@@ -34,7 +36,4 @@ class OrderForm(forms.ModelForm):
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
                 self.fields[field].widget.attrs['class'] = 'checkout-form'
-                self.fields[field].label = False 
-                
-    
-        
+                self.fields[field].label = False
