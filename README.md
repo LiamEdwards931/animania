@@ -462,6 +462,7 @@ Super users can navigate to the amend products page from the profile this is the
     - button to display all product details in a modal for an easier overview
     - button to add size quantities for products that are clothing.
     - paginated pages. 
+    - This page IS NOT designed for mobile due to the size of the columns.
 
     ![Amend products page](readmeimages/feature-images/Amend_products/amendproducts.png)
 
@@ -626,12 +627,31 @@ The manual features testing performed for animania is all documented below:
 No automated testing has been done for the Animania project.
 
 ### Responsive testing
+All responsive testing has been performed in the developer tools
+- Responsive on laptops 1550px - 1024px, consistent for each page within the site for condensed purposes images will represent the home page 
+    - Links all render, images render, content is visible 
+
+    ![Home-page-laptop-responsive](readmeimages/laptop-responsive.png)
+
+- Responsive on ipads 1024px - 890px
+    - Responsive works fine as intended, with all links images and text rendering correctly
+
+    ![Ipad responsive](readmeimages/ipad-responsive.png)
+
+- 890px - 573px 
+    - A bug appears where a white column appears down the side of the html page pushing the navbar to exceed the width of the html page, the content, links and images all still render correctly and work as intended. 
+
+- 573px - 320px 
+    - All responsiveness works for mobile devices, all links render correctly, all images scale, content can be viewed. 
+
+    ![Mobile responsive](readmeimages/mobile-responsive.png)
+
 
 [Back to top](#animania)
 
 ## Bugs 
 - Unfixed bugs
-    - No bugs left unfixed within the website as far as the testing is concerened, features all seem to behave as expected.
+    - There is a bug that on some ipad mini screen sizes the navbar exceeds the length of the html page, I have looked into margin/padding on navbar and the entire page and I cannot figure the cause of the issue as within the code there should be no reason the navbar performs like this only for that screen size, the responsiveness works on all other screens.
 
 - Fixed bugs 
     - Issue rendering the dynamic links in the navbar when a filter was in, this was due to a conflict in variable names in the context processor for the site and the variable in the view for the all products page.

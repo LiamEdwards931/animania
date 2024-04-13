@@ -140,6 +140,7 @@ a:hover{
     top: 0;
     left:0;
     min-height:65px;
+    max-width:100%;
 }
 
 .search-form{
