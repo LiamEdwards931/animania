@@ -49,8 +49,13 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
     - [Manual testing](#manual-testing)
     - [Automated testing](#automated-testing)
     - [Responsive testing](#responsive-testing)
+    - [code validation](#code-validation)
 - [Bugs](#bugs)
+- [Deployment](#deployment)
+    - [Heroku](#heroku)
+    - [Cloning a repository](#cloning-a-repository)
 - [Credits](#credits)
+- [Achknowledgments](#achknowledgements)
 
 
 ## Project outline 
@@ -765,11 +770,77 @@ Tested the code validation through various different linters:
 
     - 500 error code returning for 404, the issue was I missed a path name in urls.py on products so when a user typed in http://127.0.0.1:8000/b for example it was looking for a product and not a faulty url returning the 500 code and not the 404.
 
+## Deplyment
+### Heroku
+
+This project is deployed with Heroku - the steps to deploy are as follows:
+- Sign in and click "Create new app"
+
+![Step1](readmeimages/deployment-1.png)
+
+- Name your project and select you region:
+
+![Step2](readmeimages/deployment-2.png)
+
+- In the settings tab Add your config vars in this case:
+  - Cloudinary
+  - database
+  - secret_key
+  - stripe_public_key
+  - stripe_secret_key
+  - stripe web hook
+
+![step3](readmeimages/config-vars-step.png)
+
+- Go to deploy and connect your repository for your project using the GitHub Option
+
+![step4](readmeimages/deployment-4.png)
+
+- Once you have connected deploy from main branch - choose "automatic updates if you want to update as you work on your project" if not press deploy at the bottom
+
+![step5](readmeimages/deployment-5.png)
+
+- The Animania live site is deployed through Heroku the live deployment is here: 
+[Animania](https://animania-175b65d61606.herokuapp.com/)
+
+### Cloning a repository
+
+1. On your GitHub repository navigate to your repository page.
+2. Click on the green button with "CODE" written in it.
+3. Go to the HTTPS and copy the URL by pressing the overlapping squares.
+4. Open Git Bash. in your IDE
+5. Enter git clone followed by the copied URL.
+6. Enter where you would like your repository to be saved too for your local file.
+7. Press Enter to finalise the clone.
+8. within the local file in your IDE add the the requirements.txt file: pip3 install -r requirements.txt
+this allows you to have the necessary requirements to run the project.
+9. set up the necessary env.py file: 
+  - import os
+  - os.envrion["CLOUDINARY_URL"]= "Your cloudinary URL"
+  - os.environ["DATABASE_URL"] ="Your database URL"
+  - os.environ["SECRET_KEY"] =" Your made up secret key"
+  - os.environ["STRIPE_PUBLIC_KEY] = "your stripe public key"
+  - os.environ["STRIPE_SECRET_KEY] = "your stripe secret key"
+  - os.environ["STRIPE_WH_SECRET] = "your stripe webhook"
+
+[home](#animania)
+
 ## Credits 
 
 - Code for adding products to the basket was taken from the boutique-ado walkthrough project.
 - Used the project boutique-ado walkthrough for the creating order, order-lines code.
-- Used Stack overflow for help with size association guidance 
-- Used W3 schools for help creating the amend products table 
+- I did add to the parts used from the walkthrough and tried to create an original version in parts of my own.
+- Used [Stack overflow](https://stackoverflow.com/) for help with size association guidance, inspiration for better ways in structuring some of the python   views
+- Used this site for some help with setting users up:
+[account setup](https://gghantiwala.medium.com/django-sign-in-and-logout-tutorial-for-beginners-1a5612933434)
+- Used [W3 schools](https://www.w3schools.com/) for help creating the amend products table, amend banners table
+- Referenced [Amazon](https://www.amazon.co.uk/) for any ideas I may have missed with products. (didn't add any of the ideas just brainstormed)
 
 [Back to top](#animania)
+
+## Acknowledgments
+
+This is my 5th and final project I will be submitting for My full stack development course, I would like to thank the student care team for swiftly answering the queries that I had and thanks to my mentor [Precious ljge ](https://www.linkedin.com/in/precious-ijege-908a00168/) for the constructive feedback of this project.
+
+Liam Edwards 2024.
+[Home](#introduction)
