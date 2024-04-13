@@ -639,12 +639,18 @@ All responsive testing has been performed in the developer tools
     ![Ipad responsive](readmeimages/ipad-responsive.png)
 
 - 890px - 573px 
-    - A bug appears where a white column appears down the side of the html page pushing the navbar to exceed the width of the html page, the content, links and images all still render correctly and work as intended. 
+    - A bug appears where a white column appears down the side of the html page pushing the navbar to exceed the width of the html page, the content, links and images all still render correctly and work as intended.
+    - On deleting the elements in the dev tools and putting them back in, the issue goes away but comes back again when reloading the page. 
+    - There is no apparent reason for the navbar to respond in this way as the elements in the document all stay within the width of the body and html and none of them push the navbar out. 
+    - No margin or padding exists on the navbar causing it to exceed the width.
 
 - 573px - 320px 
     - All responsiveness works for mobile devices, all links render correctly, all images scale, content can be viewed. 
 
     ![Mobile responsive](readmeimages/mobile-responsive.png)
+
+
+### Code validation
 
 
 [Back to top](#animania)
