@@ -671,6 +671,31 @@ Tested the code validation through various different linters:
     - News.css
         ![News.css](readmeimages/newsCSSvalidation.png)
 
+- Javscript
+    - [JS hint](https://jshint.com/)
+
+    - Index.js 
+        - There are 5 functions in this file.
+        - One warning: 56 'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+        - One unused variable 55 removeDelivery - Used as an OnClick
+    - Messages.js
+        - There is only one function in this file
+        - Two warnings 
+            - 'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+            - 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+    - Product.js
+        - There are 11 functions in this file.
+        - No warnings returned.
+    - Qty-button.js
+        - There are 5 functions in this file.
+        - 11 warnings all related to the 'const' and 'arrow function syntax'
+    - Script.js
+        - There are 8 functions in this file.
+        - Three warnings about 'let' being available in ES6
+    - stripe_elements.js
+        - There are 3 functions in this file.
+        - Two warnings of 'template literal syntax' is only available in ES6 (use 'esversion: 6').
+
 - Python
     - [ Code insititute python linter](https://pep8ci.herokuapp.com/#)
     - Product app
