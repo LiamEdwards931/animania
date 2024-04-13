@@ -678,6 +678,29 @@ Tested the code validation through various different linters:
         - Views.py - No errors reported
         - Urls.py - No errors reported
         - Admin.py - No errors reported
+        - Forms.py - No errors reported
+    - Accounts app
+        - Models.py - No errors reported
+        - Views.py - No errors reported
+        - Urls.py- No errors reported
+        - Admin.py - No errors reported
+        - Forms.py - No errors reported
+    - Basket app
+        - Models.py - No models
+        - Views.py - No errors reported
+        - Urls.py - No errors reported
+        - Admin.py - No admin
+    - Checkout App
+        - Models.py - No errors reported
+        - Signals.py - No errors reported
+        - Urls.py - No errors reported
+        - Views.py - 1 error returned as a for loop exceeded line length.
+        - forms.py - No errors returned
+        - Admin.py - No errors returned
+    - News App
+        - Models.py - No errors reported
+        - Views.py - No errors reported
+        - Urls.py - No errors reported
         - forms.py - No errors reported
 
 [Back to top](#animania)
