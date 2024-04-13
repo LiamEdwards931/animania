@@ -49,12 +49,12 @@
                 </div>
                 <div class="col-4 text-center general-cat" id="pop-vinyl" style="background: url('{% static 'images/kiritopopvinyl.png' %}') no-repeat 50% 50%; background-size:contain;">
                     <div class ="opacity-film">
-                        <a class="product-btn" href ="{% url 'allproducts' %}?category=Pop-Vinyl"style="color:white;">Shop All Pop-Vinyl</a>
+                        <a class="product-btn" href ="{% url 'allproducts' %}?category=Pop-Vinyl" style="color:white;">Shop All Pop-Vinyl</a>
                     </div>
                 </div>
-                <div class="col-4 text-center general-cat general-cat-border" id="clothing-img"style="background: url('{% static 'images/nezukohoodie.png' %}') no-repeat 50% 50%; background-size:contain;">
+                <div class="col-4 text-center general-cat general-cat-border" id="clothing-img" style="background: url('{% static 'images/nezukohoodie.png' %}') no-repeat 50% 50%; background-size:contain;">
                     <div class ="opacity-film">
-                        <a class ="product-btn"href ="{% url 'allproducts' %}?category=Clothing" style="color:white;">Shop All Clothing</a>
+                        <a class ="product-btn" href ="{% url 'allproducts' %}?category=Clothing" style="color:white;">Shop All Clothing</a>
                     </div>
                 </div>
                 <div class="col-4 text-center general-cat" id="figure-img" style="background: url('{% static 'images/kanekifigure.png' %}') no-repeat 50% 50%; background-size:contain;">
@@ -70,7 +70,9 @@
             <div class="row text-center">
                 <div class="col-12 text-center new-item-container" style="background: url('{% static 'images/animebackground.jpg' %}') no-repeat 40% 60%; background-size:cover;">
                     <h2 class="main-section-header">New Items</h2>
-                    <a href="{% url 'allproducts' %}?new"><h6 class="main-section-link">Shop all New products</h6></a>
+                    <a href="{% url 'allproducts' %}?new">
+                        <h6 class="main-section-link">Shop all New products</h6>
+                    </a>
                     <div class="row">
                         {% for product in newProducts %}
                             {% if product.new %}
@@ -83,7 +85,7 @@
                                                 <p class="card-text">£{{ product.price}}</p>
                                                 <form method ="post" action="{% url 'product_details' product.id %}">
                                                     {% csrf_token %}
-                                                    <button type="submit"class="btn btn-primary new-btn">View Product</button>
+                                                    <button type="submit" class="btn btn-primary new-btn">View Product</button>
                                                 </form>
                                             </div>                                                                                
                                         </div>
