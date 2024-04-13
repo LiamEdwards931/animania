@@ -113,7 +113,7 @@
                                                 <h5 class="card-title percent-off">{{ product.discount_amount}}% Off</h5>
                                                 <h5 class="card-title">{{ product.name }}</h5>
                                                 <p class="card-text">{{ product.series }}</p>
-                                                <p class="card-text"><strike>£{{ product.price }}</strike>|£{{ product.discounted_price}}</p>
+                                                <p class="card-text"><s>£{{ product.price }}</s>|£{{ product.discounted_price}}</p>
                                                 <form method ="post" action="{% url 'product_details' product.id %}">
                                                     {% csrf_token %}
                                                     <button type="submit" class="btn btn-primary new-btn">View Product</button>
