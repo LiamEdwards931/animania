@@ -633,7 +633,7 @@ The manual features testing performed for animania is all documented below:
 No automated testing has been done for the Animania project.
 
 ### Responsive testing
-All responsive testing has been performed in the developer tools
+All responsive testing has been performed in the developer tools using microsoft edge and also google chrome.
 - Responsive on laptops 1550px - 1024px, consistent for each page within the site for condensed purposes images will represent the home page 
     - Links all render, images render, content is visible 
 
@@ -645,10 +645,15 @@ All responsive testing has been performed in the developer tools
     ![Ipad responsive](readmeimages/ipad-responsive.png)
 
 - 890px - 573px 
+    Microsoft edge bug:
+    The strange thing with this bug is that in the dev tools it works perfectly and responds the way it should behave when clicking through different device types but not consistently, and sometimes in dev tools it gives me the blank side as mentioned below, so i'm finding it very difficult to confirm if the error lies within the dev tools responsiveness or within the application itself. 
+    
     - A bug appears where a white column appears down the side of the html page pushing the navbar to exceed the width of the html page, the content, links and images all still render correctly and work as intended.
     - On deleting the elements in the dev tools and putting them back in, the issue goes away but comes back again when reloading the page. 
     - There is no apparent reason for the navbar to respond in this way as the elements in the document all stay within the width of the body and html and none of them push the navbar out. 
     - No margin or padding exists on the navbar causing it to exceed the width.
+
+    - Google chrome testing for this size works as expected as is causing no issues at all.
 
 - 573px - 320px 
     - All responsiveness works for mobile devices, all links render correctly, all images scale, content can be viewed. 
