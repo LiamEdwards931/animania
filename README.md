@@ -778,6 +778,10 @@ Tested the code validation through various different linters:
     
     - Readmore function wasn't working on the index page, added the script inline on this page to ensure it works across the entire site.
 
+    - Address button wasn't displaying for new users - the add new address was indented in the for loop for addresses meaning it only ever existed if an address object was present, moved the add new address outside the loop.
+
+    - 500 error when a logged in user tried to checkout without having an attached address, fixed by adding an else statement in the checkout app that prepopulates the form based on name and email if no address exists fixing the 500 issue.
+
 ## Deplyment
 ### Heroku
 

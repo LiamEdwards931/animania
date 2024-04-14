@@ -94,6 +94,12 @@ def checkout(request):
                 'country': address.country,
                 'postal_code': address.postal_code,
             }
+        else:
+            initial_data = {
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            'email': user.email,
+        }
         order_form = forms.OrderForm(initial_data)
     else:
         order_form = forms.OrderForm()
