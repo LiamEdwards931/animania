@@ -82,12 +82,12 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <div class="text-center">
+                    <form action="{% url 'addaddress' %}">
+                        <button class="btn btn-primary modal-button" type="submit">Add new address +</button>
+                    </form>
+                </div>
                 {% for address in addresses %}
-                    <div class="text-center">
-                        <form action="{% url 'addaddress' %}">
-                            <button class="btn btn-primary modal-button" type="submit">Add new address +</button>
-                        </form>
-                    </div>
                     <hr>
                     <div class="text-center">
                         <p>{{ address.door_number }} {{ address.street }}</p>
