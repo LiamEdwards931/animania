@@ -65,7 +65,7 @@ def add_to_basket(request, item_id):
             messages.error(
                 request,
                 f"The selected quantity"
-                "exceeds the available quantity for size {size}.")
+                f"exceeds the available quantity for size {size}.")
             return redirect(redirect_url)
     else:
         if quantity > product.quantity_available:
