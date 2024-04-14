@@ -525,7 +525,8 @@ Super users can navigate to the amend products page from the profile this is the
     - A success message on successful transaction 
     - A summary of the order including order number, subtotals, delivery and grand total
     - A summary of the delivery address filled in by the user
-    - A breakdown of all of the products that have been purchased by the user. 
+    - A breakdown of all of the products that have been purchased by the user.
+    - After a successful checkout the quantites purchased are removed and recalculated in the quantities available for the product, e.g. if I had 8 x small clothing, if i buy one in small the quantity would update to 7, this allows easier inventory tracking for a site manager. 
 
     ![Checkout success](readmeimages/feature-images/Checkout%20success/checkoutsuccess.png)
 
