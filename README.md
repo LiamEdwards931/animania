@@ -743,7 +743,7 @@ Tested the code validation through various different linters:
 
 ## Bugs 
 - Unfixed bugs
-    - There is a bug that on some ipad mini screen sizes the navbar exceeds the length of the html page, I have looked into margin/padding on navbar and the entire page and I cannot figure the cause of the issue as within the code there should be no reason the navbar performs like this only for that screen size, the responsiveness works on all other screens.
+    - Microsoft edge: There is a bug that on some ipad mini screen sizes the navbar exceeds the length of the html page, I have looked into margin/padding on navbar and the entire page and I cannot figure the cause of the issue as within the code there should be no reason the navbar performs like this only for that screen size, the responsiveness works on all other screens. This isn't a consistent problem and it does not happen in google chrome dev tools suggesting the issue is lying in the dev tools and not within my code.
 
 - Fixed bugs 
     - Issue rendering the dynamic links in the navbar when a filter was in, this was due to a conflict in variable names in the context processor for the site and the variable in the view for the all products page.
@@ -775,6 +775,8 @@ Tested the code validation through various different linters:
     - bug where a non size item was being prevented from being added to the basket fixed by adding the a variable for the product in the add to basket app so that it could correctly calculate a validation for the quantity available and not let a user buy more than available
 
     - 500 error code returning for 404, the issue was I missed a path name in urls.py on products so when a user typed in http://127.0.0.1:8000/b for example it was looking for a product and not a faulty url returning the 500 code and not the 404.
+    
+    - Readmore function wasn't working on the index page, added the script inline on this page to ensure it works across the entire site.
 
 ## Deplyment
 ### Heroku
