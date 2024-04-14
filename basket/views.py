@@ -98,8 +98,23 @@ def adjust_bag(request, item_id):
     bag = request.session.get('bag', {})
 
     if item_id in bag:
+        product = get_object_or_404(Product, id=item_id)
         if size:  # If size is specified
+            size_object = get_object_or_404(
+                    Size, product=product, alternate_size=size)
             if quantity > 0:
+                """
+                Check if the selected quantity exceeds
+                the available quantity for the size
+                """
+                if quantity > size_object.size_quantity_available:
+                    messages.error(
+                        request,
+                        f"The selected quantity exceeds"
+                        f" the available quantity"
+                        f"for size {size}.")
+                    return redirect(reverse('basket'))
+
                 """
                 Check if the product has
                 'products_by_size' dictionary in the bag
@@ -119,6 +134,18 @@ def adjust_bag(request, item_id):
                         bag.pop(item_id)
         else:  # If size is not specified
             if quantity > 0:
+                """
+                Check if the selected quantity
+                exceeds the available quantity for the product
+                """
+                if quantity > product.quantity_available:
+                    messages.error(
+                        request,
+                        f"The selected quantity exceeds"
+                        f"the available quantity "
+                        f"for the product.")
+                    return redirect(reverse('basket'))
+
                 # Update the quantity for the product
                 bag[item_id] = quantity
             else:
