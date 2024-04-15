@@ -608,11 +608,11 @@ In the future some more features that could be included in the animania project 
     - Gitignore
     - Remote Repositories
 - Libraries used in this project are:
-    - Bootstrap 
-    - Django 
-    - cloudinary
+    - [Bootstrap](https://getbootstrap.com/)
+    - Django(https://www.djangoproject.com/) 
+    - [cloudinary]((https://cloudinary.com/))
     - dj3-cloudinary-storage
-    - Stripe
+    - [Stripe](https://stripe.com/gb)
     - psycopg2
     - gunicorn
     - dj-database-url
