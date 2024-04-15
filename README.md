@@ -582,12 +582,12 @@ In the future some more features that could be included in the animania project 
     - Hosting sites
         - [Github](https://github.com/) - Holds the repository for the site
         - [Heroku](https://www.heroku.com/) - Hosts the finished site
-        - Cloudinary - Stores the media files
-        - elephant SQL - stores the database models
+        - [Cloudinary](https://cloudinary.com/) - Stores the media files
+        - [elephant SQL](https://www.elephantsql.com/) - stores the database models
     - Design sites
-        - Balsamiq - Used to design the site via wireframes
-        - Markdown live preview - Keep my README file consistent
-        - LucidChart - Created the model relationship diagram
+        - [Balsamiq](https://balsamiq.com/) - Used to design the site via wireframes
+        - [Markdown live preview ](https://markdownlivepreview.com/)- Keep my README file consistent
+        - [LucidChart](https://lucid.co/) - Created the model relationship diagram
     - Google chrome dev tools
         - Built in responsive tester 
         - Lighthouse - SEO testing
@@ -629,6 +629,27 @@ User story testing performed for animania is all documented below:
 ### Manual testing
 The manual features testing performed for animania is all documented below:
 [Animania-testing](TESTING.md)
+
+### Lighthouse score
+
+![Lighthouse score](readmeimages\lighthouseindex.png)
+
+- Performance
+    Negative performance drivers:
+    - Google chrome extensions negatively impact performance
+    - Images are jpeg and not webp
+    - Image sizing was a little off.
+    - Cloudinary has a large network payload
+- Accessibility
+    Negative accesability 
+    - Button-id name has name of shop-btn.
+    - wishlist links generated in for loop have ids.
+- Best practives
+    Negative practices
+    - Uses 3rd party cookies from stripe + cloudinary
+    - Console shows issues (cookies from cloudinary)
+- SEO 
+    Perfect score of 100 no problems at all.
 
 ### Automated testing
 No automated testing has been done for the Animania project.
