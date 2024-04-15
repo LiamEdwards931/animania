@@ -42,55 +42,59 @@
                     Filter products
                 </button>
             </div>
-            {% for product in products %}
-                <div class="col-6 col-lg-3 col-md-4">
-                    <div class="card product-card" style="margin-bottom:10px;">
-                        <a href="{% url 'product_details' product_id=product.id %}">
-                            <img src="{{ product.image.url }}" class="card-img-top all-products-card-image-top" alt="{{ product.name }}">
-                        </a>
-                        <div class="card-body product-card-body text-center">
-                            {% if user.is_authenticated %}
-                                <form id="add-to-wishlist-form" method="post" action="{% url 'add_to_wishlist' product.id %}">
-                                    {% csrf_token %}
-                                    <button id="wishlist-button" type="submit">
-                                        <i class="fa-solid fa-heart-circle-plus"></i>
-                                    </button>
-                                </form>
-                            {% endif %}
-                            {% if product.discounted %}
-                                <h6 class="percent-off card-title">{{ product.discount_amount }}% off</h6>
-                            {% elif product.new %}
-                                <h6 class ="new-item card-title">NEW!</h6>
-                            {% else %}
-                                <h6 class ="card-title"style="opacity: 0">Blank</h6>
-                            {% endif %}
-                            <h5 class="card-title">{{ product.series }}</h5>
-                            <p class="card-text">{{ product.name }}</p>
-                            <p class="card-text"><small class="text-body-secondary">{{ product.category}}</small></p>
-                            <p class="card-text">
-                            {% if product.discounted %}
-                                <strong><strike>£{{ product.price }}</strike> £{{ product.discounted_price }}</strong> 
-                            {% else %}
-                                <strong>£{{ product.price}}</strong>
-                            {% endif %}
-                            </p>
-                                <div class="text-center">
-                                    <small>Reviews</small>
-                                </div>
-                                {% if product.productreview_set.all %}
-                                    <a href="{% url 'product_details' product_id=product.id %}#customer_reviews"">
-                                        {% for star in "x"|rjust:product.average_rating %}<i class="fas fa-star"></i>{% endfor %}
-                                    </p>   
-                                {% else %}
-                                    <p>No reviews for this product</p>
-                                {% endif %}
-                            <a href="{% url 'product_details' product_id=product.id %}" class="image-container">
-                                <p class="card-text">View product details</p>
+            {% if products %}
+                {% for product in products %}
+                    <div class="col-6 col-lg-3 col-md-4">
+                        <div class="card product-card" style="margin-bottom:10px;">
+                            <a href="{% url 'product_details' product_id=product.id %}">
+                                <img src="{{ product.image.url }}" class="card-img-top all-products-card-image-top" alt="{{ product.name }}">
                             </a>
+                            <div class="card-body product-card-body text-center">
+                                {% if user.is_authenticated %}
+                                    <form id="add-to-wishlist-form" method="post" action="{% url 'add_to_wishlist' product.id %}">
+                                        {% csrf_token %}
+                                        <button id="wishlist-button" type="submit">
+                                            <i class="fa-solid fa-heart-circle-plus"></i>
+                                        </button>
+                                    </form>
+                                {% endif %}
+                                {% if product.discounted %}
+                                    <h6 class="percent-off card-title">{{ product.discount_amount }}% off</h6>
+                                {% elif product.new %}
+                                    <h6 class ="new-item card-title">NEW!</h6>
+                                {% else %}
+                                    <h6 class ="card-title"style="opacity: 0">Blank</h6>
+                                {% endif %}
+                                <h5 class="card-title">{{ product.series }}</h5>
+                                <p class="card-text">{{ product.name }}</p>
+                                <p class="card-text"><small class="text-body-secondary">{{ product.category}}</small></p>
+                                <p class="card-text">
+                                {% if product.discounted %}
+                                    <strong><strike>£{{ product.price }}</strike> £{{ product.discounted_price }}</strong> 
+                                {% else %}
+                                    <strong>£{{ product.price}}</strong>
+                                {% endif %}
+                                </p>
+                                    <div class="text-center">
+                                        <small>Reviews</small>
+                                    </div>
+                                    {% if product.productreview_set.all %}
+                                        <a href="{% url 'product_details' product_id=product.id %}#customer_reviews"">
+                                            {% for star in "x"|rjust:product.average_rating %}<i class="fas fa-star"></i>{% endfor %}
+                                        </p>   
+                                    {% else %}
+                                        <p>No reviews for this product</p>
+                                    {% endif %}
+                                <a href="{% url 'product_details' product_id=product.id %}" class="image-container">
+                                    <p class="card-text">View product details</p>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}   
+                {% endfor %}
+            {% else %}
+                <p>No products have been found. Please check back soon.</p>
+            {% endif %}
         </div>
     </div>
     <!-- Bootstrap pagination -->
