@@ -47,6 +47,7 @@ the link for which is here: [live deployment](https://animania-175b65d61606.hero
 - [Testing](#testing)
     - [User story testing](#user-story-testing)
     - [Manual testing](#manual-testing)
+    - [Lighthouse testing](#lighthouse-score)
     - [Automated testing](#automated-testing)
     - [Responsive testing](#responsive-testing)
     - [code validation](#code-validation)
