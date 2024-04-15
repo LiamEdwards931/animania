@@ -620,6 +620,7 @@ In the future some more features that could be included in the animania project 
 [Back to top](#animania)
 
 ## Testing
+ Testing performed is performed by myself, I did get my partner with no context to navigate through the site as a normal user to test the intuitiveness and she found a couple of the bugs I have fixed in the [fixed bugs](#bugs) section. 
 
 ### User story testing
 User story testing performed for animania is all documented below:

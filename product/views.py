@@ -324,6 +324,7 @@ def update_banner(request, banner_id):
     context = {
         'form': form,
         'banner_id': banner_id,
+        'banner': banner,
     }
     return render(request, 'update_banner.html', context)
 

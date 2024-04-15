@@ -42,6 +42,7 @@ This testing section covers the login/logout functionality and the profile page
 |------------------------------------------------|-----------------|----------------|-----------|
 |A button that takes you to a page to change your password| page displays a change password form| page displays change password form|Pass|
 |Form allows you to update your password|Form allows the user to change their password|Works as expected|Pass|
+|Validation security| Passwords should have complexity checks| Password have complexity checks|Pass|
 
 
 ## Amend products.html testing 
@@ -65,6 +66,8 @@ This testing section covers the login/logout functionality and the profile page
 |All uploaded banners should be displayed on the page| Banners are clearly visible| All uploaded banners are shown on this page|Pass|
 |Banners should have update and delete functionality| Buttons shown to process the CRUD operations| Buttons are shown for each banner to update and delete them|Pass
 |feedback given to user on deletion or update| Message giving feedback to user| Messages appear at the time on deletion and update|Pass|
+| New banners cannot be created if a series already exists| New banners shouldnt be added if one exists already| Validation check prevents multiple banners for the same series| Pass |
+| Updating a banner should be as simple as just changing the image| Users should only be able to change the image when updating a banner| The value for the banner series is fixed as the banner the user is amending, aleviating any issues with creating duplicate banners| Pass|
 
 
 ## Sales data testing 
@@ -132,6 +135,7 @@ This testing section covers the login/logout functionality and the profile page
 | The checkout should have a form for guest users and logged in users to fill out their information for the delivery| The form should be intuitive to fill out for new users, should be prepopulated for logged in users who have already filled an address out in their profile| New users have an intuitive detail form to fill out, logged in users have a prepopulated form with the details from the profile app.|Pass|
 |Back to basket button present| A button to go back to the basket present for last minute adjustments| Button is present and takes the user back to the basket with the items they have added to make last minute changes|Pass|
 |The checkout should have an option for users to add their credit card details| Payment form should be present on the page for users to make a purchase that functions properly with stripe| Payments can be made using the form at the bottom of the details form, validation is in place and errors are returned on card details that do not exist.|Pass|
+| New users can check out of the app| New users without addresses can check out| A new user can create an account and purchase items without the need to first register an address| Pass|
 
 
 ## Checkout success testing 

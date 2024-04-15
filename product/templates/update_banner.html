@@ -4,7 +4,7 @@
 {% block content %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-6">
+            <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
@@ -20,6 +20,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h2>Update Banner</h2>
+                <p>{{ banner.series }}</p>
                 <form method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; align-items: center;">
                     {% csrf_token %}
                     <div class="form-group text-center">
@@ -30,8 +31,9 @@
                     <div class="form-group text-center">
                         <label for="id_name"><h5>Series</h5></label>
                         <br>
-                        {{ form.series }}
-                    </div>
+                        {{ form.series.as_hidden }}
+                        <input type="text" class="form-control" id="id_series" name="series" value="{{ banner.series }}" readonly>
+                    </div>                    
                     <button class="product-button" type ="submit">Update Banner</button>
                 </form>
             </div>
