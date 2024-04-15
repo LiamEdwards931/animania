@@ -573,15 +573,15 @@ In the future some more features that could be included in the animania project 
 ### Technology used
 - The main technology used in this project are:
     - Code editor
-        - Code editor - VS Code
+        - Code editor - [VS Code](https://code.visualstudio.com/Download)
     - Languages
         - Html
         - CSS
         - Javascript
         - Python
     - Hosting sites
-        - Github - Holds the repository for the site
-        - Heroku - Hosts the finished site
+        - [Github](https://github.com/) - Holds the repository for the site
+        - [Heroku](https://www.heroku.com/) - Hosts the finished site
         - Cloudinary - Stores the media files
         - elephant SQL - stores the database models
     - Design sites
