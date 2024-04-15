@@ -835,7 +835,14 @@ this allows you to have the necessary requirements to run the project.
   - os.environ["STRIPE_PUBLIC_KEY] = "your stripe public key"
   - os.environ["STRIPE_SECRET_KEY] = "your stripe secret key"
   - os.environ["STRIPE_WH_SECRET] = "your stripe webhook"
-
+10. Once this is set up run migrations
+    - python3 manage.py makemigrations --dry-run (check all is okay)
+    - python3 manage.py makemigrations
+    - python3 manage.py migrate --plan (double check all is okay)
+    - python3 manage.py migrate
+11. Create a superuser for admin management
+    - python3 manage.py createsuperuser
+    - set up a username and password and an optional email.
 [home](#animania)
 
 ## Credits 
