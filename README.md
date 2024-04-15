@@ -632,7 +632,7 @@ The manual features testing performed for animania is all documented below:
 
 ### Lighthouse score
 
-![Lighthouse score](readmeimages\lighthouseindex.png)
+![Lighthouse score](readmeimages/lighthouseindex.png)
 
 - Performance
     Negative performance drivers:
