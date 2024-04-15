@@ -843,6 +843,7 @@ this allows you to have the necessary requirements to run the project.
 11. Create a superuser for admin management
     - python3 manage.py createsuperuser
     - set up a username and password and an optional email.
+
 [home](#animania)
 
 ## Credits 
