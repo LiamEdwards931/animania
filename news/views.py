@@ -48,6 +48,7 @@ def news_detail(request, news_id):
 
     return render(request, 'news_detail.html', context)
 
+
 def delete_news(request, news_id):
     news = get_object_or_404(News, id=news_id)
 
@@ -56,7 +57,6 @@ def delete_news(request, news_id):
         messages.success(request, 'News article deleted successfully.')
     else:
         messages.error(request, 'You Cannot delete this article')
-    
     return redirect('news')
 
 
@@ -71,5 +71,5 @@ def update_news(request, news_id):
             return redirect('news_detail', news_id=news_id)
     else:
         form = forms.newsForm(instance=news)
-    
+
     return render(request, 'update_news.html', {'form': form})
