@@ -150,9 +150,11 @@ def update_address(request, address_id):
 def my_reviews(request):
     user = request.user
     reviews = ProductReview.objects.filter(created_by=user)
+    all_reviews = ProductReview.objects.all()
 
     context = {
         'reviews': reviews,
+        'all_reviews': all_reviews,
     }
 
     return render(request, 'myreviews.html', context)
