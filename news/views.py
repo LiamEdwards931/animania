@@ -58,3 +58,18 @@ def delete_news(request, news_id):
         messages.error(request, 'You Cannot delete this article')
     
     return redirect('news')
+
+
+def update_news(request, news_id):
+    news = get_object_or_404(News, id=news_id)
+
+    if request.method == 'POST':
+        form = forms.newsForm(request.POST, instance=news)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'News article updated successfully.')
+            return redirect('news_detail', news_id=news_id)
+    else:
+        form = forms.newsForm(instance=news)
+    
+    return render(request, 'update_news.html', {'form': form})

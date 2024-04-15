@@ -9,10 +9,20 @@
             <div class="col-12 text-center">
                 <h2>{{ article.title }}</h2>
                 {% if user.is_superuser %}
-                <form action ="{% url 'delete_news' article.id %}" method="POST">
-                    {% csrf_token %}
-                    <button class="btn btn-primary modal-button">Delete Article</button>
-                </form>
+                    <div class="row">
+                        <div class="col-6">
+                            <form action ="{% url 'delete_news' article.id %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary modal-button">Delete Article</button>
+                            </form>
+                        </div>
+                        <div class="col-6">
+                            <form action ="{% url 'update_news' article.id %}" method="GET">
+                                {% csrf_token %}
+                                <button type="submit"class="btn btn-primary modal-button">Update Article</button>
+                            </form>
+                        </div>
+                    </div>
                 {% endif %}
             </div>
         </div>
