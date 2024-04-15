@@ -67,9 +67,13 @@
                 <br>                
             </div>
             <div class="col-lg-4 col-12 profile-details text-center">
-                <h2>My Reviews</h2>
-                <!-- Button trigger modal -->
-                <a class="btn btn-primary modal-button" href ="{% url 'my_reviews'%}">My reviews </a>
+                {% if user.is_superuser %}
+                    <h2>All Reviews</h2>
+                    <a class="btn btn-primary modal-button" href ="{% url 'my_reviews'%}">All reviews </a>
+                {% else %}
+                    <h2>My Reviews</h2>
+                    <a class="btn btn-primary modal-button" href ="{% url 'my_reviews'%}">My reviews </a>
+                {% endif %}
             </div>
         </div>
     </div>
