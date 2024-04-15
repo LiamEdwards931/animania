@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class News(models.Model):
     title = models.CharField(max_length=50, blank=False, null=False)
     news_image = CloudinaryField('image', blank=True)
-    short_description = models.CharField(max_length=50,
+    short_description = models.CharField(max_length=250,
                                          blank=False, null=False)
     description = models.CharField(max_length=1000, blank=False, null=False)
     video_url = models.URLField(blank=True, null=True)

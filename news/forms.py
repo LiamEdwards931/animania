@@ -16,7 +16,7 @@ class newsForm(forms.ModelForm):
             'news_image': 'News Image',
             'short_description': 'Short Description',
             'description': 'Description',
-            'video_url': 'Video URL'
+            'video_url': 'https://www.youtube.com/watch?v=PraFso1sVIc'
         }
         for field_name, field in self.fields.items():
             if field.required:
