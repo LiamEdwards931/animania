@@ -47,3 +47,14 @@ def news_detail(request, news_id):
      }
 
     return render(request, 'news_detail.html', context)
+
+def delete_news(request, news_id):
+    news = get_object_or_404(News, id=news_id)
+
+    if request.user.is_superuser:
+        news.delete()
+        messages.success(request, 'News article deleted successfully.')
+    else:
+        messages.error(request, 'You Cannot delete this article')
+    
+    return redirect('news')

@@ -8,6 +8,12 @@
         <div class="row article-snippet-container">
             <div class="col-12 text-center">
                 <h2>{{ article.title }}</h2>
+                {% if user.is_superuser %}
+                <form action ="{% url 'delete_news' article.id %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-primary modal-button">Delete Article</button>
+                </form>
+                {% endif %}
             </div>
         </div>
         <div class="row article-snippet-container">
