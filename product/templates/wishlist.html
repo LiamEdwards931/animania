@@ -10,20 +10,27 @@
     </div>
     <div class="container">
         <div class="row">
-            {% for item in wishlist_item %}
-                <div class="col-md-4 col-12 wishlist-image-container text-center">
-                    <a href="{% url 'product_details' item.product.id %}">
-                        <img src="{{ item.product.image.url }}" class="wishlist-image" alt="{{ item.product.name }}">
-                    </a>
-                    <h5>{{ item.product.name}}</h5>
-                    <p>{{ item.product.series }}</p>
-                    <p>£{{ item.product.price }}</p>
-                    <form method ="POST" id ="delete-wishlist-item" action="{% url 'delete_wishlist_item' item.product.id %}" onsubmit="confirmDelete()">
-                        {% csrf_token %}
-                        <button class="remove-wishlist-item delete-button" type="submit">Remove from Wishlist</button>
-                    </form>   
+            {% if wishlist_item %}
+                {% for item in wishlist_item %}
+                    <div class="col-md-4 col-12 wishlist-image-container text-center">
+                        <a href="{% url 'product_details' item.product.id %}">
+                            <img src="{{ item.product.image.url }}" class="wishlist-image" alt="{{ item.product.name }}">
+                        </a>
+                        <h5>{{ item.product.name}}</h5>
+                        <p>{{ item.product.series }}</p>
+                        <p>£{{ item.product.price }}</p>
+                        <form method ="POST" id ="delete-wishlist-item" action="{% url 'delete_wishlist_item' item.product.id %}" onsubmit="confirmDelete()">
+                            {% csrf_token %}
+                            <button class="remove-wishlist-item delete-button" type="submit">Remove from Wishlist</button>
+                        </form>   
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-12 text-center">
+                    <p>Your wishlist is empty</p>
+                    <a class="btn btn-primary modal-button" href="{% url 'allproducts' %}">Go shopping</a>
                 </div>
-            {% endfor %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}

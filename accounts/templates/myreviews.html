@@ -9,36 +9,42 @@
         </div>
     </div>
     <div class="container">
-        {% for review in reviews %}
-            <div class="row text-center">
-                <div class="col-md-2 col-12 mt-5 myreviewcol">
-                    <h6>{{ review.product }}</h6>
+        {% if reviews %}
+            {% for review in reviews %}
+                <div class="row text-center">
+                    <div class="col-md-2 col-12 mt-5 myreviewcol">
+                        <a href="{% url 'product_details' review.product.id %}"><h6>{{ review.product }}</h6></a>
+                    </div>
+                    <div class="col-md-2 col-12 mt-5 myreviewcol">
+                        {% for star in "x"|rjust:review.rating %}
+                            <i class="fas fa-star"></i>
+                        {% endfor %}
+                        <p>{{review.title}}</p>
+                    </div>
+                    <div class="col-md-3 col-12 mt-5 myreviewcol">
+                        {{ review.content}}
+                    </div>
+                    <div class="col-md-2 col-12 mt-5 myreviewcol">
+                        <p>Uploaded on: {{ review.created_on}}</p>
+                    </div>
+                    <div class="col-md-3 col-12 mt-4 myreviewcol">
+                        <form action="{% url 'update_review' review.id %}" method="get" name="update">
+                            {% csrf_token %}
+                            <button class="btn btn-primary modal-button" type="submit">Update Review</button>
+                        </form>
+                        <br>
+                        <form method="post" action="{% url 'delete_review' review.id %}">
+                            {% csrf_token %}
+                            <button class="btn btn-primary modal-button" type="submit">Delete Review</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="col-md-2 col-12 mt-5 myreviewcol">
-                    {% for star in "x"|rjust:review.rating %}
-                        <i class="fas fa-star"></i>
-                    {% endfor %}
-                    <p>{{review.title}}</p>
+                <hr>
+            {% endfor %}
+            {% else %}
+                <div class="col-12 text-center">
+                    You do not have any reviews posted 
                 </div>
-                <div class="col-md-3 col-12 mt-5 myreviewcol">
-                    {{ review.content}}
-                </div>
-                <div class="col-md-2 col-12 mt-5 myreviewcol">
-                    <p>Uploaded on: {{ review.created_on}}</p>
-                </div>
-                <div class="col-md-3 col-12 mt-4 myreviewcol">
-                    <form action="{% url 'update_review' review.id %}" method="get" name="update">
-                        {% csrf_token %}
-                        <button class="btn btn-primary modal-button" type="submit">Update Review</button>
-                    </form>
-                    <br>
-                    <form method="post" action="{% url 'delete_review' review.id %}">
-                        {% csrf_token %}
-                        <button class="btn btn-primary modal-button" type="submit">Delete Review</button>
-                    </form>
-                </div>
-            </div>
-            <hr>
-        {% endfor %}
+            {% endif %}
     </div>
 {% endblock %}
