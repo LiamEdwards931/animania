@@ -107,13 +107,13 @@
                         </fieldset>
                         <div class="row">
                             <div class="col-6">
-                                <a href="{% url 'basket' %}" class="btn btn-primary modal-button">Back to Basket</a>
+                                <a href="{% url 'basket' %}" class="btn btn-primary modal-button back-to-basket">Back to Basket</a>
                             </div>
-                            <div class="col-6 d-flex justify-content-end">
+                            <div class="col-6 text-center">
                                 <button id="submit-button" type="submit" class="btn btn-primary modal-button">Checkout</button>
                             </div> 
                         </div>
-                        <div class="col-12 d-flex justify-content-end">
+                        <div class="col-12 d-flex justify-content-end mr-4">
                             <p><small class="text-danger">Your card will be charged <strong>£{{ grand_total|floatformat:2}}</strong></small></p>
                         </div>
                     </form>
