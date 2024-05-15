@@ -43,6 +43,8 @@
                     <div class="col-12 col-lg-3 text-left">
                         <p><strong>{{item.product.name}}</strong></p>
                         <p>{{ item.product.series }}</p>
+                        <p>{{ item.size.size_quantity_available }}</p>
+                        <p>{{ item.product.quantity_available}}</p>
                         {% if item.product.category == 'Clothing' %}
                             <p>Size: {{ item.size| title }}</p>
                         {% endif %}

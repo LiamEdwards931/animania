@@ -127,6 +127,7 @@ This testing section covers the login/logout functionality and the profile page
 |The basket should display all of the charges the users will have such as product costs, delivery costs and the combined costs of product and delivery| The page displays all of the expected results and recalculates when quantities of products changes.|Pass|
 |basket should have an option to go back to keep shopping|The cart should have a clear option to allow users to change there minds to add more products to the basket|button exists and is functional to take users back to the all products page to add more items to the cart|Pass|
 |Basket should have an option to let users checkout|A button to take users to the checkout page with the items in their basket should be present and functional| The button takes the user to the checkout page with their current basket contents|Pass|
+| When buying a product the user should not be able to select more than the available quantity in the basket| Added a new check in the basket to prevent users adding more than the availble quantities into their baskets| Users can now no longer add more than what is available into their basket| Pass 
 
 ## Checkout testing
 | Description                                    | Expected Result | Actual Result  | Pass/Fail |
