@@ -73,3 +73,24 @@ def update_news(request, news_id):
         form = forms.newsForm(instance=news)
 
     return render(request, 'update_news.html', {'form': form})
+
+
+def news_signup(request):
+    if request.method == 'POST':
+        form = forms.NewsSignup(request.POST)
+        if form.is_valid():
+            # Process the form data
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            offers = form.cleaned_data['offers']
+            messages.success(request, 'Thank you for signing up for our newsletter!')
+            return redirect('news')
+    else:
+        form = forms.NewsSignup()
+
+    context = {
+        'form': form
+    }
+    
+    return render(request, 'news_signup.html', context)
+

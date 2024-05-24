@@ -29,3 +29,31 @@ class newsForm(forms.ModelForm):
                 field.widget = forms.Textarea(attrs={'rows': 5, 'cols': 50})
             elif field_name == 'title':
                 field.widget = forms.Textarea(attrs={'rows': 1,  'cols': 50})
+
+
+class NewsSignup(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter your full name'
+        }),
+        label="Full Name"
+    )
+    email = forms.EmailField(
+        widget=forms.EmailInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter your email address'
+        }),
+        label="Email Address"
+    )
+    offers = forms.BooleanField(
+        required=False,
+        widget=forms.CheckboxInput(attrs={
+            'class': 'form-check-input'
+        }),
+        label="Receive Offers"
+    )
+
+    def __init__(self, *args, **kwargs):
+        super(NewsSignup, self).__init__(*args, **kwargs)
