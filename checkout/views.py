@@ -33,7 +33,8 @@ def checkout(request):
                         )
                         order_line.save()
                     else:
-                        for size, quantity in item_data['products_by_size'].items():
+                        products_by_size = item_data['products_by_size']
+                        for size, quantity in products_by_size.items():
                             size_instances = (
                                     Size.objects.filter(product=product,
                                                         alternate_size=size)
@@ -96,10 +97,10 @@ def checkout(request):
             }
         else:
             initial_data = {
-            'first_name': user.first_name,
-            'last_name': user.last_name,
-            'email': user.email,
-        }
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'email': user.email,
+            }
         order_form = forms.OrderForm(initial_data)
     else:
         order_form = forms.OrderForm()

@@ -41,13 +41,15 @@ def add_to_basket(request, item_id):
             return redirect(redirect_url)
 
     bag = request.session.get('bag', {})
-    
     # Get the quantity of the product already in the bag
     existing_quantity = get_quantity_in_bag(bag, item_id, size)
-    
-    # Calculate the total quantity (existing + selected) and check against available quantity
+
+    """
+    Calculate the total quantity (existing + selected)
+    and check against available quantity
+    """
     total_quantity = existing_quantity + quantity
-    
+
     product = get_object_or_404(Product, id=item_id)
 
     if size:
@@ -56,14 +58,22 @@ def add_to_basket(request, item_id):
         if total_quantity > size_object.size_quantity_available:
             messages.error(
                 request,
-                f"The selected quantity exceeds the available quantity for size {size}.")
+                (
+                 f"The selected quantity exceeds the"
+                 f"available quantity for size {size}."
+                )
+            )
             return redirect(redirect_url)
     else:
         if total_quantity > product.quantity_available:
             messages.error(
-                request, "The selected quantity exceeds the available quantity.")
+                request,
+                (
+                 "The selected quantity exceeds the available quantity."
+                )
+            )
             return redirect(redirect_url)
-    
+
     # Update the bag with the new quantity
     if size:
         if item_id in bag:
@@ -90,13 +100,14 @@ def add_to_basket(request, item_id):
         messages.success(
             request,
             f"{quantity} x {product_name} added to your basket.")
-    
+
     return redirect(redirect_url)
 
 
 def get_quantity_in_bag(bag, item_id, size=None):
     """
-    Get the quantity of a specific product (optionally with a specified size) in the basket.
+    Get the quantity of a specific product
+    (optionally with a specified size) in the basket.
     """
     if item_id in bag:
         if size:
@@ -105,7 +116,6 @@ def get_quantity_in_bag(bag, item_id, size=None):
             return bag[item_id]
     else:
         return 0
-
 
 
 def adjust_bag(request, item_id):
