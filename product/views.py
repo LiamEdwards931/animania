@@ -266,7 +266,8 @@ def new_banner(request):
         if form.is_valid():
             series_name = form.cleaned_data.get('series')
             if product_banner.objects.filter(series=series_name).exists():
-                messages.error(request, 'A banner already exists for this series.')
+                messages.error(request,
+                               'A banner already exists for this series.')
             elif Product.objects.filter(series=series_name).exists():
                 form.save()
                 messages.success(request, 'Banner uploaded successfully')
