@@ -83,7 +83,8 @@ def news_signup(request):
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
             offers = form.cleaned_data['offers']
-            messages.success(request, 'Thank you for signing up for our newsletter!')
+            messages.success(request,
+                             'Thank you for signing up for our newsletter!')
             return redirect('news')
     else:
         form = forms.NewsSignup()
@@ -91,6 +92,5 @@ def news_signup(request):
     context = {
         'form': form
     }
-    
-    return render(request, 'news_signup.html', context)
 
+    return render(request, 'news_signup.html', context)
