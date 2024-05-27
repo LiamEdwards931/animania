@@ -10,8 +10,6 @@
             <h2>News</h2>
             {% if user.is_authenticated and user.is_superuser %}
                 <a class="btn btn-primary modal-button" href="{% url 'create_news' %}">Upload A News Article</a>
-            {% else %}
-                <a class ="btn btn-primary modal-button" href ="{% url 'news_signup'%}">Sign up to our newsletter</a>
             {% endif %}
         </div>
     </div>
