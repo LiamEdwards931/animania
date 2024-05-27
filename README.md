@@ -557,6 +557,11 @@ Super users can navigate to the amend products page from the profile this is the
 
     - Forms have validation messages if form data is missing or the screen automatically focuses on the content that is missing suggesting to the user it needs filling in.
 
+#### how the available quantities work
+
+    I decided to use multiple variables for availble quantity and quantity_size I did this as I wanted to streamline what was shown to the user and not have to create multiple instances of the same product for the different sizes, to be able to track the quantity available of each size of a clothing article, the only way I could think to do this was to track the
+    quantities in a seperate model so I only have the one instance of the clothing item but multiple instances of the size e.g. S,M,L each with their own individual inventory.
+
 ### Future features
 In the future some more features that could be included in the animania project are:
 - Delivery times and live tracking
@@ -693,6 +698,8 @@ Tested the code validation through various different linters:
 
     ![html validation](readmeimages/Htmlvalidation.png)
 
+    each html file individually passed through the validation, only errors returning are those due to django syntax and have returned as parse errors.
+
 - CSS
     - [Jigsaw W3 Validator](https://jigsaw.w3.org/css-validator/validator)
     
@@ -761,6 +768,8 @@ Tested the code validation through various different linters:
         - Views.py - No errors reported
         - Urls.py - No errors reported
         - forms.py - No errors reported
+
+     re ran each of the animania apps through validation and encountered a few errors in settings.py and some in the checkout app, all files are now responding as clear of errors throughout the entire python files.
 
 [Back to top](#animania)
 
