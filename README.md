@@ -561,9 +561,8 @@ Super users can navigate to the amend products page from the profile this is the
     - Forms have validation messages if form data is missing or the screen automatically focuses on the content that is missing suggesting to the user it needs filling in.
 
 #### how the available quantities work
-
-    I decided to use multiple variables for availble quantity and quantity_size I did this as I wanted to streamline what was shown to the user and not have to create multiple instances of the same product for the different sizes, to be able to track the quantity available of each size of a clothing article, the only way I could think to do this was to track the
-    quantities in a seperate model so I only have the one instance of the clothing item but multiple instances of the size e.g. S,M,L each with their own individual inventory.
+I decided to use multiple variables for availble quantity and quantity_size I did this as I wanted to streamline what was shown to the user and not have to create multiple instances of the same product for the different sizes, to be able to track the quantity available of each size of a clothing article, the only way I could think to do this was to track the
+quantities in a seperate model so I only have the one instance of the clothing item but multiple instances of the size e.g. S,M,L each with their own individual inventory.
 
 ### Future features
 In the future some more features that could be included in the animania project are:
