@@ -1,7 +1,7 @@
 // ---------------------Index.html script------------------
 // banner image js function that allows users to click the image to move to the next one in the list
 var images = document.querySelectorAll('.img-banner');
-var imageButton = document.querySelectorAll('.banner-form-button')
+var imageButton = document.querySelectorAll('.banner-form-button');
 
 document.querySelector('.banner-container').addEventListener('click', function() {
     var visibleImage = document.querySelector('.img-banner.banner-visible');
@@ -53,7 +53,7 @@ document.querySelector('.banner-container').addEventListener('click', function()
 });
 
 function removeDelivery(){
-    let delivery_container = document.getElementById('delivery-container')
+    let delivery_container = document.getElementById('delivery-container');
 
     delivery_container.style.display = 'none';
-};
+}

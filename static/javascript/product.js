@@ -63,4 +63,4 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-console.log('product.js has loaded')
+console.log('product.js has loaded');

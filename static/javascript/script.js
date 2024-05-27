@@ -4,7 +4,7 @@
 function moveLinks(){
     let container = document.getElementById('linksContainer');
     container.classList.remove('ms-auto');
-};
+}
 
 function toggle_read() {
     // Opens the dropdown on the footer to allow users to read more about the site.
@@ -18,7 +18,7 @@ function toggle_read() {
         readmore.classList.add('active');
         toggle.textContent = 'Show less..';
     }
-};
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     var modal = document.getElementById("custom-modal");
