@@ -543,6 +543,9 @@ Super users can navigate to the amend products page from the profile this is the
     Not logged in:
     ![Not logged in news page](readmeimages/feature-images/news/nonloggedinnews.png)
 
+    I have added the addition of a news signup page, accessible from the profile page and from the news page when you are not logged in. 
+    ![news signup](readmeimages/newssignup.png)
+
 #### News detail page
 - The features of the news detail page are:
     - An image is displayed the same as the news page except larger
